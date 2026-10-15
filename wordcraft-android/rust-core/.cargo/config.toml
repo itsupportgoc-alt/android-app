@@ -1,0 +1,9 @@
+# The NDK's aarch64-linux-android21-clang.cmd wrapper breaks when paths contain spaces
+# (cmd.exe quoting); invoking clang.exe directly with an explicit target/sysroot avoids it.
+[target.aarch64-linux-android]
+linker = "C:/tools/android-sdk/ndk/26.3.11579264/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe"
+ar = "C:/tools/android-sdk/ndk/26.3.11579264/toolchains/llvm/prebuilt/windows-x86_64/bin/llvm-ar.exe"
+rustflags = [
+    "-C", "link-arg=--target=aarch64-linux-android21",
+    "-C", "link-arg=--sysroot=C:/tools/android-sdk/ndk/26.3.11579264/toolchains/llvm/prebuilt/windows-x86_64/sysroot",
+]

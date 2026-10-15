@@ -1,0 +1,28 @@
+# Build outputs
+app/build/
+rust-core/target/
+document-core/build/
+editor/build/
+storage/build/
+ui/build/
+
+# jniLibs (native engine library)
+app/src/main/jniLibs/
+
+# Local secrets (don't commit)
+local.properties
+
+# APKs (deliverables — upload via GitHub Releases, not repo history)
+app/build/outputs/apk/debug/*.apk
+app/build/outputs/apk/release/*.apk
+
+# Logs
+*.log
+
+# Gradle / Kotlin caches
+.gradle/
+.kotlin/
+
+# Freebuff / toolchain configs
+.freebuff/
+.toolchain/
