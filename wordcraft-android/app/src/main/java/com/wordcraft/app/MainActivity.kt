@@ -56,6 +56,8 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.FileProvider
+import com.wordcraft.documentcore.PdfImport
+import com.wordcraft.documentcore.PdfImportException
 import com.wordcraft.documentcore.SENTINEL
 import com.wordcraft.editor.EditorController
 import com.wordcraft.editor.EditorScreen
@@ -132,6 +134,17 @@ private fun AppScreen(recents: Recents, activity: MainActivity) {
     }
     val shareLauncher = rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument(DOCX_MIME)) { uri ->
         if (uri != null) writeBytesTo(uri, activity, nameFor(uri, activity)) {
+            scope.launch { snackbar.showSnackbar(it) }
+        }
+    }
+    // Save as PDF / open a PDF for editing.
+    val pdfSaveLauncher = rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument("application/pdf")) { uri ->
+        if (uri != null) writePdfTo(uri, activity) {
+            scope.launch { snackbar.showSnackbar(it) }
+        }
+    }
+    val pdfOpenLauncher = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
+        if (uri != null) openPdf(uri, activity) {
             scope.launch { snackbar.showSnackbar(it) }
         }
     }
@@ -286,6 +299,22 @@ private fun AppScreen(recents: Recents, activity: MainActivity) {
                             },
                         )
                         DropdownMenuItem(
+                            text = { Text("Save as PDF") },
+                            onClick = {
+                                menuOpen = false
+                                val base = EditorController.fileName.substringBeforeLast('.')
+                                    .ifBlank { "document" }
+                                pdfSaveLauncher.launch("$base.pdf")
+                            },
+                        )
+                        DropdownMenuItem(
+                            text = { Text("Open PDF…") },
+                            onClick = {
+                                menuOpen = false
+                                pdfOpenLauncher.launch(arrayOf("application/pdf"))
+                            },
+                        )
+                        DropdownMenuItem(
                             text = { Text("Share") },
                             onClick = {
                                 menuOpen = false
@@ -362,6 +391,39 @@ private fun writeBytesTo(uri: Uri, activity: MainActivity, name: String, onError
         EditorController.rename(name)
     } catch (e: Exception) {
         onError(e.message ?: "Could not save document")
+    }
+}
+
+/** Save the current document as a PDF at [uri] (SAF `CreateDocument("application/pdf")`). */
+private fun writePdfTo(uri: Uri, activity: MainActivity, onError: (String) -> Unit) {
+    try {
+        val bytes = PdfExport.export(EditorController.state)
+        activity.contentResolver.openOutputStream(uri)?.use { it.write(bytes) }
+            ?: throw IllegalStateException("Cannot write PDF")
+        EditorController.showStatus("Saved as PDF")
+    } catch (e: Exception) {
+        onError(e.message ?: "Could not save PDF")
+    }
+}
+
+/**
+ * Open a PDF: extract its text ([PdfImport]) and load it as a fresh editable document.
+ * The original file is untouched; edit and use *Save as PDF* / *Save as…* to write changes.
+ */
+private fun openPdf(uri: Uri, activity: MainActivity, onError: (String) -> Unit) {
+    try {
+        val bytes = activity.contentResolver.openInputStream(uri)?.use { it.readBytes() }
+            ?: throw IllegalStateException("Cannot read PDF")
+        val text = PdfImport.extractText(bytes)
+        EditorController.importPlainText(text)
+        val name = nameFor(uri, activity).removeSuffix(".pdf").removeSuffix(".PDF")
+        EditorController.rename(name)
+        MainActivity.currentUri = null // writes go through Save as… (target is a PDF)
+        EditorController.showStatus("Opened $name.pdf — editable")
+    } catch (e: PdfImportException) {
+        onError(e.message ?: "Cannot open this PDF")
+    } catch (e: Exception) {
+        onError(e.message ?: "Could not open PDF")
     }
 }
 

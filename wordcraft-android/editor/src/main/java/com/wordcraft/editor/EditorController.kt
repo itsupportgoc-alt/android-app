@@ -8,6 +8,7 @@ import com.wordcraft.documentcore.EngineOp
 import com.wordcraft.documentcore.ParaVm
 import com.wordcraft.documentcore.WordCraftEngine
 import com.wordcraft.documentcore.WordCraftException
+import com.wordcraft.documentcore.jsonStr
 import org.json.JSONObject
 
 /** One rendered top-level run: consecutive paragraphs sharing a style/alignment/list signature. */
@@ -90,6 +91,27 @@ object EditorController {
 
     fun rename(name: String) {
         fileName = name
+    }
+
+    /**
+     * Replace the document with plain text (PDF import): each '\n'-separated paragraph
+     * becomes an engine paragraph, inserted at the caret of a fresh document.
+     */
+    fun importPlainText(text: String) {
+        engine.close()
+        engine = WordCraftEngine.newDocument()
+        fileName = "Untitled"
+        lastError = null
+        findVisible = false
+        refresh()
+        val ops = ArrayList<EngineOp>()
+        val parts = text.split('\n')
+        if (parts[0].isNotEmpty()) ops.add(EngineOp("text.insert", """{"text":${jsonStr(parts[0])}}"""))
+        for (i in 1 until parts.size) {
+            ops.add(EngineOp("text.newParagraph", "{}"))
+            if (parts[i].isNotEmpty()) ops.add(EngineOp("text.insert", """{"text":${jsonStr(parts[i])}}"""))
+        }
+        dispatch(ops)
     }
 
     // ------------------------------------------------------------------ commands
@@ -234,6 +256,11 @@ object EditorController {
 
     fun dismissStatus() {
         statusMessage = null
+    }
+
+    /** Show a transient success/status message (snackbar) from app-layer flows (PDF save/open). */
+    fun showStatus(message: String) {
+        statusMessage = message
     }
 }
 
