@@ -1,0 +1,29 @@
+# Repo-local note file (contents managed elsewhere; keep out of snapshots per prior cleanup)
+/wordcraft
+
+# Local secrets
+local.properties
+
+# Build outputs (any module)
+**/build/
+**/target/
+*.exe
+*.dll
+*.rlib
+*.pdb
+
+# Native libs are produced at build time into app/src/main/jniLibs; don't commit stray copies outside source dirs
+app/src/main/jniLibs/
+
+# Logs
+*.log
+
+# Gradle / Kotlin caches
+.gradle/
+.kotlin/
+
+# Tooling / agent configs
+.freebuff/
+.toolchain/
+.DS_Store
+Thumbs.db
