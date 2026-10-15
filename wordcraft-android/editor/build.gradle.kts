@@ -38,4 +38,9 @@ dependencies {
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.material.icons.extended)
     implementation(libs.androidx.lifecycle.runtime.compose)
+    // @Preview annotations (Ribbon preview matrix) + IDE/screenshot rendering.
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    debugImplementation(libs.androidx.compose.ui.tooling)
+    // JVM unit tests (ViewStateTest asserts every reference control is wired).
+    testImplementation(libs.junit)
 }
