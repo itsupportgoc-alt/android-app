@@ -77,7 +77,7 @@ class MainActivity : ComponentActivity() {
         EditorController.requestSave = { saveFlow.value?.invoke() }
 
         setContent {
-            WordCraftTheme {
+            WordCraftTheme(darkTheme = false) {
                 AppScreen(recents = recents, activity = this)
             }
         }
