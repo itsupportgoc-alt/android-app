@@ -63,6 +63,10 @@ import com.wordcraft.editor.EditorController
 import com.wordcraft.editor.EditorScreen
 import com.wordcraft.editor.FindBar
 import com.wordcraft.editor.FormatBar
+import com.wordcraft.editor.Ribbon
+import com.wordcraft.editor.RibbonDialogs
+import com.wordcraft.editor.StatusBar
+import com.wordcraft.editor.pageCountFor
 import com.wordcraft.storage.Recents
 import com.wordcraft.ui.WordCraftTheme
 import kotlinx.coroutines.launch
@@ -333,35 +337,27 @@ private fun AppScreen(recents: Recents, activity: MainActivity) {
             )
         },
     ) { padding ->
+        // Ribbon dialogs (Zoom / Window / Macros / Properties).
+        RibbonDialogs()
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding),
         ) {
+            // Word ribbon: tab strip + the selected tab's groups (View is the reference copy).
+            Ribbon(modifier = Modifier.fillMaxWidth())
             if (EditorController.findVisible) {
                 FindBar()
             }
             EditorScreen(modifier = Modifier.weight(1f).fillMaxWidth())
-            // Word-style bottom status strip above the ribbon.
-            HorizontalDivider(
-                thickness = 0.5.dp,
-                color = MaterialTheme.colorScheme.outline.copy(alpha = 0.35f),
-            )
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(MaterialTheme.colorScheme.surface)
-                    .padding(horizontal = 16.dp, vertical = 5.dp),
-            ) {
-                Text(
-                    text = "${EditorController.state.wordCount} words",
-                    style = MaterialTheme.typography.labelMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-            }
             FormatBar(
                 onPickImage = { imageLauncher.launch(arrayOf("image/*")) },
                 onInsertLink = { linkDialog = true },
+            )
+            // Word status bar: page/words left, view toggles + zoom slider right.
+            StatusBar(
+                wordCount = EditorController.state.wordCount,
+                pageCount = pageCountFor(EditorController.state.wordCount),
             )
         }
     }

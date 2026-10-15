@@ -262,6 +262,16 @@ object EditorController {
     fun showStatus(message: String) {
         statusMessage = message
     }
+
+    /**
+     * Forward a view zoom to the engine's layout path so text reflows (font-size scaling in the
+     * Rust core via the `view.zoom` FFI command). Available only when the native library exposes
+     * that command; otherwise [ViewState.engineZoomAvailable] stays false and the editor falls
+     * back to the Compose layout scale (a documented, not silent, substitution).
+     */
+    fun setEngineZoom(factor: Float) {
+        runQuiet("view.zoom", JSONObject().put("factor", factor.toDouble()))
+    }
 }
 
 /** Group consecutive paragraphs into sections by rendering signature (shared by body and cells). */
