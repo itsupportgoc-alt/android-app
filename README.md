@@ -131,17 +131,12 @@ build you can also use Android Studio → Run.
 
 ## Download the APKs
 
-Release builds are attached to each GitHub release once CI produces them:
+Ready-made builds are attached to the GitHub releases:
 
-- **Debug (install directly):** [app-debug.apk](https://github.com/my-org/wordcraft-android/releases/download/v0.1.0/app-debug.apk)
-- **Release (signed, for store upload):** [app-release.apk](https://github.com/my-org/wordcraft-android/releases/download/v0.1.0/app-release.apk)
+- **Debug (install directly):** [WordCraft-v0.1.0-debug.apk](https://github.com/itsupportgoc-alt/android-app/releases/download/v0.1.0/WordCraft-v0.1.0-debug.apk)
+- All releases: https://github.com/itsupportgoc-alt/android-app/releases
 
-Or, after a local build, grab them with:
-
-```bash
-cp app/build/outputs/apk/debug/WordCraft-Android-debug.apk  ~/Downloads/WordCraft-Android-debug.apk
-cp app/build/outputs/apk/release/WordCraft-Android-release.apk  ~/Downloads/WordCraft-Android-release.apk
-```
+Or, after a local build, grab them from:
 
 - `app/build/outputs/apk/debug/app-debug.apk` — debug build
 - `app/build/outputs/apk/release/app-release.apk` — release build (signed with the local keystore)
@@ -166,6 +161,3 @@ cp app/build/outputs/apk/release/WordCraft-Android-release.apk  ~/Downloads/Word
   `Java_com_wordcraft_documentcore_WordCraftNativeKt_*` exports in sync with the `external fun`
   declarations in `WordCraftNative.kt`.
 - Tests: `./gradlew test` (Kotlin) and `cargo test` (Rust, host).
-"# android-app" 
-"# android-app" 
-"# android-app" 
