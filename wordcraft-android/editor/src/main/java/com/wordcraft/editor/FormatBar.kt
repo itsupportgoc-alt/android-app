@@ -12,11 +12,14 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Redo
+import androidx.compose.material.icons.automirrored.filled.Undo
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.FormatAlignCenter
@@ -53,6 +56,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -113,6 +117,7 @@ fun FormatBar(
     val state = EditorController.state
     val f = state.format
     val p = state.para
+    val isWide = LocalConfiguration.current.screenWidthDp >= 720
     var insertMenu by remember { mutableStateOf(false) }
     var alignMenu by remember { mutableStateOf(false) }
     var sheet by remember { mutableStateOf(false) }
@@ -123,6 +128,10 @@ fun FormatBar(
             .background(MaterialTheme.colorScheme.surface),
     ) {
         HorizontalDivider(thickness = 0.5.dp, color = MaterialTheme.colorScheme.outline.copy(alpha = 0.35f))
+        // Wide (tablet) second ribbon row: styles, font, size, lists — desktop-Word-like.
+        if (isWide) {
+            WideRibbonRow(state)
+        }
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -185,6 +194,42 @@ fun FormatBar(
 
     if (sheet) {
         FormatSheet(onDismiss = { sheet = false }, onPickImage = onPickImage, onInsertLink = onInsertLink)
+    }
+}
+
+@Composable
+private fun WideRibbonRow(state: com.wordcraft.documentcore.EditorState) {
+    val f = state.format
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 8.dp, vertical = 2.dp)
+            .horizontalScroll(rememberScrollState()),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(6.dp),
+    ) {
+        Styles.forEach { (id, name) ->
+            Chip(name, selected = f.style == id) { EditorController.applyStyle(id) }
+        }
+        Spacer(Modifier.width(8.dp))
+        FontDropdown(f.font ?: "Aptos")
+        IconButton(onClick = { EditorController.shrinkFont() }, modifier = Modifier.size(30.dp)) {
+            Text("A−", fontSize = 13.sp, fontWeight = FontWeight.Bold)
+        }
+        Text(
+            text = f.sizePt?.let { trimSize(it) } ?: "—",
+            fontSize = 13.sp,
+            modifier = Modifier.width(34.dp),
+        )
+        IconButton(onClick = { EditorController.growFont() }, modifier = Modifier.size(30.dp)) {
+            Text("A+", fontSize = 15.sp, fontWeight = FontWeight.Bold)
+        }
+        Spacer(Modifier.width(8.dp))
+        IconChip(Icons.Filled.FormatListBulleted, state.para.inList) { EditorController.toggleBullets() }
+        IconChip(Icons.Filled.FormatListNumbered, state.para.inList) { EditorController.toggleNumbering() }
+        IconChip(Icons.AutoMirrored.Filled.Undo, state.canUndo) { EditorController.undo() }
+        IconChip(Icons.AutoMirrored.Filled.Redo, state.canRedo) { EditorController.redo() }
+        Chip("Find", selected = false) { EditorController.showFind(true) }
     }
 }
 
