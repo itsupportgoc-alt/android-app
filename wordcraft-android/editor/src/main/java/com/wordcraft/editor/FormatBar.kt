@@ -120,9 +120,9 @@ fun FormatBar(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.surfaceContainerLow),
+            .background(MaterialTheme.colorScheme.surface),
     ) {
-        HorizontalDivider(thickness = 0.5.dp, color = MaterialTheme.colorScheme.outline.copy(alpha = 0.4f))
+        HorizontalDivider(thickness = 0.5.dp, color = MaterialTheme.colorScheme.outline.copy(alpha = 0.35f))
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -195,6 +195,7 @@ private fun Toggle(
     active: Boolean,
     onClick: () -> Unit,
 ) {
+    // Word ribbon style: light-blue tile with the Word-blue glyph when active.
     val bg = if (active) MaterialTheme.colorScheme.primaryContainer else Color.Transparent
     IconButton(onClick = onClick) {
         Box(
@@ -207,7 +208,7 @@ private fun Toggle(
             Icon(
                 imageVector = icon,
                 contentDescription = label,
-                tint = if (active) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurface,
+                tint = if (active) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface,
             )
         }
     }

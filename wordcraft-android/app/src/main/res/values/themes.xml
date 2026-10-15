@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.WordCraft" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.WordCraft" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/word_chrome</item>
+        <item name="android:windowBackground">@color/word_canvas</item>
+    </style>
 </resources>
