@@ -5,9 +5,9 @@
     android:viewportWidth="108"
     android:viewportHeight="108">
 
-    <!-- Bold white "W" glyph, stroked polyline centered in the adaptive-icon safe zone -->
+    <!-- Bold white "JL" glyph, stroked polyline centered in the adaptive-icon safe zone -->
     <path
-        android:pathData="M25,39 L40,73 L54,44 L68,73 L83,39"
+        android:pathData="M25,39 L40,73 L68,73 M40,39 L68,73"
         android:strokeColor="#FFFFFF"
         android:strokeWidth="7.5"
         android:strokeLineJoin="round"
