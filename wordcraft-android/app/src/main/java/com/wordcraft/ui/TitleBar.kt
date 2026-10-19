@@ -103,15 +103,5 @@ fun TitleBar(
                     fontWeight = FontWeight.Bold,
                 )
             }
-
-            // Info (i) circle button
-            OutlinedTextButton(
-                modifier = Modifier.size(32.dp).padding(start = 8.dp),
-                onClick = onAvatarClicked,
-            ) {
-                Icon(Icons.Outlined.Info, contentDescription = null)
-            }
-            Text("i")
-        }
     }
 }

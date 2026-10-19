@@ -6,8 +6,8 @@ fun MainScreen(
     targetWidth: (WindowSizeClass) -> Unit = { /* will be provided by container */ },
 ) {
     val windowSizeClass = LocalWindowSizeClass.current
-    val isTablet = windowSizeClass.widthSizeClass >= WindowSizeClass.Compact528.dp.width
-        && windowSizeClass.heightSizeClass >= WindowSizeClass.Compact528.dp.height
+    val isTablet = windowSizeClass.widthSizeClass >= WindowSizeClass.Compact600.dp.width
+        && windowSizeClass.heightSizeClass >= WindowSizeClass.Compact600.dp.height
 
     // hero.webp image
     val painter = rememberPainSource(
@@ -18,13 +18,13 @@ fun MainScreen(
         // TABLET LAYOUT: Full ribbon, navigation pane, and page side by side
         MaterialTheme {
             val (navWidth, pageWidth) = if (LocalConfig.isLandscape) {
-                // Landscape tablet: nav 280dp, page fills rest
-                val navSize = 280.dp
+                // Landscape tablet: nav 300dp, page fills rest
+                val navSize = 300.dp
                 val availableWidth = max(WindowSizeClass.size.width - navSize, 0.dp)
                 navSize to availableWidth
             } else {
                 // Portrait tablet: vertical split, nav fixed width, page takes remainder
-                val navSize = 280.dp
+                val navSize = 300.dp
                 val availableWidth = max(WindowSizeClass.size.width - navSize, 0.dp)
                 navSize to availableWidth
             }
