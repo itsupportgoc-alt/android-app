@@ -106,6 +106,20 @@ cd ..
 
 The Gradle wrapper runs Gradle 8.10.2 — no manual Gradle install is needed.
 
+### Publishing a release
+
+Each release must carry both the versioned assets and the stable aliases, because the
+README download links point at `releases/latest/download/WordCraft-release.apk` and
+`releases/latest/download/WordCraft-debug.apk` — GitHub resolves those to the newest
+non-prerelease release, so the aliases have to be re-uploaded every time:
+
+| Asset name | Source |
+|---|---|
+| `wordcraft-android-v<version>-release.apk` | `app/build/outputs/apk/release/app-release.apk` |
+| `wordcraft-android-v<version>-debug.apk` | `app/build/outputs/apk/debug/app-debug.apk` |
+| `WordCraft-release.apk` | same file as the versioned release asset |
+| `WordCraft-debug.apk` | same file as the versioned debug asset |
+
 ## Install
 
 ```bash
