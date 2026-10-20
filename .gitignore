@@ -27,3 +27,10 @@ app/src/main/jniLibs/
 .toolchain/
 .DS_Store
 Thumbs.db
+
+# Scratch: the upstream engine sources extracted for the ribbon generator
+/wordcraft-android/.tmp/
+
+# Python bytecode of the generator scripts
+__pycache__/
+*.pyc

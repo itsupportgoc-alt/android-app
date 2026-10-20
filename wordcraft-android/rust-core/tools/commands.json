@@ -1,0 +1,4906 @@
+[
+ {
+  "id": "insert.canvas",
+  "label": "Drawing Canvas",
+  "location": "Insert › Illustrations",
+  "params": "{\"width\"?: pt (default 432 = 6\"), \"height\"?: pt (default 216 = 3\"), \"fill\"?: \"RRGGBB\", \"outline\"?: \"RRGGBB\"}  (in line with text at the caret; it stays selected, so the next Pictures, Shapes or Text Box goes inside it)",
+  "shortcut": "",
+  "module": "canvas"
+ },
+ {
+  "id": "canvas.fit",
+  "label": "Fit",
+  "location": "Shape Format › Drawing Canvas",
+  "params": "{}  (shrinks the selected canvas's frame to its drawing: the members move to its top-left corner)",
+  "shortcut": "",
+  "module": "canvas"
+ },
+ {
+  "id": "canvas.expand",
+  "label": "Expand",
+  "location": "Shape Format › Drawing Canvas",
+  "params": "{\"by\"?: pt (default 36)}  (grows the frame right and down; at least enough to show every member)",
+  "shortcut": "",
+  "module": "canvas"
+ },
+ {
+  "id": "canvas.scale",
+  "label": "Scale Drawing",
+  "location": "Shape Format › Drawing Canvas",
+  "params": "{\"factor\": number (0.1–10)}  (scales the frame and every member together)",
+  "shortcut": "",
+  "module": "canvas"
+ },
+ {
+  "id": "canvas.member",
+  "label": "Canvas Member",
+  "location": "Shape Format › Drawing Canvas",
+  "params": "{\"index\": n, \"x\"?: pt, \"y\"?: pt, \"width\"?: pt, \"height\"?: pt, \"delete\"?: bool}  (moves, resizes or removes member `index` of the selected canvas; x/y from the canvas's top-left; with no change, returns the members)",
+  "shortcut": "",
+  "module": "canvas"
+ },
+ {
+  "id": "caret.left",
+  "label": "Left",
+  "location": "Navigation",
+  "params": "{\"extend\"?: bool}",
+  "shortcut": "Left",
+  "module": "caret"
+ },
+ {
+  "id": "caret.right",
+  "label": "Right",
+  "location": "Navigation",
+  "params": "{\"extend\"?: bool}",
+  "shortcut": "Right",
+  "module": "caret"
+ },
+ {
+  "id": "caret.up",
+  "label": "Up",
+  "location": "Navigation",
+  "params": "{\"extend\"?: bool}",
+  "shortcut": "Up",
+  "module": "caret"
+ },
+ {
+  "id": "caret.down",
+  "label": "Down",
+  "location": "Navigation",
+  "params": "{\"extend\"?: bool}",
+  "shortcut": "Down",
+  "module": "caret"
+ },
+ {
+  "id": "caret.wordLeft",
+  "label": "Word Left",
+  "location": "Navigation",
+  "params": "{\"extend\"?: bool}",
+  "shortcut": "",
+  "module": "caret"
+ },
+ {
+  "id": "caret.wordRight",
+  "label": "Word Right",
+  "location": "Navigation",
+  "params": "{\"extend\"?: bool}",
+  "shortcut": "",
+  "module": "caret"
+ },
+ {
+  "id": "caret.home",
+  "label": "Line Start",
+  "location": "Navigation",
+  "params": "{\"extend\"?: bool}",
+  "shortcut": "",
+  "module": "caret"
+ },
+ {
+  "id": "caret.end",
+  "label": "Line End",
+  "location": "Navigation",
+  "params": "{\"extend\"?: bool}",
+  "shortcut": "",
+  "module": "caret"
+ },
+ {
+  "id": "caret.paraUp",
+  "label": "Paragraph Up",
+  "location": "Navigation",
+  "params": "{\"extend\"?: bool}",
+  "shortcut": "Mod+Up / Alt+Up",
+  "module": "caret"
+ },
+ {
+  "id": "caret.paraDown",
+  "label": "Paragraph Down",
+  "location": "Navigation",
+  "params": "{\"extend\"?: bool}",
+  "shortcut": "Mod+Down / Alt+Down",
+  "module": "caret"
+ },
+ {
+  "id": "caret.docStart",
+  "label": "Document Start",
+  "location": "Navigation",
+  "params": "{\"extend\"?: bool}",
+  "shortcut": "Mod+Home",
+  "module": "caret"
+ },
+ {
+  "id": "caret.docEnd",
+  "label": "Document End",
+  "location": "Navigation",
+  "params": "{\"extend\"?: bool}",
+  "shortcut": "Mod+End",
+  "module": "caret"
+ },
+ {
+  "id": "caret.pageUp",
+  "label": "Page Up",
+  "location": "Navigation",
+  "params": "{\"extend\"?: bool}",
+  "shortcut": "PageUp",
+  "module": "caret"
+ },
+ {
+  "id": "caret.pageDown",
+  "label": "Page Down",
+  "location": "Navigation",
+  "params": "{\"extend\"?: bool}",
+  "shortcut": "PageDown",
+  "module": "caret"
+ },
+ {
+  "id": "caret.set",
+  "label": "Set Caret",
+  "location": "Navigation",
+  "params": "{\"pos\": Pos, \"extend\"?: bool} | {\"page\": n, \"x\": pt, \"y\": pt}",
+  "shortcut": "",
+  "module": "caret"
+ },
+ {
+  "id": "select.all",
+  "label": "Select All",
+  "location": "Home › Editing › Select",
+  "params": "{}",
+  "shortcut": "Mod+A",
+  "module": "caret"
+ },
+ {
+  "id": "select.range",
+  "label": "Select Range",
+  "location": "Navigation",
+  "params": "{\"anchor\": Pos, \"focus\": Pos}",
+  "shortcut": "",
+  "module": "caret"
+ },
+ {
+  "id": "select.word",
+  "label": "Select Word",
+  "location": "Navigation",
+  "params": "{}",
+  "shortcut": "",
+  "module": "caret"
+ },
+ {
+  "id": "select.sentence",
+  "label": "Select Sentence",
+  "location": "Navigation",
+  "params": "{}",
+  "shortcut": "",
+  "module": "caret"
+ },
+ {
+  "id": "select.paragraph",
+  "label": "Select Paragraph",
+  "location": "Navigation",
+  "params": "{}",
+  "shortcut": "",
+  "module": "caret"
+ },
+ {
+  "id": "select.dragUnit",
+  "label": "Extend Selection by Units",
+  "location": "Navigation",
+  "params": "{\"unit\": \"word|sentence|line|paragraph|document\", \"start\": Pos, \"end\": Pos, \"pos\": Pos}",
+  "shortcut": "",
+  "module": "caret"
+ },
+ {
+  "id": "select.line",
+  "label": "Select Line",
+  "location": "Navigation",
+  "params": "{\"pos\"?: Pos}",
+  "shortcut": "",
+  "module": "caret"
+ },
+ {
+  "id": "select.text",
+  "label": "Select Text",
+  "location": "Navigation",
+  "params": "{\"text\": string, \"occurrence\"?: n}",
+  "shortcut": "",
+  "module": "caret"
+ },
+ {
+  "id": "select.collapse",
+  "label": "Collapse Selection",
+  "location": "Navigation",
+  "params": "{}",
+  "shortcut": "Escape",
+  "module": "caret"
+ },
+ {
+  "id": "insert.chart",
+  "label": "Chart",
+  "location": "Insert › Illustrations",
+  "params": "{\"type\"?: \"column|columnStacked|bar|barStacked|line|area|pie|doughnut|scatter\", \"data\"?: {\"categories\": [string], \"series\": [{\"name\": string, \"values\": [number|null]}]}, \"title\"?: string, \"legend\"?: \"right|left|top|bottom|none\", \"dataLabels\"?: bool, \"width\"?: pt, \"height\"?: pt} (no params: the chart type picker)",
+  "shortcut": "",
+  "module": "chart"
+ },
+ {
+  "id": "chart.type",
+  "label": "Change Chart Type",
+  "location": "Chart Design › Type",
+  "params": "{\"type\": \"column|columnStacked|bar|barStacked|line|area|pie|doughnut|scatter\"}",
+  "shortcut": "",
+  "module": "chart"
+ },
+ {
+  "id": "chart.editData",
+  "label": "Edit Data",
+  "location": "Chart Design › Data",
+  "params": "{\"data\": {\"categories\"?: [string], \"series\"?: [{\"name\": string, \"values\": [number|null]}]}}",
+  "shortcut": "",
+  "module": "chart"
+ },
+ {
+  "id": "chart.title",
+  "label": "Chart Title",
+  "location": "Chart Design › Chart Layouts › Add Chart Element",
+  "params": "{\"text\"?: string|null} (no text: switch the title on or off)",
+  "shortcut": "",
+  "module": "chart"
+ },
+ {
+  "id": "chart.legend",
+  "label": "Legend",
+  "location": "Chart Design › Chart Layouts › Add Chart Element",
+  "params": "{\"pos\"?: \"right|left|top|bottom|none\"} (no pos: switch the legend on or off)",
+  "shortcut": "",
+  "module": "chart"
+ },
+ {
+  "id": "chart.dataLabels",
+  "label": "Data Labels",
+  "location": "Chart Design › Chart Layouts › Add Chart Element",
+  "params": "{\"on\"?: bool} (no value: switch the data labels on or off)",
+  "shortcut": "",
+  "module": "chart"
+ },
+ {
+  "id": "references.sources",
+  "label": "Manage Sources",
+  "location": "References › Citations & Bibliography",
+  "params": "{\"add\"?: Source, \"remove\"?: tag, \"import\"?: path (a Word bibliography file, `b:Sources` / `Sources.xml`)} → list",
+  "shortcut": "",
+  "module": "citations"
+ },
+ {
+  "id": "references.citation",
+  "label": "Insert Citation",
+  "location": "References › Citations & Bibliography",
+  "params": "{\"tag\"?: string, \"source\"?: Source (added if new), \"pages\"?: string}",
+  "shortcut": "",
+  "module": "citations"
+ },
+ {
+  "id": "references.citationStyle",
+  "label": "Style",
+  "location": "References › Citations & Bibliography",
+  "params": "{\"style\": \"APA|Chicago|GB/T 7714|GOST (name sort)|GOST (title sort)|Harvard (Anglia)|IEEE|ISO 690 (author-date)|ISO 690 (numerical)|MLA|SIST02|Turabian\" (Word's style names work too)}",
+  "shortcut": "",
+  "module": "citations"
+ },
+ {
+  "id": "references.bibliography",
+  "label": "Bibliography",
+  "location": "References › Citations & Bibliography",
+  "params": "{\"title\"?: string}",
+  "shortcut": "",
+  "module": "citations"
+ },
+ {
+  "id": "references.tableOfFigures",
+  "label": "Insert Table of Figures",
+  "location": "References › Captions",
+  "params": "{\"label\"?: \"Figure|Table|Equation\"}",
+  "shortcut": "",
+  "module": "citations"
+ },
+ {
+  "id": "references.updateFigures",
+  "label": "Update Table",
+  "location": "References › Captions",
+  "params": "{}",
+  "shortcut": "",
+  "module": "citations"
+ },
+ {
+  "id": "references.markCitation",
+  "label": "Mark Citation",
+  "location": "References › Table of Authorities",
+  "params": "{\"entry\"?: string}",
+  "shortcut": "",
+  "module": "citations"
+ },
+ {
+  "id": "references.tableOfAuthorities",
+  "label": "Insert Table of Authorities",
+  "location": "References › Table of Authorities",
+  "params": "{}",
+  "shortcut": "",
+  "module": "citations"
+ },
+ {
+  "id": "references.updateAuthorities",
+  "label": "Update Table",
+  "location": "References › Table of Authorities",
+  "params": "{}",
+  "shortcut": "",
+  "module": "citations"
+ },
+ {
+  "id": "insert.crossReference",
+  "label": "Cross-reference",
+  "location": "Insert › Links",
+  "params": "{\"to\": \"heading|bookmark|figure|table|equation|label:<Name> (a caption label of your own)\", \"target\": string (text / name / number), \"show\"?: \"text|page|number|aboveBelow\"} or {} to list targets",
+  "shortcut": "",
+  "module": "citations"
+ },
+ {
+  "id": "references.noteOptions",
+  "label": "Footnote and Endnote",
+  "location": "References › Footnotes",
+  "params": "{\"kind\"?: \"footnote|endnote\", \"pos\"?: \"pageBottom|beneathText\" (footnotes) | \"sectEnd|docEnd\" (endnotes), \"numFmt\"?: \"decimal|lowerRoman|upperRoman|lowerLetter|upperLetter|…\", \"numStart\"?: 1-32767, \"numRestart\"?: \"continuous|eachSect|eachPage\" (each page: footnotes only), \"scope\"?: \"document|section\", \"footnoteFormat\"?: …, \"endnoteFormat\"?: …} — no settings: the options in effect at the caret",
+  "shortcut": "",
+  "module": "citations"
+ },
+ {
+  "id": "references.researcher",
+  "label": "Researcher",
+  "location": "References › Research",
+  "params": "{}",
+  "shortcut": "",
+  "module": "citations"
+ },
+ {
+  "id": "select.column",
+  "label": "Column Selection",
+  "location": "Editing › Selection",
+  "params": "{\"anchor\": Pos, \"focus\": Pos} | {\"from\": {\"page\": n, \"x\": pt, \"y\": pt}, \"to\": {\"page\": n, \"x\": pt, \"y\": pt}, \"story\"?: StoryRef} | {\"on\"?: bool} (no corners: toggle column selection mode, where the arrow keys extend the block)",
+  "shortcut": "Mod+Shift+F8",
+  "module": "column"
+ },
+ {
+  "id": "shape.connect",
+  "label": "Connect Shapes",
+  "location": "Shape Format › Insert Shapes",
+  "params": "{\"start\"?: end, \"end\"?: end}  end: {\"path\": [..], \"off\": n, \"site\"?: n} (glue to that body shape's connection site; nearest one when omitted) | {\"x\": pt, \"y\": pt, \"page\"?: n} (drag the end there: it glues to a shape's site within 12 pt, else stays free there) | null (unglue)",
+  "shortcut": "",
+  "module": "connectors"
+ },
+ {
+  "id": "design.theme",
+  "label": "Themes",
+  "location": "Design › Document Formatting",
+  "params": "{\"name\": string}",
+  "shortcut": "",
+  "module": "design"
+ },
+ {
+  "id": "design.themeFonts",
+  "label": "Fonts",
+  "location": "Design › Document Formatting",
+  "params": "{\"heading\": string, \"body\"?: string}",
+  "shortcut": "",
+  "module": "design"
+ },
+ {
+  "id": "design.themeColors",
+  "label": "Colors",
+  "location": "Design › Document Formatting",
+  "params": "{}",
+  "shortcut": "",
+  "module": "design"
+ },
+ {
+  "id": "design.styleSet",
+  "label": "Style Set",
+  "location": "Design › Document Formatting",
+  "params": "{\"name\": \"default|basic|lines|shaded|casual|centered|minimalist|title\"}",
+  "shortcut": "",
+  "module": "design"
+ },
+ {
+  "id": "design.paragraphSpacing",
+  "label": "Paragraph Spacing",
+  "location": "Design › Document Formatting",
+  "params": "{\"value\": \"default|none|compact|tight|open|relaxed|double\"}",
+  "shortcut": "",
+  "module": "design"
+ },
+ {
+  "id": "design.watermark",
+  "label": "Watermark",
+  "location": "Design › Page Background",
+  "params": "{\"text\"?: string, \"remove\"?: bool, \"diagonal\"?: bool, \"color\"?: \"RRGGBB\"}",
+  "shortcut": "",
+  "module": "design"
+ },
+ {
+  "id": "design.pageColor",
+  "label": "Page Color",
+  "location": "Design › Page Background",
+  "params": "{\"color\": \"RRGGBB\" | null}",
+  "shortcut": "",
+  "module": "design"
+ },
+ {
+  "id": "design.pageBorders",
+  "label": "Page Borders",
+  "location": "Design › Page Background",
+  "params": "{\"kind\"?: \"box|none\", \"width\"?: pt, \"color\"?: \"RRGGBB\", \"style\"?: \"single|double|dotted|dashed|thick|triple|dotDash|wave\", \"sides\"?: {\"top\"|\"left\"|\"bottom\"|\"right\": {\"style\"?, \"width\"?: pt, \"color\"?: \"RRGGBB\"} | null} (exactly these sides, instead of `kind`), \"applyTo\"?: \"section|document\"}",
+  "shortcut": "",
+  "module": "design"
+ },
+ {
+  "id": "design.setDefault",
+  "label": "Set as Default",
+  "location": "Design › Document Formatting",
+  "params": "{}",
+  "shortcut": "",
+  "module": "design"
+ },
+ {
+  "id": "design.themes",
+  "label": "Theme List",
+  "location": "Design › Document Formatting",
+  "params": "{}",
+  "shortcut": "",
+  "module": "design"
+ },
+ {
+  "id": "draw.select",
+  "label": "Select",
+  "location": "Draw › Tools",
+  "params": "{}",
+  "shortcut": "",
+  "module": "draw"
+ },
+ {
+  "id": "draw.lasso",
+  "label": "Lasso Select",
+  "location": "Draw › Tools",
+  "params": "{\"page\"?: n, \"points\"?: [[x, y], …], \"clear\"?: bool}  (no points: use the lasso; points: select the ink inside that loop; clear: drop the selection)",
+  "shortcut": "",
+  "module": "draw"
+ },
+ {
+  "id": "draw.lassoMove",
+  "label": "Move Selected Ink",
+  "location": "Draw › Tools",
+  "params": "{\"dx\": pt, \"dy\": pt}",
+  "shortcut": "",
+  "module": "draw"
+ },
+ {
+  "id": "draw.lassoDelete",
+  "label": "Delete Selected Ink",
+  "location": "Draw › Tools",
+  "params": "{}",
+  "shortcut": "",
+  "module": "draw"
+ },
+ {
+  "id": "draw.lassoColor",
+  "label": "Recolor Selected Ink",
+  "location": "Draw › Tools",
+  "params": "{\"color\": \"RRGGBB\"}",
+  "shortcut": "",
+  "module": "draw"
+ },
+ {
+  "id": "draw.eraser",
+  "label": "Eraser",
+  "location": "Draw › Tools",
+  "params": "{\"page\"?: n, \"x\"?: pt, \"y\"?: pt}  (no point: use the eraser; a point: delete the ink stroke there)",
+  "shortcut": "",
+  "module": "draw"
+ },
+ {
+  "id": "draw.pen",
+  "label": "Pen",
+  "location": "Draw › Pens",
+  "params": "{\"color\"?: \"RRGGBB\", \"width\"?: pt}",
+  "shortcut": "",
+  "module": "draw"
+ },
+ {
+  "id": "draw.pencil",
+  "label": "Pencil",
+  "location": "Draw › Pens",
+  "params": "{\"color\"?: \"RRGGBB\", \"width\"?: pt}",
+  "shortcut": "",
+  "module": "draw"
+ },
+ {
+  "id": "draw.highlighter",
+  "label": "Highlighter",
+  "location": "Draw › Pens",
+  "params": "{\"color\"?: \"RRGGBB\", \"width\"?: pt}",
+  "shortcut": "",
+  "module": "draw"
+ },
+ {
+  "id": "draw.addPen",
+  "label": "Add Pen",
+  "location": "Draw › Pens",
+  "params": "{\"kind\"?: \"pen|pencil|highlighter\", \"color\"?: \"RRGGBB\", \"width\"?: pt}  (adds the pen to the gallery and picks it up)",
+  "shortcut": "",
+  "module": "draw"
+ },
+ {
+  "id": "draw.removePen",
+  "label": "Remove Pen",
+  "location": "Draw › Pens",
+  "params": "{\"index\": n}",
+  "shortcut": "",
+  "module": "draw"
+ },
+ {
+  "id": "draw.stroke",
+  "label": "Draw Ink",
+  "location": "Draw › Pens",
+  "params": "{\"page\": n, \"points\": [[x, y], …] (page points, at most 5000), \"tool\"?: \"pen|pencil|highlighter\", \"color\"?: \"RRGGBB\", \"width\"?: pt}",
+  "shortcut": "",
+  "module": "draw"
+ },
+ {
+  "id": "draw.erase",
+  "label": "Erase Ink",
+  "location": "Draw › Tools",
+  "params": "{\"page\": n, \"x\": pt, \"y\": pt}",
+  "shortcut": "",
+  "module": "draw"
+ },
+ {
+  "id": "draw.inkToShape",
+  "label": "Ink to Shape",
+  "location": "Draw › Convert",
+  "params": "{\"value\"?: bool}  (no value: convert the lasso-selected strokes, or turn Ink to Shape on or off)",
+  "shortcut": "",
+  "module": "draw"
+ },
+ {
+  "id": "draw.convertInk",
+  "label": "Convert to Shapes",
+  "location": "Draw › Convert",
+  "params": "{}",
+  "shortcut": "",
+  "module": "draw"
+ },
+ {
+  "id": "draw.replay",
+  "label": "Ink Replay",
+  "location": "Draw › Replay",
+  "params": "{\"value\"?: bool}  (starts or stops Ink Replay; returns the strokes in the order they were drawn)",
+  "shortcut": "",
+  "module": "draw"
+ },
+ {
+  "id": "review.hideInk",
+  "label": "Hide Ink",
+  "location": "Review › Ink",
+  "params": "{\"value\"?: bool}",
+  "shortcut": "",
+  "module": "draw"
+ },
+ {
+  "id": "edit.undo",
+  "label": "Undo",
+  "location": "Quick Access Toolbar",
+  "params": "{}",
+  "shortcut": "Mod+Z",
+  "module": "edit"
+ },
+ {
+  "id": "edit.undoTo",
+  "label": "Undo Actions",
+  "location": "Quick Access Toolbar",
+  "params": "{\"count\": n (1 = the newest step, like edit.undo; n undoes the newest n steps at once; at most the undo depth)}",
+  "shortcut": "",
+  "module": "edit"
+ },
+ {
+  "id": "edit.undoHistory",
+  "label": "Undo History",
+  "location": "Quick Access Toolbar",
+  "params": "{}",
+  "shortcut": "",
+  "module": "edit"
+ },
+ {
+  "id": "edit.redo",
+  "label": "Redo",
+  "location": "Quick Access Toolbar",
+  "params": "{}",
+  "shortcut": "Mod+Y / Mod+Shift+Z",
+  "module": "edit"
+ },
+ {
+  "id": "edit.cut",
+  "label": "Cut",
+  "location": "Home › Clipboard",
+  "params": "{}",
+  "shortcut": "Mod+X",
+  "module": "edit"
+ },
+ {
+  "id": "edit.copy",
+  "label": "Copy",
+  "location": "Home › Clipboard",
+  "params": "{}",
+  "shortcut": "Mod+C / Mod+Insert",
+  "module": "edit"
+ },
+ {
+  "id": "edit.spike",
+  "label": "Spike",
+  "location": "Editing",
+  "params": "{}",
+  "shortcut": "Mod+F3",
+  "module": "edit"
+ },
+ {
+  "id": "edit.insertSpike",
+  "label": "Insert Spike",
+  "location": "Editing",
+  "params": "{}",
+  "shortcut": "Mod+Shift+F3",
+  "module": "edit"
+ },
+ {
+  "id": "edit.paste",
+  "label": "Paste",
+  "location": "Home › Clipboard",
+  "params": "{\"text\"?: string, \"html\"?: string, \"rtf\"?: string}",
+  "shortcut": "Mod+V / Shift+Insert",
+  "module": "edit"
+ },
+ {
+  "id": "edit.pasteText",
+  "label": "Paste: Keep Text Only",
+  "location": "Home › Clipboard › Paste",
+  "params": "{\"text\"?: string}",
+  "shortcut": "Mod+Shift+Alt+V",
+  "module": "edit"
+ },
+ {
+  "id": "edit.pasteMerge",
+  "label": "Paste: Merge Formatting",
+  "location": "Home › Clipboard › Paste",
+  "params": "{\"text\"?: string, \"html\"?: string, \"rtf\"?: string}",
+  "shortcut": "",
+  "module": "edit"
+ },
+ {
+  "id": "edit.clipboardPane",
+  "label": "Clipboard Pane",
+  "location": "Home › Clipboard",
+  "params": "{\"value\"?: bool}",
+  "shortcut": "",
+  "module": "edit"
+ },
+ {
+  "id": "edit.clipboardItems",
+  "label": "Clipboard Items",
+  "location": "Home › Clipboard › Clipboard Pane",
+  "params": "{}",
+  "shortcut": "",
+  "module": "edit"
+ },
+ {
+  "id": "edit.pasteClipboardItem",
+  "label": "Paste Clipboard Item",
+  "location": "Home › Clipboard › Clipboard Pane",
+  "params": "{\"index\": n (0 = newest)}",
+  "shortcut": "",
+  "module": "edit"
+ },
+ {
+  "id": "edit.pasteAllClipboard",
+  "label": "Paste All",
+  "location": "Home › Clipboard › Clipboard Pane",
+  "params": "{}",
+  "shortcut": "",
+  "module": "edit"
+ },
+ {
+  "id": "edit.deleteClipboardItem",
+  "label": "Delete Clipboard Item",
+  "location": "Home › Clipboard › Clipboard Pane",
+  "params": "{\"index\": n (0 = newest)}",
+  "shortcut": "",
+  "module": "edit"
+ },
+ {
+  "id": "edit.clearClipboard",
+  "label": "Clear All",
+  "location": "Home › Clipboard › Clipboard Pane",
+  "params": "{}",
+  "shortcut": "",
+  "module": "edit"
+ },
+ {
+  "id": "edit.find",
+  "label": "Find",
+  "location": "Home › Editing",
+  "params": "{\"text\": string, \"matchCase\"?: bool, \"wholeWord\"?: bool, \"matchPrefix\"?: bool, \"matchSuffix\"?: bool, \"ignorePunct\"?: bool, \"ignoreSpace\"?: bool, \"wildcards\"?: bool, \"special\"?: bool (^p ^t ^# … codes, default true), \"regex\"?: bool}",
+  "shortcut": "Mod+F",
+  "module": "edit"
+ },
+ {
+  "id": "edit.advancedFind",
+  "label": "Advanced Find",
+  "location": "Home › Editing › Find",
+  "params": "{\"text\"?: string, …options of edit.find, \"in\"?: \"main|selection\", \"highlight\"?: bool}",
+  "shortcut": "",
+  "module": "edit"
+ },
+ {
+  "id": "edit.findNext",
+  "label": "Find Next",
+  "location": "Home › Editing › Find",
+  "params": "{\"text\"?: string, \"matchCase\"?: bool, \"wholeWord\"?: bool, \"regex\"?: bool}",
+  "shortcut": "Mod+G / F3 / Shift+F4 / Mod+PageDown",
+  "module": "edit"
+ },
+ {
+  "id": "edit.findPrevious",
+  "label": "Find Previous",
+  "location": "Home › Editing › Find",
+  "params": "{\"text\"?: string, \"matchCase\"?: bool, \"wholeWord\"?: bool, \"regex\"?: bool}",
+  "shortcut": "",
+  "module": "edit"
+ },
+ {
+  "id": "edit.replace",
+  "label": "Replace",
+  "location": "Home › Editing",
+  "params": "{\"text\": string, \"with\": string, …options of edit.replaceAll}",
+  "shortcut": "",
+  "module": "edit"
+ },
+ {
+  "id": "edit.findReplace",
+  "label": "Find and Replace",
+  "location": "Home › Editing",
+  "params": "{\"tab\"?: \"find|replace|goto\" (default replace)}",
+  "shortcut": "",
+  "module": "edit"
+ },
+ {
+  "id": "edit.replaceAll",
+  "label": "Replace All",
+  "location": "Home › Editing › Replace",
+  "params": "{\"text\": string, \"with\": string (^p ^t ^& ^c …; \\\\1 with wildcards), …options of edit.find}",
+  "shortcut": "",
+  "module": "edit"
+ },
+ {
+  "id": "edit.goto",
+  "label": "Go To",
+  "location": "Home › Editing › Find",
+  "params": "{\"page\"?: n, \"pageBy\"?: int (pages forward, negative back, from the caret's page), \"bookmark\"?: string (selects its text), \"paragraph\"?: n}; none opens Find and Replace on its Go To tab",
+  "shortcut": "Mod+Alt+G / F5",
+  "module": "edit"
+ },
+ {
+  "id": "edit.goBack",
+  "label": "Go Back",
+  "location": "Navigation",
+  "params": "{}",
+  "shortcut": "Shift+F5 / Mod+Alt+Z",
+  "module": "edit"
+ },
+ {
+  "id": "edit.formatPainter",
+  "label": "Format Painter",
+  "location": "Home › Clipboard",
+  "params": "{\"sticky\"?: bool}",
+  "shortcut": "",
+  "module": "edit"
+ },
+ {
+  "id": "edit.copyFormat",
+  "label": "Copy Formatting",
+  "location": "Home › Clipboard",
+  "params": "{}",
+  "shortcut": "Mod+Shift+C",
+  "module": "edit"
+ },
+ {
+  "id": "edit.pasteFormat",
+  "label": "Paste Formatting",
+  "location": "Home › Clipboard",
+  "params": "{}",
+  "shortcut": "Mod+Shift+V",
+  "module": "edit"
+ },
+ {
+  "id": "insert.equation",
+  "label": "Equation",
+  "location": "Insert › Symbols",
+  "params": "{\"linear\"?: string, \"latex\"?: string, \"builtin\"?: \"pythagoras|area|quadratic|binomial|expansion|euler|derivative|taylor|gaussian|fourier|trig1|trig2|normal|bayes\", \"display\"?: bool, \"edit\"?: bool (default true)}",
+  "shortcut": "Alt+=",
+  "module": "equation"
+ },
+ {
+  "id": "equation.edit",
+  "label": "Edit Equation",
+  "location": "Equation",
+  "params": "{\"pos\"?: {\"path\": [[node, child]…], \"off\": n}}",
+  "shortcut": "",
+  "module": "equation"
+ },
+ {
+  "id": "equation.exit",
+  "label": "Leave Equation",
+  "location": "Equation",
+  "params": "{\"before\"?: bool}",
+  "shortcut": "",
+  "module": "equation"
+ },
+ {
+  "id": "equation.type",
+  "label": "Type in Equation",
+  "location": "Equation",
+  "params": "{\"text\": string}",
+  "shortcut": "",
+  "module": "equation"
+ },
+ {
+  "id": "equation.insertStructure",
+  "label": "Insert Structure",
+  "location": "Equation › Structures",
+  "params": "{\"id\"?: string (see equation.gallery), \"linear\"?: string, \"latex\"?: string}",
+  "shortcut": "",
+  "module": "equation"
+ },
+ {
+  "id": "equation.insertSymbol",
+  "label": "Insert Symbol",
+  "location": "Equation › Symbols",
+  "params": "{\"char\": string}",
+  "shortcut": "",
+  "module": "equation"
+ },
+ {
+  "id": "equation.move",
+  "label": "Move in Equation",
+  "location": "Equation",
+  "params": "{\"dir\": \"left|right|up|down|home|end|next|prev\"}",
+  "shortcut": "",
+  "module": "equation"
+ },
+ {
+  "id": "equation.backspace",
+  "label": "Delete Back in Equation",
+  "location": "Equation",
+  "params": "{}",
+  "shortcut": "",
+  "module": "equation"
+ },
+ {
+  "id": "equation.delete",
+  "label": "Delete in Equation",
+  "location": "Equation",
+  "params": "{}",
+  "shortcut": "",
+  "module": "equation"
+ },
+ {
+  "id": "equation.enter",
+  "label": "Enter in Equation",
+  "location": "Equation",
+  "params": "{}",
+  "shortcut": "",
+  "module": "equation"
+ },
+ {
+  "id": "equation.convert",
+  "label": "Convert",
+  "location": "Equation › Conversions",
+  "params": "{\"to\": \"professional|linear\", \"all\"?: bool}",
+  "shortcut": "",
+  "module": "equation"
+ },
+ {
+  "id": "equation.inputFormat",
+  "label": "Input Format",
+  "location": "Equation › Conversions",
+  "params": "{\"format\": \"unicode|latex\"}",
+  "shortcut": "",
+  "module": "equation"
+ },
+ {
+  "id": "equation.normalText",
+  "label": "Normal Text",
+  "location": "Equation › Tools",
+  "params": "{\"value\"?: bool}",
+  "shortcut": "",
+  "module": "equation"
+ },
+ {
+  "id": "equation.display",
+  "label": "Change to Display",
+  "location": "Equation",
+  "params": "{\"value\"?: bool}",
+  "shortcut": "",
+  "module": "equation"
+ },
+ {
+  "id": "equation.justify",
+  "label": "Justification",
+  "location": "Equation",
+  "params": "{\"jc\": \"centerGroup|center|left|right\"}",
+  "shortcut": "",
+  "module": "equation"
+ },
+ {
+  "id": "equation.number",
+  "label": "Equation Number",
+  "location": "Equation",
+  "params": "{\"value\"?: bool}",
+  "shortcut": "",
+  "module": "equation"
+ },
+ {
+  "id": "equation.set",
+  "label": "Set Equation",
+  "location": "Equation",
+  "params": "{\"linear\"?: string, \"latex\"?: string}",
+  "shortcut": "",
+  "module": "equation"
+ },
+ {
+  "id": "equation.get",
+  "label": "Equation Info",
+  "location": "Equation",
+  "params": "{}",
+  "shortcut": "",
+  "module": "equation"
+ },
+ {
+  "id": "equation.gallery",
+  "label": "Equation Gallery",
+  "location": "Equation › Structures",
+  "params": "{}",
+  "shortcut": "",
+  "module": "equation"
+ },
+ {
+  "id": "equation.structureActions",
+  "label": "Structure Actions",
+  "location": "Equation",
+  "params": "{}",
+  "shortcut": "",
+  "module": "equation"
+ },
+ {
+  "id": "equation.structure",
+  "label": "Change Structure",
+  "location": "Equation",
+  "params": "{\"action\": string (see equation.structureActions), \"level\"?: n}",
+  "shortcut": "",
+  "module": "equation"
+ },
+ {
+  "id": "view.fieldCodes",
+  "label": "Field Codes",
+  "location": "View › Show",
+  "params": "{\"value\"?: bool}",
+  "shortcut": "Alt+F9",
+  "module": "fields"
+ },
+ {
+  "id": "fields.toggleCode",
+  "label": "Toggle Field Codes",
+  "location": "Insert › Text › Quick Parts",
+  "params": "{}",
+  "shortcut": "Shift+F9",
+  "module": "fields"
+ },
+ {
+  "id": "fields.setCode",
+  "label": "Edit Field Code",
+  "location": "Insert › Text › Quick Parts",
+  "params": "{\"code\": string}",
+  "shortcut": "",
+  "module": "fields"
+ },
+ {
+  "id": "fields.unlink",
+  "label": "Unlink Fields",
+  "location": "Insert › Text › Quick Parts",
+  "params": "{}",
+  "shortcut": "Mod+Shift+F9",
+  "module": "fields"
+ },
+ {
+  "id": "fields.lock",
+  "label": "Lock Fields",
+  "location": "Insert › Text › Quick Parts",
+  "params": "{}",
+  "shortcut": "Mod+F11",
+  "module": "fields"
+ },
+ {
+  "id": "fields.unlock",
+  "label": "Unlock Fields",
+  "location": "Insert › Text › Quick Parts",
+  "params": "{}",
+  "shortcut": "Mod+Shift+F11",
+  "module": "fields"
+ },
+ {
+  "id": "fields.next",
+  "label": "Next Field",
+  "location": "Insert › Text › Quick Parts",
+  "params": "{}",
+  "shortcut": "Alt+F1",
+  "module": "fields"
+ },
+ {
+  "id": "fields.previous",
+  "label": "Previous Field",
+  "location": "Insert › Text › Quick Parts",
+  "params": "{}",
+  "shortcut": "Shift+F11 / Alt+Shift+F1",
+  "module": "fields"
+ },
+ {
+  "id": "fields.selected",
+  "label": "Selected Fields",
+  "location": "Insert › Text › Quick Parts",
+  "params": "{}",
+  "shortcut": "",
+  "module": "fields"
+ },
+ {
+  "id": "file.rename",
+  "label": "Rename Document",
+  "location": "File › Info",
+  "params": "{\"name\": string (document name without its extension)}",
+  "shortcut": "",
+  "module": "file"
+ },
+ {
+  "id": "file.new",
+  "label": "New",
+  "location": "File",
+  "params": "{\"template\"?: \"blank|sample|letter|resume|report\"}",
+  "shortcut": "Mod+N",
+  "module": "file"
+ },
+ {
+  "id": "file.open",
+  "label": "Open",
+  "location": "File",
+  "params": "{\"path\": string, \"data\"?: base64 (the file's bytes; `path` then only names it), \"password\"?: string (for a password-protected Word document)}",
+  "shortcut": "Mod+O / Mod+F12 / Mod+Alt+F2",
+  "module": "file"
+ },
+ {
+  "id": "file.save",
+  "label": "Save",
+  "location": "File",
+  "params": "{\"path\"?: string, \"password\"?: string (encrypt this and later saves with it, as file.encrypt does), \"markup\"?: bool (Print Markup for a PDF, PNG, HTML, Markdown or text copy: comments shown; default file.printMarkup), \"format\"?: \"wordml2003\" (an .xml file as a Word 2003 XML Document) | \"flatopc\" (as a Word XML Document, the default; saving over a Word 2003 XML file keeps that format)}",
+  "shortcut": "Mod+S / Shift+F12 / Alt+Shift+F2",
+  "module": "file"
+ },
+ {
+  "id": "file.saveAs",
+  "label": "Save As",
+  "location": "File",
+  "params": "{\"path\": string, \"password\"?: string, \"markup\"?: bool, \"format\"?: string (as file.save)}",
+  "shortcut": "",
+  "module": "file"
+ },
+ {
+  "id": "file.encrypt",
+  "label": "Encrypt with Password",
+  "location": "File › Info › Protect Document",
+  "params": "{\"password\": string (Word documents are saved encrypted with it) | null or \"\" (saved unencrypted)}",
+  "shortcut": "",
+  "module": "file"
+ },
+ {
+  "id": "file.exportPdf",
+  "label": "Export PDF",
+  "location": "File › Export",
+  "params": "{\"path\": string, \"markup\"?: bool (Print Markup: tracked changes marked up and each page scaled down beside the comments in balloons; default file.printMarkup)}",
+  "shortcut": "",
+  "module": "file"
+ },
+ {
+  "id": "file.exportPng",
+  "label": "Export Page as PNG",
+  "location": "File › Export",
+  "params": "{\"path\": string, \"page\"?: n (1-based), \"scale\"?: px per pt, \"markup\"?: bool (the page with its comments in balloons beside it; default file.printMarkup)}",
+  "shortcut": "",
+  "module": "file"
+ },
+ {
+  "id": "file.printMarkup",
+  "label": "Print Markup",
+  "location": "File › Print",
+  "params": "{\"value\"?: bool (omit to toggle)} — PDFs, prints and copies show comments (balloons beside each page; a list at the end of HTML, Markdown and text) and tracked changes",
+  "shortcut": "",
+  "module": "file"
+ },
+ {
+  "id": "file.printPdf",
+  "label": "Print to PDF",
+  "location": "File › Print",
+  "params": "{\"path\": string, \"range\"?: \"all\" | \"current\" | \"selection\" (the pages the selection touches) | \"custom\", \"pages\"?: \"1-3,5\" (implies custom), \"parity\"?: \"all\" | \"odd\" | \"even\", \"copies\"?: 1-999, \"collate\"?: bool (default true), \"paper\"?: \"none\" | \"Letter\" | \"Legal\" | \"A4\" | … (a Layout › Size name: scale every page to this paper, centred; the document keeps its size)}",
+  "shortcut": "",
+  "module": "file"
+ },
+ {
+  "id": "file.print",
+  "label": "Print",
+  "location": "File",
+  "params": "{}",
+  "shortcut": "Mod+P / Mod+Shift+F12 / Mod+F2 / Mod+Alt+I",
+  "module": "file"
+ },
+ {
+  "id": "file.close",
+  "label": "Close",
+  "location": "File",
+  "params": "{\"force\"?: bool (desktop app's control channel and MCP bridge only: without it a document with unsaved changes is an error and stays open; with it the changes are discarded. Headless sessions never ask)}",
+  "shortcut": "Mod+W / Mod+F4",
+  "module": "file"
+ },
+ {
+  "id": "file.properties",
+  "label": "Properties",
+  "location": "File › Info",
+  "params": "{\"title\"?, \"subject\"?, \"author\"?, \"keywords\"?, \"comments\"?, \"category\"?, \"custom\"?: {name: string | null (removes)}}",
+  "shortcut": "",
+  "module": "file"
+ },
+ {
+  "id": "file.info",
+  "label": "Info",
+  "location": "File",
+  "params": "{}",
+  "shortcut": "",
+  "module": "file"
+ },
+ {
+  "id": "file.setAuthor",
+  "label": "User Name",
+  "location": "File › Options › General",
+  "params": "{\"name\": string (author of new tracked changes and comments)}",
+  "shortcut": "",
+  "module": "file"
+ },
+ {
+  "id": "file.privacyOptions",
+  "label": "Privacy Options",
+  "location": "File › Options › Save",
+  "params": "{\"removePersonalInfo\"?: bool (save comment and revision authors as \"Author\", no creator or last-modified-by), \"removeDateTime\"?: bool (save comments and tracked changes without dates)} — at least one; the open document keeps its real names and dates",
+  "shortcut": "",
+  "module": "file"
+ },
+ {
+  "id": "file.privacy",
+  "label": "Privacy Settings",
+  "location": "File › Options › Save",
+  "params": "{} → {\"removePersonalInfo\": bool, \"removeDateTime\": bool} (file.privacyOptions changes them)",
+  "shortcut": "",
+  "module": "file"
+ },
+ {
+  "id": "document.inspect",
+  "label": "Inspect Document",
+  "location": "Agents",
+  "params": "{\"text\"?: bool}",
+  "shortcut": "",
+  "module": "file"
+ },
+ {
+  "id": "document.text",
+  "label": "Document Text",
+  "location": "Agents",
+  "params": "{}",
+  "shortcut": "",
+  "module": "file"
+ },
+ {
+  "id": "document.paragraph",
+  "label": "Paragraph Details",
+  "location": "Agents",
+  "params": "{\"path\": [n], \"story\"?: Story}",
+  "shortcut": "",
+  "module": "file"
+ },
+ {
+  "id": "document.selection",
+  "label": "Selection",
+  "location": "Agents",
+  "params": "{}",
+  "shortcut": "",
+  "module": "file"
+ },
+ {
+  "id": "document.layout",
+  "label": "Layout Summary",
+  "location": "Agents",
+  "params": "{}",
+  "shortcut": "",
+  "module": "file"
+ },
+ {
+  "id": "document.setText",
+  "label": "Replace Document Text",
+  "location": "Agents",
+  "params": "{\"text\": string}",
+  "shortcut": "",
+  "module": "file"
+ },
+ {
+  "id": "font.add",
+  "label": "Add Font…",
+  "location": "Home › Font",
+  "params": "{\"path\"?: string, \"data\"?: base64, \"name\"?: string (file name for \"data\")} — a TTF, OTF, TTC, WOFF or WOFF2 file; none: pick a file",
+  "shortcut": "",
+  "module": "font"
+ },
+ {
+  "id": "font.list",
+  "label": "Added Fonts",
+  "location": "Home › Font",
+  "params": "{\"all\"?: bool (also every available family)}",
+  "shortcut": "",
+  "module": "font"
+ },
+ {
+  "id": "font.remove",
+  "label": "Remove Added Font",
+  "location": "Home › Font",
+  "params": "{\"family\": string}",
+  "shortcut": "",
+  "module": "font"
+ },
+ {
+  "id": "font.loadSystem",
+  "label": "Load System Installed Fonts…",
+  "location": "Home › Font",
+  "params": "{}",
+  "shortcut": "",
+  "module": "font"
+ },
+ {
+  "id": "format.bold",
+  "label": "Bold",
+  "location": "Home › Font",
+  "params": "{\"value\"?: bool}",
+  "shortcut": "Mod+B",
+  "module": "format"
+ },
+ {
+  "id": "format.italic",
+  "label": "Italic",
+  "location": "Home › Font",
+  "params": "{\"value\"?: bool}",
+  "shortcut": "Mod+I",
+  "module": "format"
+ },
+ {
+  "id": "format.underline",
+  "label": "Underline",
+  "location": "Home › Font",
+  "params": "{\"value\"?: bool, \"style\"?: \"single|double|thick|dotted|dash|dotDash|dotDotDash|wave|words\"}",
+  "shortcut": "Mod+U",
+  "module": "format"
+ },
+ {
+  "id": "format.doubleUnderline",
+  "label": "Double Underline",
+  "location": "Home › Font › Underline",
+  "params": "{}",
+  "shortcut": "Mod+Shift+D",
+  "module": "format"
+ },
+ {
+  "id": "format.wordUnderline",
+  "label": "Underline Words Only",
+  "location": "Home › Font › Underline",
+  "params": "{}",
+  "shortcut": "Mod+Shift+W",
+  "module": "format"
+ },
+ {
+  "id": "format.strikethrough",
+  "label": "Strikethrough",
+  "location": "Home › Font",
+  "params": "{\"value\"?: bool}",
+  "shortcut": "Mod+Shift+X",
+  "module": "format"
+ },
+ {
+  "id": "format.border",
+  "label": "Character Border",
+  "location": "Home › Font",
+  "params": "{\"value\"?: bool}",
+  "shortcut": "",
+  "module": "format"
+ },
+ {
+  "id": "format.doubleStrikethrough",
+  "label": "Double Strikethrough",
+  "location": "Home › Font › Font",
+  "params": "{}",
+  "shortcut": "",
+  "module": "format"
+ },
+ {
+  "id": "format.subscript",
+  "label": "Subscript",
+  "location": "Home › Font",
+  "params": "{}",
+  "shortcut": "Mod+=",
+  "module": "format"
+ },
+ {
+  "id": "format.superscript",
+  "label": "Superscript",
+  "location": "Home › Font",
+  "params": "{}",
+  "shortcut": "Mod+Shift+=",
+  "module": "format"
+ },
+ {
+  "id": "format.allCaps",
+  "label": "All Caps",
+  "location": "Home › Font › Font",
+  "params": "{}",
+  "shortcut": "Mod+Shift+A",
+  "module": "format"
+ },
+ {
+  "id": "format.smallCaps",
+  "label": "Small Caps",
+  "location": "Home › Font › Font",
+  "params": "{}",
+  "shortcut": "Mod+Shift+K",
+  "module": "format"
+ },
+ {
+  "id": "format.hidden",
+  "label": "Hidden",
+  "location": "Home › Font › Font",
+  "params": "{}",
+  "shortcut": "Mod+Shift+H",
+  "module": "format"
+ },
+ {
+  "id": "format.outline",
+  "label": "Outline",
+  "location": "Home › Font › Text Effects",
+  "params": "{}",
+  "shortcut": "",
+  "module": "format"
+ },
+ {
+  "id": "format.shadow",
+  "label": "Shadow",
+  "location": "Home › Font › Text Effects",
+  "params": "{}",
+  "shortcut": "",
+  "module": "format"
+ },
+ {
+  "id": "format.emboss",
+  "label": "Emboss",
+  "location": "Home › Font › Font",
+  "params": "{}",
+  "shortcut": "",
+  "module": "format"
+ },
+ {
+  "id": "format.engrave",
+  "label": "Engrave",
+  "location": "Home › Font › Font",
+  "params": "{}",
+  "shortcut": "",
+  "module": "format"
+ },
+ {
+  "id": "format.font",
+  "label": "Font",
+  "location": "Home › Font",
+  "params": "{\"name\"?: string, \"eastAsia\"?: string}",
+  "shortcut": "Mod+Shift+F",
+  "module": "format"
+ },
+ {
+  "id": "format.size",
+  "label": "Font Size",
+  "location": "Home › Font",
+  "params": "{\"size\": number}",
+  "shortcut": "Mod+Shift+P",
+  "module": "format"
+ },
+ {
+  "id": "format.growFont",
+  "label": "Increase Font Size",
+  "location": "Home › Font",
+  "params": "{}",
+  "shortcut": "Mod+Shift+. / Mod+Shift+>",
+  "module": "format"
+ },
+ {
+  "id": "format.shrinkFont",
+  "label": "Decrease Font Size",
+  "location": "Home › Font",
+  "params": "{}",
+  "shortcut": "Mod+Shift+, / Mod+Shift+<",
+  "module": "format"
+ },
+ {
+  "id": "format.growFont1",
+  "label": "Grow Font 1 Point",
+  "location": "Home › Font",
+  "params": "{}",
+  "shortcut": "Mod+]",
+  "module": "format"
+ },
+ {
+  "id": "format.shrinkFont1",
+  "label": "Shrink Font 1 Point",
+  "location": "Home › Font",
+  "params": "{}",
+  "shortcut": "Mod+[",
+  "module": "format"
+ },
+ {
+  "id": "format.color",
+  "label": "Font Color",
+  "location": "Home › Font",
+  "params": "{\"color\": \"RRGGBB\" | \"auto\"}",
+  "shortcut": "",
+  "module": "format"
+ },
+ {
+  "id": "format.highlight",
+  "label": "Text Highlight Color",
+  "location": "Home › Font",
+  "params": "{\"color\": \"yellow|brightGreen|turquoise|pink|blue|red|darkBlue|teal|green|violet|darkRed|darkYellow|gray50|gray25|black|none\"}",
+  "shortcut": "",
+  "module": "format"
+ },
+ {
+  "id": "format.shading",
+  "label": "Character Shading",
+  "location": "Home › Font",
+  "params": "{\"color\": \"RRGGBB\" | null}",
+  "shortcut": "",
+  "module": "format"
+ },
+ {
+  "id": "format.changeCase",
+  "label": "Change Case",
+  "location": "Home › Font",
+  "params": "{\"mode\"?: \"sentence|lower|upper|title|toggle\"}",
+  "shortcut": "Shift+F3",
+  "module": "format"
+ },
+ {
+  "id": "format.clear",
+  "label": "Clear All Formatting",
+  "location": "Home › Font",
+  "params": "{}",
+  "shortcut": "",
+  "module": "format"
+ },
+ {
+  "id": "format.resetChar",
+  "label": "Reset Character Formatting",
+  "location": "Home › Font",
+  "params": "{}",
+  "shortcut": "",
+  "module": "format"
+ },
+ {
+  "id": "format.spacing",
+  "label": "Character Spacing",
+  "location": "Home › Font › Font › Advanced",
+  "params": "{\"points\": number}",
+  "shortcut": "",
+  "module": "format"
+ },
+ {
+  "id": "format.scale",
+  "label": "Character Scale",
+  "location": "Home › Font › Font › Advanced",
+  "params": "{\"percent\": number}",
+  "shortcut": "",
+  "module": "format"
+ },
+ {
+  "id": "format.position",
+  "label": "Character Position",
+  "location": "Home › Font › Font › Advanced",
+  "params": "{\"points\": number}",
+  "shortcut": "",
+  "module": "format"
+ },
+ {
+  "id": "format.charStyle",
+  "label": "Apply Character Style",
+  "location": "Home › Styles",
+  "params": "{\"style\": string}",
+  "shortcut": "",
+  "module": "format"
+ },
+ {
+  "id": "format.set",
+  "label": "Set Character Formatting",
+  "location": "Home › Font › Font",
+  "params": "{\"props\": CharProps}",
+  "shortcut": "",
+  "module": "format"
+ },
+ {
+  "id": "format.fontDialog",
+  "label": "Font Dialog",
+  "location": "Home › Font",
+  "params": "{}",
+  "shortcut": "Mod+D",
+  "module": "format"
+ },
+ {
+  "id": "format.enclose",
+  "label": "Enclose Characters",
+  "location": "Home › Font",
+  "params": "{\"shape\": \"circle|square|triangle|diamond\" | null, \"style\"?: \"shrink|enlarge\", \"text\"?: string}",
+  "shortcut": "",
+  "module": "format"
+ },
+ {
+  "id": "format.state",
+  "label": "Formatting at Selection",
+  "location": "Home › Font",
+  "params": "{}",
+  "shortcut": "",
+  "module": "format"
+ },
+ {
+  "id": "references.markEntry",
+  "label": "Mark Entry",
+  "location": "References › Index",
+  "params": "{\"entry\"?: string (the selection), \"subentry\"?: string, \"crossReference\"?: \"See …\", \"bookmark\"?: page-range bookmark, \"bold\"?: bool, \"italic\"?: bool, \"all\"?: bool (Mark All: every paragraph's first match of \"text\" or the selection)}",
+  "shortcut": "",
+  "module": "index"
+ },
+ {
+  "id": "references.index",
+  "label": "Insert Index",
+  "location": "References › Index",
+  "params": "{\"type\"?: \"indented|runIn\", \"columns\"?: 1-4, \"rightAlign\"?: bool, \"tabLeader\"?: \"dot|hyphen|underscore|none\", \"headings\"?: bool (letter headings)} (replaces an existing index's settings)",
+  "shortcut": "",
+  "module": "index"
+ },
+ {
+  "id": "references.updateIndex",
+  "label": "Update Index",
+  "location": "References › Index",
+  "params": "{}",
+  "shortcut": "",
+  "module": "index"
+ },
+ {
+  "id": "insert.pageBreak",
+  "label": "Page Break",
+  "location": "Insert › Pages",
+  "params": "{}",
+  "shortcut": "",
+  "module": "insert"
+ },
+ {
+  "id": "insert.blankPage",
+  "label": "Blank Page",
+  "location": "Insert › Pages",
+  "params": "{}",
+  "shortcut": "",
+  "module": "insert"
+ },
+ {
+  "id": "insert.coverPage",
+  "label": "Cover Page",
+  "location": "Insert › Pages",
+  "params": "{\"title\"?: string, \"subtitle\"?: string, \"author\"?: string}",
+  "shortcut": "",
+  "module": "insert"
+ },
+ {
+  "id": "insert.table",
+  "label": "Table",
+  "location": "Insert › Tables",
+  "params": "{\"rows\": n, \"cols\": n, \"style\"?: string}",
+  "shortcut": "",
+  "module": "insert"
+ },
+ {
+  "id": "insert.picture",
+  "label": "Pictures",
+  "location": "Insert › Illustrations",
+  "params": "{\"path\"?: string, \"data\"?: base64, \"width\"?: pt, \"alt\"?: string}",
+  "shortcut": "",
+  "module": "insert"
+ },
+ {
+  "id": "insert.icon",
+  "label": "Icons",
+  "location": "Insert › Illustrations",
+  "params": "{\"id\"?: string (omit to list the library), \"color\"?: \"RRGGBB\", \"size\"?: pt, \"query\"?: string, \"category\"?: string}",
+  "shortcut": "",
+  "module": "insert"
+ },
+ {
+  "id": "insert.shape",
+  "label": "Shapes",
+  "location": "Insert › Illustrations",
+  "params": "{\"kind\": \"rectangle|roundedRectangle|ellipse|triangle|diamond|line|arrow|star|heart|straightConnector|elbowConnector|curvedConnector\", \"width\"?: pt, \"height\"?: pt, \"fill\"?: \"RRGGBB\", \"stroke\"?: \"RRGGBB\", \"arrow\"?: \"none\"|\"start\"|\"end\"|\"both\" (lines and connectors; glue a connector's ends with shape.connect)}",
+  "shortcut": "",
+  "module": "insert"
+ },
+ {
+  "id": "insert.textBox",
+  "label": "Text Box",
+  "location": "Insert › Text",
+  "params": "{\"text\"?: string, \"width\"?: pt, \"height\"?: pt}",
+  "shortcut": "",
+  "module": "insert"
+ },
+ {
+  "id": "insert.link",
+  "label": "Link",
+  "location": "Insert › Links",
+  "params": "{\"url\": string} | {\"bookmark\": name} | {\"heading\": block (see link.targets)} | {\"top\": true}, \"text\"?: string (Place in This Document: a bookmark, a heading or the top of the document)",
+  "shortcut": "Mod+K",
+  "module": "insert"
+ },
+ {
+  "id": "link.targets",
+  "label": "Link",
+  "location": "Insert › Links",
+  "params": "{}",
+  "shortcut": "",
+  "module": "insert"
+ },
+ {
+  "id": "insert.removeLink",
+  "label": "Remove Hyperlink",
+  "location": "Insert › Links",
+  "params": "{}",
+  "shortcut": "",
+  "module": "insert"
+ },
+ {
+  "id": "insert.bookmark",
+  "label": "Bookmark",
+  "location": "Insert › Links",
+  "params": "{\"name\": string}",
+  "shortcut": "Mod+Shift+F5",
+  "module": "insert"
+ },
+ {
+  "id": "insert.deleteBookmark",
+  "label": "Delete Bookmark",
+  "location": "Insert › Links",
+  "params": "{\"name\": string}",
+  "shortcut": "",
+  "module": "insert"
+ },
+ {
+  "id": "insert.header",
+  "label": "Header",
+  "location": "Insert › Header & Footer",
+  "params": "{\"text\"?: string, \"preset\"?: \"blank|blankThree|title\"}",
+  "shortcut": "",
+  "module": "insert"
+ },
+ {
+  "id": "insert.footer",
+  "label": "Footer",
+  "location": "Insert › Header & Footer",
+  "params": "{\"text\"?: string, \"preset\"?: \"blank|blankThree|pageNumber\"}",
+  "shortcut": "",
+  "module": "insert"
+ },
+ {
+  "id": "insert.pageNumber",
+  "label": "Page Number",
+  "location": "Insert › Header & Footer",
+  "params": "{\"position\"?: \"top|bottom|current\", \"align\"?: \"left|center|right\", \"format\"?: \"x of y\"}",
+  "shortcut": "",
+  "module": "insert"
+ },
+ {
+  "id": "insert.editHeader",
+  "label": "Edit Header",
+  "location": "Insert › Header & Footer › Header",
+  "params": "{\"page\"?: number (0-based: the header that page shows, created if it has none)}",
+  "shortcut": "",
+  "module": "insert"
+ },
+ {
+  "id": "insert.editFooter",
+  "label": "Edit Footer",
+  "location": "Insert › Header & Footer › Footer",
+  "params": "{\"page\"?: number (0-based: the footer that page shows, created if it has none)}",
+  "shortcut": "",
+  "module": "insert"
+ },
+ {
+  "id": "insert.createHeader",
+  "label": "Header",
+  "location": "Insert › Header & Footer",
+  "params": "{\"page\"?: number (0-based; default: the caret's section)} — the header that page shows, created if it has none, with the caret in it",
+  "shortcut": "",
+  "module": "insert"
+ },
+ {
+  "id": "insert.createFooter",
+  "label": "Footer",
+  "location": "Insert › Header & Footer",
+  "params": "{\"page\"?: number (0-based; default: the caret's section)} — the footer that page shows, created if it has none, with the caret in it",
+  "shortcut": "",
+  "module": "insert"
+ },
+ {
+  "id": "insert.closeHeader",
+  "label": "Close Header and Footer",
+  "location": "Header & Footer",
+  "params": "{}",
+  "shortcut": "",
+  "module": "insert"
+ },
+ {
+  "id": "insert.removeEmptyHeaders",
+  "label": "Close Header and Footer",
+  "location": "Header & Footer",
+  "params": "{}",
+  "shortcut": "",
+  "module": "insert"
+ },
+ {
+  "id": "insert.removeHeader",
+  "label": "Remove Header",
+  "location": "Insert › Header & Footer › Header",
+  "params": "{}",
+  "shortcut": "",
+  "module": "insert"
+ },
+ {
+  "id": "insert.removeFooter",
+  "label": "Remove Footer",
+  "location": "Insert › Header & Footer › Footer",
+  "params": "{}",
+  "shortcut": "",
+  "module": "insert"
+ },
+ {
+  "id": "insert.dateTime",
+  "label": "Date & Time",
+  "location": "Insert › Text",
+  "params": "{\"format\"?: \"M/d/yyyy\", \"update\"?: bool}",
+  "shortcut": "",
+  "module": "insert"
+ },
+ {
+  "id": "insert.symbol",
+  "label": "Symbol",
+  "location": "Insert › Symbols",
+  "params": "{\"char\": string, \"font\"?: family (the symbol's own font)}",
+  "shortcut": "",
+  "module": "insert"
+ },
+ {
+  "id": "insert.field",
+  "label": "Field",
+  "location": "Insert › Text › Quick Parts",
+  "params": "{\"instr\": string, \"result\"?: string}",
+  "shortcut": "Mod+F9",
+  "module": "insert"
+ },
+ {
+  "id": "insert.dateField",
+  "label": "Insert Date Field",
+  "location": "Insert › Text › Quick Parts",
+  "params": "{}",
+  "shortcut": "",
+  "module": "insert"
+ },
+ {
+  "id": "insert.timeField",
+  "label": "Insert Time Field",
+  "location": "Insert › Text › Quick Parts",
+  "params": "{}",
+  "shortcut": "",
+  "module": "insert"
+ },
+ {
+  "id": "insert.pageField",
+  "label": "Insert Page Field",
+  "location": "Insert › Text › Quick Parts",
+  "params": "{}",
+  "shortcut": "",
+  "module": "insert"
+ },
+ {
+  "id": "insert.dropCap",
+  "label": "Drop Cap",
+  "location": "Insert › Text",
+  "params": "{\"position\"?: \"none\"|\"dropped\"|\"margin\" (default dropped), \"lines\"?: 1..10 (default 3; 0 = none), \"distance\"?: pt from the text (0..1584, default 0), \"font\"?: family (omit for the text's font)}",
+  "shortcut": "",
+  "module": "insert"
+ },
+ {
+  "id": "insert.horizontalLine",
+  "label": "Horizontal Line",
+  "location": "Home › Paragraph › Borders",
+  "params": "{}",
+  "shortcut": "",
+  "module": "insert"
+ },
+ {
+  "id": "insert.textFromFile",
+  "label": "Text from File",
+  "location": "Insert › Text › Object",
+  "params": "{\"path\": string}",
+  "shortcut": "",
+  "module": "insert"
+ },
+ {
+  "id": "styles.inspector",
+  "label": "Style Inspector",
+  "location": "Home › Styles",
+  "params": "{\"value\"?: bool (show/hide the pane)}",
+  "shortcut": "Shift+F1",
+  "module": "inspector"
+ },
+ {
+  "id": "styles.inspect",
+  "label": "Inspect Styles at Selection",
+  "location": "Home › Styles › Style Inspector",
+  "params": "{}",
+  "shortcut": "",
+  "module": "inspector"
+ },
+ {
+  "id": "styles.inspectorClear",
+  "label": "Clear Formatting Level",
+  "location": "Home › Styles › Style Inspector",
+  "params": "{\"level\": \"paragraphStyle|paragraphFormatting|characterStyle|characterFormatting\"}",
+  "shortcut": "",
+  "module": "inspector"
+ },
+ {
+  "id": "list.define",
+  "label": "Define New Multilevel List",
+  "location": "Home › Paragraph › Multilevel List",
+  "params": "{\"levels\": [{\"format\"?: \"decimal|lowerLetter|upperLetter|lowerRoman|upperRoman|decimalZero|ordinal|bullet|none\", \"text\"?: \"%1.%2.\" (%n = level n's number; the bullet character for bullet), \"start\"?: n, \"restartAfter\"?: 0-8 (0 = never; omit = the level above), \"style\"?: paragraph style linked to the level | null, \"align\"?: \"left|center|right\", \"alignedAt\"?: pt, \"indentAt\"?: pt, \"follow\"?: \"tab|space|nothing\", \"tabAt\"?: pt | null, \"font\"?: string | null, \"bold\"?: bool, \"italic\"?: bool, \"color\"?: \"RRGGBB\" | null, \"legal\"?: bool}, …] (index = level, up to 9; fields left out keep the base list's), \"num\"?: list id to change in place (default: a new list), \"apply\"?: bool (default true: number the selected paragraphs), \"name\"?: string}",
+  "shortcut": "",
+  "module": "lists"
+ },
+ {
+  "id": "list.get",
+  "label": "List Definition",
+  "location": "Home › Paragraph › Multilevel List",
+  "params": "{\"num\"?: list id (default: the caret's list)} → {\"num\", \"levels\": [as list.define]}",
+  "shortcut": "",
+  "module": "lists"
+ },
+ {
+  "id": "list.multilevelPreset",
+  "label": "Multilevel List Library",
+  "location": "Home › Paragraph › Multilevel List",
+  "params": "{\"preset\": \"headings\" (1 / 1.1 / 1.1.1) | \"article\" (Article I. / Section 1.01 / (a)) | \"outlineHeadings\" (I. / A. / 1.) | \"chapter\" (Chapter 1, lower levels unnumbered)} — a new list whose nine levels are linked to Heading 1–9: every paragraph in those styles is numbered, selected paragraphs already in a Heading style keep it, and any other selected paragraph becomes Heading 1 (the first level)",
+  "shortcut": "",
+  "module": "lists"
+ },
+ {
+  "id": "mailings.start",
+  "label": "Start Mail Merge",
+  "location": "Mailings › Start Mail Merge",
+  "params": "{\"kind\": \"letters|emails|envelopes|labels|directory|normal\"}",
+  "shortcut": "",
+  "module": "mailings"
+ },
+ {
+  "id": "mailings.recipients",
+  "label": "Select Recipients",
+  "location": "Mailings › Start Mail Merge",
+  "params": "{\"csv\"?: string, \"path\"?: string (.csv/.tsv/.txt, or a .xlsx/.xlsm/.xls/.ods workbook), \"data\"?: base64 (a file's bytes, as for path), \"encoding\"?: string (a text list's encoding, e.g. \"gbk\", \"big5\", \"shift_jis\", \"utf-16le\"; default: detected), \"sheet\"?: name | number (1 = first; a workbook with several sheets and no sheet answers {\"sheets\": [...], \"chooseSheet\": true} and loads nothing), \"headers\"?: bool (default true: the first non-blank row names the fields; false: fields are Column 1…N), \"rows\"?: [{field: value}] | [[value]], \"fields\"?: [string] (column order; required with array rows)}",
+  "shortcut": "",
+  "module": "mailings"
+ },
+ {
+  "id": "mailings.editRecipients",
+  "label": "Edit Recipient List",
+  "location": "Mailings › Start Mail Merge",
+  "params": "{\"rows\"?: [{field: value}] | [[value]], \"fields\"?: [string]} (no params: the list as {headers, rows (every record), records (how many merge), rules, sort})",
+  "shortcut": "",
+  "module": "mailings"
+ },
+ {
+  "id": "mailings.filterRecipients",
+  "label": "Filter Recipients",
+  "location": "Mailings › Start Mail Merge › Edit Recipient List",
+  "params": "{\"rules\"?: [{\"field\": string, \"op\": \"equal|notEqual|less|greater|lessOrEqual|greaterOrEqual|blank|notBlank|contains|notContains\", \"value\"?: string, \"join\"?: \"and|or\" (with the rule before; And binds tighter)}], \"sort\"?: [{\"field\": string, \"descending\"?: bool}]} (replaces the filter; `sort` too when given; {} clears both). Preview, Finish & Merge and labels use only the matching records, in sort order",
+  "shortcut": "",
+  "module": "mailings"
+ },
+ {
+  "id": "mailings.sortRecipients",
+  "label": "Sort Recipients",
+  "location": "Mailings › Start Mail Merge › Edit Recipient List",
+  "params": "{\"sort\"?: [{\"field\": string, \"descending\"?: bool}]} | {\"field\": string, \"descending\"?: bool} (no params: the list's own order)",
+  "shortcut": "",
+  "module": "mailings"
+ },
+ {
+  "id": "mailings.insertField",
+  "label": "Insert Merge Field",
+  "location": "Mailings › Write & Insert Fields",
+  "params": "{\"field\": string}",
+  "shortcut": "",
+  "module": "mailings"
+ },
+ {
+  "id": "mailings.addressBlock",
+  "label": "Address Block",
+  "location": "Mailings › Write & Insert Fields",
+  "params": "{}",
+  "shortcut": "",
+  "module": "mailings"
+ },
+ {
+  "id": "mailings.greetingLine",
+  "label": "Greeting Line",
+  "location": "Mailings › Write & Insert Fields",
+  "params": "{}",
+  "shortcut": "",
+  "module": "mailings"
+ },
+ {
+  "id": "mailings.rules",
+  "label": "Rules",
+  "location": "Mailings › Write & Insert Fields",
+  "params": "{\"rule\": \"IF|SKIPIF|NEXTIF|NEXT|MERGEREC\", \"field\"?, \"value\"?, \"then\"?, \"else\"?}",
+  "shortcut": "",
+  "module": "mailings"
+ },
+ {
+  "id": "mailings.matchFields",
+  "label": "Match Fields",
+  "location": "Mailings › Write & Insert Fields",
+  "params": "{}",
+  "shortcut": "",
+  "module": "mailings"
+ },
+ {
+  "id": "mailings.highlightFields",
+  "label": "Highlight Merge Fields",
+  "location": "Mailings › Write & Insert Fields",
+  "params": "{}",
+  "shortcut": "",
+  "module": "mailings"
+ },
+ {
+  "id": "mailings.preview",
+  "label": "Preview Results",
+  "location": "Mailings › Preview Results",
+  "params": "{}",
+  "shortcut": "",
+  "module": "mailings"
+ },
+ {
+  "id": "mailings.next",
+  "label": "Next Record",
+  "location": "Mailings › Preview Results",
+  "params": "{}",
+  "shortcut": "",
+  "module": "mailings"
+ },
+ {
+  "id": "mailings.previous",
+  "label": "Previous Record",
+  "location": "Mailings › Preview Results",
+  "params": "{}",
+  "shortcut": "",
+  "module": "mailings"
+ },
+ {
+  "id": "mailings.findRecipient",
+  "label": "Find Recipient",
+  "location": "Mailings › Preview Results",
+  "params": "{}",
+  "shortcut": "",
+  "module": "mailings"
+ },
+ {
+  "id": "mailings.checkErrors",
+  "label": "Check for Errors",
+  "location": "Mailings › Finish",
+  "params": "{}",
+  "shortcut": "",
+  "module": "mailings"
+ },
+ {
+  "id": "mailings.finish",
+  "label": "Finish & Merge",
+  "location": "Mailings › Finish",
+  "params": "{\"path\"?: string (save the merged document), \"from\"?: n, \"to\"?: n}",
+  "shortcut": "",
+  "module": "mailings"
+ },
+ {
+  "id": "mailings.envelopes",
+  "label": "Envelopes",
+  "location": "Mailings › Create",
+  "params": "{\"delivery\": string, \"return\"?: string, \"size\"?: \"Envelope #10|#9|Monarch|DL|C4|C5|C6|B5\", \"width\"?: pt, \"height\"?: pt, \"add\"?: bool (add to this document instead of a new one)}",
+  "shortcut": "",
+  "module": "mailings"
+ },
+ {
+  "id": "mailings.labels",
+  "label": "Labels",
+  "location": "Mailings › Create",
+  "params": "{\"text\"?: string, \"product\"?: \"letter-3x10|letter-2x10|letter-2x7|letter-2x5|letter-4x20|a4-3x7|a4-2x7|a4-3x8|a4-2x4\", \"rows\"?: n, \"cols\"?: n, \"fromRecipients\"?: bool, \"single\"?: {\"row\": n, \"col\": n}}",
+  "shortcut": "",
+  "module": "mailings"
+ },
+ {
+  "id": "picture.size",
+  "label": "Size",
+  "location": "Picture Format › Size",
+  "params": "{\"width\"?: pt, \"height\"?: pt, \"lockAspect\"?: bool, \"scale\"?: percent, \"original\"?: bool} (scale: of the current size, or with original of the picture's original size, its pixels at 96 ppi less what is cropped; original alone restores that size; one side alone keeps the proportions unless lockAspect is false; 1–4000 pt: when the proportions are kept, a side past 4000 pt shrinks the other with it)",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "picture.crop",
+  "label": "Crop",
+  "location": "Picture Format › Size",
+  "params": "{\"left\"?, \"top\"?, \"right\"?, \"bottom\"? (fractions of the source 0–0.45; a side left out is uncropped), \"width\"?: pt, \"height\"?: pt (the new display size, in the same undo step; a floating picture also moves by what a left/top crop trims, so the visible part stays put)}",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "picture.altText",
+  "label": "Alt Text",
+  "location": "Picture Format › Accessibility",
+  "params": "{\"text\": string, \"title\"?: string, \"decorative\"?: bool}",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "object.altText",
+  "label": "Alt Text",
+  "location": "Shape Format › Accessibility",
+  "params": "{\"text\"?: string, \"title\"?: string, \"decorative\"?: bool} (the selected picture, shape, text box, group or chart)",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "picture.corrections",
+  "label": "Corrections",
+  "location": "Picture Format › Adjust",
+  "params": "{\"brightness\"?: -100..100, \"contrast\"?: -100..100, \"sharpen\"?: -100..100}",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "picture.color",
+  "label": "Color",
+  "location": "Picture Format › Adjust",
+  "params": "{\"mode\": \"grayscale|sepia|washout|blackAndWhite|saturation|tint\", \"saturation\"?: 0..400}",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "picture.iconColor",
+  "label": "Icon Color",
+  "location": "Picture Format › Adjust",
+  "params": "{\"color\": \"RRGGBB\"}",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "picture.effects",
+  "label": "Artistic Effects",
+  "location": "Picture Format › Adjust",
+  "params": "{\"effect\": \"blur|sharpen|invert|posterize|pixelate|none\"} (replaces the picture's effect)",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "picture.transparency",
+  "label": "Transparency",
+  "location": "Picture Format › Adjust",
+  "params": "{\"percent\": 0..100}",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "picture.removeBackground",
+  "label": "Remove Background",
+  "location": "Picture Format › Adjust",
+  "params": "{\"tolerance\"?: 0..255}",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "picture.compress",
+  "label": "Compress Pictures",
+  "location": "Picture Format › Adjust",
+  "params": "{\"maxPixels\"?: n}",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "picture.reset",
+  "label": "Reset Picture",
+  "location": "Picture Format › Adjust",
+  "params": "{}",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "picture.change",
+  "label": "Change Picture",
+  "location": "Picture Format › Adjust",
+  "params": "{\"path\"?: string, \"data\"?: base64}",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "picture.style",
+  "label": "Picture Styles",
+  "location": "Picture Format › Picture Styles",
+  "params": "{\"style\": \"simpleFrame|thickFrame|rounded|softEdge|shadow\"} (replaces the picture's style and border)",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "picture.border",
+  "label": "Picture Border",
+  "location": "Picture Format › Picture Styles",
+  "params": "{\"color\"?: \"RRGGBB\", \"width\"?: px} (replaces the picture's border)",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "arrange.rotate",
+  "label": "Rotate",
+  "location": "Layout › Arrange",
+  "params": "{\"direction\": \"right|left|flipVertical|flipHorizontal\"}  (turns 90° or mirrors the selected picture, shape or text box; its pixels are kept)",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "arrange.rotation",
+  "label": "Rotation",
+  "location": "Layout › Arrange",
+  "params": "{\"degrees\": number, \"flipH\"?: bool, \"flipV\"?: bool}  (the exact angle, clockwise, of the selected picture, shape or text box; normalised to 0–360)",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "arrange.wrap",
+  "label": "Wrap Text",
+  "location": "Layout › Arrange",
+  "params": "{\"wrap\": \"inline|square|tight|through|topAndBottom|behindText|inFrontOfText\"}",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "arrange.wrapText",
+  "label": "Wrap Text Sides",
+  "location": "Layout › Arrange",
+  "params": "{\"side\": \"bothSides|left|right|largest\"}  (the sides of the selected Square, Tight or Through object text flows on; largest: the wider side, line by line)",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "arrange.moveWithText",
+  "label": "Move with Text",
+  "location": "Layout › Arrange › Wrap Text",
+  "params": "{\"value\": bool}  (true: Move with Text, the floating object's vertical position follows its paragraph; false: Fix Position on Page. It stays where it is)",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "arrange.position",
+  "label": "Position",
+  "location": "Layout › Arrange",
+  "params": "{\"preset\"?: \"topLeft|topCenter|topRight|middleLeft|middleCenter|middleRight|bottomLeft|bottomCenter|bottomRight\", \"x\"?: pt, \"y\"?: pt}",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "arrange.bringForward",
+  "label": "Bring Forward",
+  "location": "Layout › Arrange",
+  "params": "{}",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "arrange.sendBackward",
+  "label": "Send Backward",
+  "location": "Layout › Arrange",
+  "params": "{}",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "arrange.align",
+  "label": "Align",
+  "location": "Layout › Arrange",
+  "params": "{\"value\": \"left|center|right\"}",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "arrange.selectionPane",
+  "label": "Selection Pane",
+  "location": "Layout › Arrange",
+  "params": "{}",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "arrange.bounds",
+  "label": "Move or Resize",
+  "location": "Layout › Arrange",
+  "params": "{\"width\"?: pt, \"height\"?: pt, \"x\"?: pt, \"y\"?: pt, \"page\"?: n}  (x/y: the top-left on page `page` (0-based, default its page); moving an inline object floats it)",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "arrange.copyTo",
+  "label": "Copy to",
+  "location": "Layout › Arrange",
+  "params": "{\"x\": pt, \"y\": pt, \"page\"?: n}  (Ctrl+drag: a copy of the selected object lands with its top-left there and is selected; the original and the clipboard stay as they were)",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "arrange.nudge",
+  "label": "Nudge",
+  "location": "Layout › Arrange",
+  "params": "{\"dx\"?: pt, \"dy\"?: pt}",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "arrange.group",
+  "label": "Group",
+  "location": "Layout › Arrange",
+  "params": "{}  (groups the selected pictures, shapes and text boxes: the selected one plus those added with select.addObject)",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "arrange.ungroup",
+  "label": "Ungroup",
+  "location": "Layout › Arrange",
+  "params": "{}",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "select.addObject",
+  "label": "Add Object to Selection",
+  "location": "Home › Editing › Select",
+  "params": "{\"pos\"?: Pos, \"index\"?: n, \"objects\"?: [Pos | n]}  (n: its Selection Pane index; with no object selected yet, the first one becomes the selection)",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "select.objects",
+  "label": "Select Objects",
+  "location": "Home › Editing › Select",
+  "params": "{\"index\"?: n}",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "shape.fill",
+  "label": "Shape Fill",
+  "location": "Shape Format › Shape Styles",
+  "params": "{\"color\": \"RRGGBB\" | null}  (a selected drawing canvas: its background)",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "shape.outline",
+  "label": "Shape Outline",
+  "location": "Shape Format › Shape Styles",
+  "params": "{\"color\": \"RRGGBB\" | null, \"width\"?: pt}  (a selected drawing canvas: its border)",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "shape.effects",
+  "label": "Shape Effects",
+  "location": "Shape Format › Shape Styles",
+  "params": "{\"shadow\"?: preset|{\"preset\"?, \"color\"?: \"RRGGBB\", \"transparency\"?: %, \"blur\"?: pt, \"distance\"?: pt, \"angle\"?: deg}|null, \"glow\"?: pt|{\"color\"?: \"RRGGBB\", \"size\"?: pt, \"transparency\"?: %}|null, \"softEdge\"?: pt|null}  (shadow presets: offsetBottomRight, offsetBottom, offsetBottomLeft, offsetRight, offsetCenter, offsetLeft, offsetTopRight, offsetTop, offsetTopLeft; an omitted key is left as it is; applies to every shape in the selection)",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "shape.change",
+  "label": "Change Shape",
+  "location": "Shape Format › Insert Shapes",
+  "params": "{\"kind\": string}",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "shape.textDirection",
+  "label": "Text Direction",
+  "location": "Shape Format › Text",
+  "params": "{\"dir\": \"horz|vert|vert270|wordArtVert\"}  (horizontal, rotate all text 90°, 270°, stacked; the selected text box or the one the caret is in)",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "shape.alignText",
+  "label": "Align Text",
+  "location": "Shape Format › Text",
+  "params": "{\"anchor\": \"t|ctr|b\"}  (top, middle, bottom of the box: for turned text, from the side its lines start on)",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "shape.link",
+  "label": "Create Link",
+  "location": "Shape Format › Text",
+  "params": "{\"target\": Pos | n}  (the empty text box the selected box's text continues in: its position, or its Selection Pane index)",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "shape.breakLink",
+  "label": "Break Link",
+  "location": "Shape Format › Text",
+  "params": "{}  (the text stops at the end of the selected box; the boxes after it go back to their own text)",
+  "shortcut": "",
+  "module": "objects"
+ },
+ {
+  "id": "file.options",
+  "label": "Options",
+  "location": "File",
+  "params": "{\"pane\"?: \"general|display|proofing|save|language|accessibility|advanced|agents\", \"author\"?: string, \"initials\"?: string, \"units\"?: \"inches|centimeters|millimeters|points|picas|auto\" (auto: the region's), \"region\"?: string (a locale tag like pl-PL, saved: the paper File › New starts on, the default units and the decimal separator; auto: the system's), \"typingReplacesSelection\"?: bool, \"insertKeyOvertype\"?: bool, \"overtype\"?: bool, \"marks\"?: {\"tabs\"?: bool, \"spaces\"?: bool, \"paragraphs\"?: bool, \"hidden\"?: bool}, \"checkSpelling\"?: bool, \"markGrammar\"?: bool, \"ignoreUppercase\"?: bool, \"ignoreNumbers\"?: bool, \"ignoreInternet\"?: bool, \"dictionariesFolder\"?: string (a folder of Hunspell .aff/.dic files searched first, saved; auto: the system locations only), \"addWords\"?: [string], \"removeWords\"?: [string]} — with any setting it changes them and opens nothing; without, it opens File › Options (at `pane`). Returns the settings.",
+  "shortcut": "",
+  "module": "options"
+ },
+ {
+  "id": "text.overtype",
+  "label": "Overtype",
+  "location": "File › Options › Advanced",
+  "params": "{\"value\"?: bool (default: toggle)}",
+  "shortcut": "",
+  "module": "options"
+ },
+ {
+  "id": "outline.promoteToHeading1",
+  "label": "Promote to Heading 1",
+  "location": "Outlining › Outline Tools",
+  "params": "{}",
+  "shortcut": "",
+  "module": "outline"
+ },
+ {
+  "id": "outline.promote",
+  "label": "Promote",
+  "location": "Outlining › Outline Tools",
+  "params": "{}",
+  "shortcut": "",
+  "module": "outline"
+ },
+ {
+  "id": "outline.demote",
+  "label": "Demote",
+  "location": "Outlining › Outline Tools",
+  "params": "{}",
+  "shortcut": "",
+  "module": "outline"
+ },
+ {
+  "id": "outline.demoteToBody",
+  "label": "Demote to Body Text",
+  "location": "Outlining › Outline Tools",
+  "params": "{}",
+  "shortcut": "",
+  "module": "outline"
+ },
+ {
+  "id": "outline.level",
+  "label": "Outline Level",
+  "location": "Outlining › Outline Tools",
+  "params": "{\"level\": 1-9 | \"body\"}",
+  "shortcut": "",
+  "module": "outline"
+ },
+ {
+  "id": "outline.moveUp",
+  "label": "Move Up",
+  "location": "Outlining › Outline Tools",
+  "params": "{}",
+  "shortcut": "",
+  "module": "outline"
+ },
+ {
+  "id": "outline.moveDown",
+  "label": "Move Down",
+  "location": "Outlining › Outline Tools",
+  "params": "{}",
+  "shortcut": "",
+  "module": "outline"
+ },
+ {
+  "id": "outline.expand",
+  "label": "Expand",
+  "location": "Outlining › Outline Tools",
+  "params": "{\"block\"?: body paragraph index (default: the selection)}",
+  "shortcut": "Alt+Shift+=",
+  "module": "outline"
+ },
+ {
+  "id": "outline.collapse",
+  "label": "Collapse",
+  "location": "Outlining › Outline Tools",
+  "params": "{\"block\"?: body paragraph index (default: the selection)}",
+  "shortcut": "Alt+Shift+-",
+  "module": "outline"
+ },
+ {
+  "id": "outline.toggle",
+  "label": "Expand or Collapse Heading",
+  "location": "Outlining › Outline Tools",
+  "params": "{\"block\"?: body paragraph index (default: the selection)}",
+  "shortcut": "",
+  "module": "outline"
+ },
+ {
+  "id": "outline.selectSubtree",
+  "label": "Select Heading and Content",
+  "location": "Outlining › Outline Tools",
+  "params": "{\"block\"?: body paragraph index (default: the selection)}",
+  "shortcut": "",
+  "module": "outline"
+ },
+ {
+  "id": "outline.showLevel",
+  "label": "Show Level",
+  "location": "Outlining › Outline Tools",
+  "params": "{\"level\": 1-9 | \"all\"}",
+  "shortcut": "",
+  "module": "outline"
+ },
+ {
+  "id": "outline.showLevel1",
+  "label": "Show Level 1",
+  "location": "Outlining › Outline Tools",
+  "params": "{}",
+  "shortcut": "Alt+Shift+1",
+  "module": "outline"
+ },
+ {
+  "id": "outline.showLevel2",
+  "label": "Show Level 2",
+  "location": "Outlining › Outline Tools",
+  "params": "{}",
+  "shortcut": "Alt+Shift+2",
+  "module": "outline"
+ },
+ {
+  "id": "outline.showLevel3",
+  "label": "Show Level 3",
+  "location": "Outlining › Outline Tools",
+  "params": "{}",
+  "shortcut": "Alt+Shift+3",
+  "module": "outline"
+ },
+ {
+  "id": "outline.showLevel4",
+  "label": "Show Level 4",
+  "location": "Outlining › Outline Tools",
+  "params": "{}",
+  "shortcut": "Alt+Shift+4",
+  "module": "outline"
+ },
+ {
+  "id": "outline.showLevel5",
+  "label": "Show Level 5",
+  "location": "Outlining › Outline Tools",
+  "params": "{}",
+  "shortcut": "Alt+Shift+5",
+  "module": "outline"
+ },
+ {
+  "id": "outline.showLevel6",
+  "label": "Show Level 6",
+  "location": "Outlining › Outline Tools",
+  "params": "{}",
+  "shortcut": "Alt+Shift+6",
+  "module": "outline"
+ },
+ {
+  "id": "outline.showLevel7",
+  "label": "Show Level 7",
+  "location": "Outlining › Outline Tools",
+  "params": "{}",
+  "shortcut": "Alt+Shift+7",
+  "module": "outline"
+ },
+ {
+  "id": "outline.showLevel8",
+  "label": "Show Level 8",
+  "location": "Outlining › Outline Tools",
+  "params": "{}",
+  "shortcut": "Alt+Shift+8",
+  "module": "outline"
+ },
+ {
+  "id": "outline.showLevel9",
+  "label": "Show Level 9",
+  "location": "Outlining › Outline Tools",
+  "params": "{}",
+  "shortcut": "Alt+Shift+9",
+  "module": "outline"
+ },
+ {
+  "id": "outline.showAll",
+  "label": "Show All Levels",
+  "location": "Outlining › Outline Tools",
+  "params": "{}",
+  "shortcut": "Alt+Shift+A",
+  "module": "outline"
+ },
+ {
+  "id": "outline.firstLineOnly",
+  "label": "Show First Line Only",
+  "location": "Outlining › Outline Tools",
+  "params": "{\"value\"?: bool}",
+  "shortcut": "",
+  "module": "outline"
+ },
+ {
+  "id": "outline.showFormatting",
+  "label": "Show Text Formatting",
+  "location": "Outlining › Outline Tools",
+  "params": "{\"value\"?: bool}",
+  "shortcut": "",
+  "module": "outline"
+ },
+ {
+  "id": "outline.close",
+  "label": "Close Outline View",
+  "location": "Outlining › Close",
+  "params": "{}",
+  "shortcut": "",
+  "module": "outline"
+ },
+ {
+  "id": "outline.state",
+  "label": "Outline State",
+  "location": "Outlining",
+  "params": "{}",
+  "shortcut": "",
+  "module": "outline"
+ },
+ {
+  "id": "layout.margins",
+  "label": "Margins",
+  "location": "Layout › Page Setup",
+  "params": "{\"preset\"?: \"normal|narrow|moderate|wide|mirrored|office2003\", \"top\"?: pt, \"bottom\"?: pt, \"left\"?: pt, \"right\"?: pt, \"gutter\"?: pt, \"mirror\"?: bool}",
+  "shortcut": "",
+  "module": "page"
+ },
+ {
+  "id": "layout.orientation",
+  "label": "Orientation",
+  "location": "Layout › Page Setup",
+  "params": "{\"value\": \"portrait|landscape\"}",
+  "shortcut": "",
+  "module": "page"
+ },
+ {
+  "id": "layout.size",
+  "label": "Size",
+  "location": "Layout › Page Setup",
+  "params": "{\"name\"?: \"Letter|Legal|A4|…\", \"width\"?: pt, \"height\"?: pt} (each side clamped to 7.2–1584 pt, 0.1–22 in; the section keeps its orientation)",
+  "shortcut": "",
+  "module": "page"
+ },
+ {
+  "id": "layout.columns",
+  "label": "Columns",
+  "location": "Layout › Page Setup",
+  "params": "{\"count\": 1-12, \"space\"?: pt, \"separator\"?: bool, \"preset\"?: \"left|right\", \"widths\"?: [[width pt, space after pt], …] (unequal columns; sets the count), \"apply\"?: \"section|document|forward|selection\"} (default: selection when text is selected in the main text — section breaks around it — else section)",
+  "shortcut": "",
+  "module": "page"
+ },
+ {
+  "id": "layout.break",
+  "label": "Breaks",
+  "location": "Layout › Page Setup",
+  "params": "{\"kind\": \"page|column|textWrapping|nextPage|continuous|evenPage|oddPage\"}",
+  "shortcut": "",
+  "module": "page"
+ },
+ {
+  "id": "layout.lineNumbers",
+  "label": "Line Numbers",
+  "location": "Layout › Page Setup",
+  "params": "{\"value\"?: \"none|continuous|restartPage|restartSection\", \"start\"?: 1-32767, \"countBy\"?: 1-100, \"distance\"?: pt (0 = auto)}",
+  "shortcut": "",
+  "module": "page"
+ },
+ {
+  "id": "layout.hyphenation",
+  "label": "Hyphenation",
+  "location": "Layout › Page Setup",
+  "params": "{\"value\"?: bool (automatic; toggles when nothing is given), \"zone\"?: pt, \"caps\"?: bool (hyphenate words in capitals), \"limit\"?: n (consecutive hyphens, 0 = no limit)}",
+  "shortcut": "",
+  "module": "page"
+ },
+ {
+  "id": "layout.manualHyphenation",
+  "label": "Manual Hyphenation",
+  "location": "Layout › Page Setup › Hyphenation",
+  "params": "{\"from\"?: Pos (default: the caret)} → the next word at a line end that could be hyphenated: {\"word\", \"pos\", \"points\": [char index], \"suggest\": char index} or {\"done\": true}",
+  "shortcut": "",
+  "module": "page"
+ },
+ {
+  "id": "layout.pageSetup",
+  "label": "Page Setup",
+  "location": "Layout › Page Setup",
+  "params": "{\"section\"?: SectionProps} (replaces the whole section, headers and footers included; checked like Size, Margins, Columns, Line Numbers, Footnotes and Page Borders: non-finite numbers and margins that leave no room for text are refused; page sides 7.2–1584 pt, 1–12 columns with 0–300 pt gaps, header/footer/gutter 0–1584 pt, page border width 0.25–6 pt and distance 0–31 pt, note start 1–32767, line numbers start 1–32767, countBy 1–100, distance 0–1584 pt are clamped)",
+  "shortcut": "",
+  "module": "page"
+ },
+ {
+  "id": "layout.verticalAlign",
+  "label": "Vertical Alignment",
+  "location": "Layout › Page Setup › Layout",
+  "params": "{\"value\": \"top|center|justify|bottom\"} (also both|justified; anything else is top). Justified shares each page's spare room between its paragraphs and tables",
+  "shortcut": "",
+  "module": "page"
+ },
+ {
+  "id": "layout.sectionRtl",
+  "label": "Right-to-Left Section",
+  "location": "Layout › Page Setup",
+  "params": "{\"value\"?: bool} (true: the section's columns run right to left; without a value it toggles)",
+  "shortcut": "",
+  "module": "page"
+ },
+ {
+  "id": "layout.textDirection",
+  "label": "Text Direction",
+  "location": "Layout › Page Setup",
+  "params": "{\"value\"?: \"horizontal|down|up\"} (also lrTb|tbRl|btLr; down: rotate all text 90°, lines top to bottom stacking right to left; up: 270°; default: the next after the current). In a table cell it turns the selected cells, in a text box the box; anywhere else the section(s) of the selection",
+  "shortcut": "",
+  "module": "page"
+ },
+ {
+  "id": "layout.differentFirstPage",
+  "label": "Different First Page",
+  "location": "Header & Footer › Options",
+  "params": "{}",
+  "shortcut": "",
+  "module": "page"
+ },
+ {
+  "id": "layout.differentOddEven",
+  "label": "Different Odd & Even Pages",
+  "location": "Header & Footer › Options",
+  "params": "{}",
+  "shortcut": "",
+  "module": "page"
+ },
+ {
+  "id": "layout.pageNumberFormat",
+  "label": "Format Page Numbers",
+  "location": "Insert › Header & Footer › Page Number",
+  "params": "{\"format\"?: \"decimal|lowerRoman|upperRoman|lowerLetter|upperLetter\", \"start\"?: n}",
+  "shortcut": "",
+  "module": "page"
+ },
+ {
+  "id": "layout.documentGrid",
+  "label": "Document Grid",
+  "location": "Layout › Page Setup › Document Grid",
+  "params": "{\"type\"?: \"none|lines|linesAndChars|snapToChars\", \"linesPerPage\"?: n (sets the line pitch from the text height), \"charsPerLine\"?: n (sets the character pitch from the text width), \"linePitch\"?: pt, \"charSpace\"?: n (4096ths of a point added to the default font size: the character pitch)} — left out stays as it is; returns the grid with its lines per page and characters per line",
+  "shortcut": "",
+  "module": "page"
+ },
+ {
+  "id": "layout.section",
+  "label": "Section Properties",
+  "location": "Layout › Page Setup",
+  "params": "{}",
+  "shortcut": "",
+  "module": "page"
+ },
+ {
+  "id": "para.alignLeft",
+  "label": "Align Left",
+  "location": "Home › Paragraph",
+  "params": "{}",
+  "shortcut": "Mod+L",
+  "module": "para"
+ },
+ {
+  "id": "para.alignCenter",
+  "label": "Center",
+  "location": "Home › Paragraph",
+  "params": "{}",
+  "shortcut": "Mod+E",
+  "module": "para"
+ },
+ {
+  "id": "para.alignRight",
+  "label": "Align Right",
+  "location": "Home › Paragraph",
+  "params": "{}",
+  "shortcut": "Mod+R",
+  "module": "para"
+ },
+ {
+  "id": "para.justify",
+  "label": "Justify",
+  "location": "Home › Paragraph",
+  "params": "{}",
+  "shortcut": "Mod+J",
+  "module": "para"
+ },
+ {
+  "id": "para.distribute",
+  "label": "Distributed",
+  "location": "Home › Paragraph",
+  "params": "{}",
+  "shortcut": "Mod+Shift+J",
+  "module": "para"
+ },
+ {
+  "id": "para.align",
+  "label": "Alignment",
+  "location": "Home › Paragraph",
+  "params": "{\"value\": \"left|center|right|justify|distribute (as seen on the page) | start|end (reading direction)\"}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "para.rtl",
+  "label": "Right-to-Left Text Direction",
+  "location": "Home › Paragraph",
+  "params": "{\"value\"?: bool (false = left to right)}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "para.ltr",
+  "label": "Left-to-Right Text Direction",
+  "location": "Home › Paragraph",
+  "params": "{\"value\"?: bool (false = right to left)}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "para.indent",
+  "label": "Increase Indent",
+  "location": "Home › Paragraph",
+  "params": "{}",
+  "shortcut": "Mod+M",
+  "module": "para"
+ },
+ {
+  "id": "para.outdent",
+  "label": "Decrease Indent",
+  "location": "Home › Paragraph",
+  "params": "{}",
+  "shortcut": "Mod+Shift+M",
+  "module": "para"
+ },
+ {
+  "id": "para.hangingIndent",
+  "label": "Hanging Indent",
+  "location": "Home › Paragraph › Paragraph",
+  "params": "{}",
+  "shortcut": "Mod+T",
+  "module": "para"
+ },
+ {
+  "id": "para.removeHanging",
+  "label": "Reduce Hanging Indent",
+  "location": "Home › Paragraph › Paragraph",
+  "params": "{}",
+  "shortcut": "Mod+Shift+T",
+  "module": "para"
+ },
+ {
+  "id": "para.indents",
+  "label": "Indents",
+  "location": "Layout › Paragraph",
+  "params": "{\"left\"?: pt, \"right\"?: pt, \"firstLine\"?: pt (negative = hanging)}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "para.lineSpacing",
+  "label": "Line and Paragraph Spacing",
+  "location": "Home › Paragraph",
+  "params": "{\"value\": number (multiple) } | {\"atLeast\": pt} | {\"exactly\": pt}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "para.single",
+  "label": "Single Spacing",
+  "location": "Home › Paragraph › Line Spacing",
+  "params": "{}",
+  "shortcut": "Mod+1",
+  "module": "para"
+ },
+ {
+  "id": "para.double",
+  "label": "Double Spacing",
+  "location": "Home › Paragraph › Line Spacing",
+  "params": "{}",
+  "shortcut": "Mod+2",
+  "module": "para"
+ },
+ {
+  "id": "para.oneAndHalf",
+  "label": "1.5 Line Spacing",
+  "location": "Home › Paragraph › Line Spacing",
+  "params": "{}",
+  "shortcut": "Mod+5",
+  "module": "para"
+ },
+ {
+  "id": "para.spacing",
+  "label": "Paragraph Spacing",
+  "location": "Layout › Paragraph",
+  "params": "{\"before\"?: pt, \"after\"?: pt, \"beforeAuto\"?: bool, \"afterAuto\"?: bool (automatic, HTML-style spacing: 14 pt)}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "para.addSpaceBefore",
+  "label": "Add Space Before Paragraph",
+  "location": "Home › Paragraph › Line Spacing",
+  "params": "{}",
+  "shortcut": "Mod+0",
+  "module": "para"
+ },
+ {
+  "id": "para.removeSpaceAfter",
+  "label": "Remove Space After Paragraph",
+  "location": "Home › Paragraph › Line Spacing",
+  "params": "{}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "para.reset",
+  "label": "Reset Paragraph Formatting",
+  "location": "Home › Paragraph",
+  "params": "{}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "para.style",
+  "label": "Apply Style",
+  "location": "Home › Styles",
+  "params": "{\"style\": string (name or id)}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "para.normal",
+  "label": "Normal Style",
+  "location": "Home › Styles",
+  "params": "{}",
+  "shortcut": "Mod+Shift+N",
+  "module": "para"
+ },
+ {
+  "id": "para.heading1",
+  "label": "Heading 1",
+  "location": "Home › Styles",
+  "params": "{}",
+  "shortcut": "Mod+Alt+1",
+  "module": "para"
+ },
+ {
+  "id": "para.heading2",
+  "label": "Heading 2",
+  "location": "Home › Styles",
+  "params": "{}",
+  "shortcut": "Mod+Alt+2",
+  "module": "para"
+ },
+ {
+  "id": "para.heading3",
+  "label": "Heading 3",
+  "location": "Home › Styles",
+  "params": "{}",
+  "shortcut": "Mod+Alt+3",
+  "module": "para"
+ },
+ {
+  "id": "para.bullets",
+  "label": "Bullets",
+  "location": "Home › Paragraph",
+  "params": "{\"kind\"?: \"bullet\" | single char, \"off\"?: bool}",
+  "shortcut": "Mod+Shift+L",
+  "module": "para"
+ },
+ {
+  "id": "para.numbering",
+  "label": "Numbering",
+  "location": "Home › Paragraph",
+  "params": "{\"kind\"?: \"numbered|numberedParen|upperLetter|lowerLetter|lowerRoman|outline\", \"off\"?: bool}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "para.multilevel",
+  "label": "Multilevel List",
+  "location": "Home › Paragraph",
+  "params": "{\"kind\"?: \"legal|outline\"}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "para.listLevel",
+  "label": "Change List Level",
+  "location": "Home › Paragraph › Bullets",
+  "params": "{\"level\": 0-8}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "para.restartNumbering",
+  "label": "Restart at 1",
+  "location": "Home › Paragraph › Numbering",
+  "params": "{}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "para.moveUp",
+  "label": "Move Paragraph Up",
+  "location": "Home › Paragraph",
+  "params": "{}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "para.moveDown",
+  "label": "Move Paragraph Down",
+  "location": "Home › Paragraph",
+  "params": "{}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "para.promote",
+  "label": "Promote",
+  "location": "Home › Paragraph",
+  "params": "{}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "para.demote",
+  "label": "Demote",
+  "location": "Home › Paragraph",
+  "params": "{}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "para.shading",
+  "label": "Shading",
+  "location": "Home › Paragraph",
+  "params": "{\"color\": \"RRGGBB\" | null}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "para.borders",
+  "label": "Borders",
+  "location": "Home › Paragraph",
+  "params": "{\"kind\": \"bottom|top|left|right|none|all|outside|inside|horizontalLine\", \"width\"?: pt, \"color\"?: \"RRGGBB\", \"style\"?: \"single|double|dotted|dashed|thick|triple|dotDash|wave\", \"sides\"?: Sides} where Sides = {\"top\"|\"left\"|\"bottom\"|\"right\"|\"between\": {\"style\"?, \"width\"?: pt, \"color\"?: \"RRGGBB\"} | null}: exactly these sides (others off), instead of `kind`",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "para.sort",
+  "label": "Sort",
+  "location": "Home › Paragraph",
+  "params": "{\"descending\"?: bool}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "para.keepNext",
+  "label": "Keep with Next",
+  "location": "Home › Paragraph › Line and Page Breaks",
+  "params": "{\"value\"?: bool}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "para.keepLines",
+  "label": "Keep Lines Together",
+  "location": "Home › Paragraph › Line and Page Breaks",
+  "params": "{\"value\"?: bool}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "para.pageBreakBefore",
+  "label": "Page Break Before",
+  "location": "Home › Paragraph › Line and Page Breaks",
+  "params": "{\"value\"?: bool}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "para.widowControl",
+  "label": "Widow/Orphan Control",
+  "location": "Home › Paragraph › Line and Page Breaks",
+  "params": "{\"value\"?: bool}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "para.asianTypography",
+  "label": "Asian Typography",
+  "location": "Home › Paragraph › Asian Typography",
+  "params": "{\"kinsoku\"?: bool (East Asian line-breaking rules), \"wordWrap\"?: bool (false: Latin words may break at any character), \"overflowPunct\"?: bool (hanging punctuation), \"topLinePunct\"?: bool (compress punctuation at the start of a line), \"autoSpaceDE\"?: bool (space between Asian and Latin text), \"autoSpaceDN\"?: bool (space between Asian text and numbers)} — flags left out stay as they are; returns the flags at the caret",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "para.tabs",
+  "label": "Tabs",
+  "location": "Home › Paragraph › Paragraph",
+  "params": "{\"tabs\"?: [TabStop] (replace the direct stops), \"set\"?: [TabStop], \"clear\"?: [pt], \"clearAll\"?: bool, \"default\"?: pt} where TabStop = {\"pos\": pt, \"align\"?: \"left|center|right|decimal|bar\", \"leader\"?: \"none|dot|hyphen|underscore|middleDot\"}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "para.outlineLevel",
+  "label": "Outline Level",
+  "location": "Home › Paragraph › Paragraph",
+  "params": "{}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "para.set",
+  "label": "Set Paragraph Formatting",
+  "location": "Home › Paragraph › Paragraph",
+  "params": "{\"props\": ParaProps, \"onPage\"?: {\"align\"?: \"left|center|right|justify|distribute\", \"left\"?: pt, \"right\"?: pt} (alignment and indents as seen on the page: each paragraph's own direction, after `props`, says which edge is its start)}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "para.dialog",
+  "label": "Paragraph Settings",
+  "location": "Home › Paragraph",
+  "params": "{}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "styles.create",
+  "label": "Create a Style",
+  "location": "Home › Styles",
+  "params": "{\"name\": string, \"basedOn\"?: string, \"fromSelection\"?: bool}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "styles.modify",
+  "label": "Modify Style",
+  "location": "Home › Styles",
+  "params": "{\"style\": string, \"chr\"?: CharProps, \"para\"?: ParaProps, \"name\"?: string, \"next\"?: string}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "styles.updateToMatch",
+  "label": "Update Style to Match Selection",
+  "location": "Home › Styles",
+  "params": "{\"style\"?: string}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "styles.delete",
+  "label": "Delete Style",
+  "location": "Home › Styles",
+  "params": "{\"style\": string (name or id; custom styles only)}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "styles.manage",
+  "label": "Manage Styles",
+  "location": "Home › Styles",
+  "params": "{\"sort\"?: \"recommended|alphabetical\"} → [{id, name, type: \"paragraph|character|linked|table\", builtIn, inGallery, hidden, basedOn, priority, format}]",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "styles.setVisibility",
+  "label": "Show or Hide Style",
+  "location": "Home › Styles",
+  "params": "{\"style\": string, \"gallery\"?: bool (Styles gallery, w:qFormat), \"hidden\"?: bool (hidden from style lists, w:semiHidden)}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "styles.list",
+  "label": "Styles",
+  "location": "Home › Styles",
+  "params": "{}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "styles.pane",
+  "label": "Styles Pane",
+  "location": "Home › Styles",
+  "params": "{}",
+  "shortcut": "Mod+Alt+Shift+S",
+  "module": "para"
+ },
+ {
+  "id": "styles.apply",
+  "label": "Apply Styles",
+  "location": "Home › Styles",
+  "params": "{\"style\"?: string (name or id)}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "styles.addToGallery",
+  "label": "Add to Style Gallery",
+  "location": "Home › Styles",
+  "params": "{}",
+  "shortcut": "",
+  "module": "para"
+ },
+ {
+  "id": "edit.pasteSpecial",
+  "label": "Paste Special",
+  "location": "Home › Clipboard › Paste",
+  "params": "{\"as\"?: \"formatted\"|\"rtf\"|\"html\"|\"picture\"|\"text\", \"text\"?: string, \"html\"?: string, \"rtf\"?: string, \"picture\"?: base64}",
+  "shortcut": "Mod+Alt+V",
+  "module": "paste"
+ },
+ {
+  "id": "format.phonetic",
+  "label": "Phonetic Guide",
+  "location": "Home › Font",
+  "params": "{\"ruby\"?: string | null, \"align\"?: \"center|distributeLetter|distributeSpace|left|right|rightVertical\", \"size\"?: number, \"offset\"?: number}",
+  "shortcut": "",
+  "module": "phonetic"
+ },
+ {
+  "id": "review.restrict",
+  "label": "Restrict Editing",
+  "location": "Review › Protect",
+  "params": "{\"mode\"?: \"none|readOnly|comments|trackedChanges|forms\" (start enforcing; \"none\" stops), \"formatting\"?: bool (limit formatting to unlocked styles), \"lockedStyles\"?: [style id or name] (the styles that can't be applied; every other style is unlocked), \"password\"?: string (set when enforcing; required to stop a password-protected document), \"stop\"?: bool, \"exception\"?: \"add\" (the selection stays editable for everyone) | \"remove\" (exceptions touching the selection) | \"removeAll\"} → state",
+  "shortcut": "",
+  "module": "protect"
+ },
+ {
+  "id": "references.toc",
+  "label": "Table of Contents",
+  "location": "References › Table of Contents",
+  "params": "{\"levels\"?: 1-9, \"title\"?: string, \"pageNumbers\"?: bool, \"rightAlign\"?: bool, \"tabLeader\"?: \"dot|hyphen|underscore|none\", \"hyperlinks\"?: bool, \"headingStyles\"?: bool, \"outlineLevels\"?: bool, \"tcFields\"?: bool, \"styleLevels\"?: {style name: 1-9}} (replaces an existing table; {} updates it)",
+  "shortcut": "",
+  "module": "references"
+ },
+ {
+  "id": "references.updateToc",
+  "label": "Update Table",
+  "location": "References › Table of Contents",
+  "params": "{}",
+  "shortcut": "",
+  "module": "references"
+ },
+ {
+  "id": "references.removeToc",
+  "label": "Remove Table of Contents",
+  "location": "References › Table of Contents",
+  "params": "{}",
+  "shortcut": "",
+  "module": "references"
+ },
+ {
+  "id": "references.addText",
+  "label": "Add Text",
+  "location": "References › Table of Contents",
+  "params": "{\"level\": 0 (do not show) | 1-9}",
+  "shortcut": "",
+  "module": "references"
+ },
+ {
+  "id": "references.footnote",
+  "label": "Insert Footnote",
+  "location": "References › Footnotes",
+  "params": "{\"text\"?: string, \"mark\"?: string (a custom mark instead of the number)}",
+  "shortcut": "Mod+Alt+F",
+  "module": "references"
+ },
+ {
+  "id": "references.endnote",
+  "label": "Insert Endnote",
+  "location": "References › Footnotes",
+  "params": "{\"text\"?: string, \"mark\"?: string (a custom mark instead of the number)}",
+  "shortcut": "",
+  "module": "references"
+ },
+ {
+  "id": "references.convertNotes",
+  "label": "Convert Notes",
+  "location": "References › Footnotes",
+  "params": "{\"to\": \"endnote\" (footnotes become endnotes) | \"footnote\" (endnotes become footnotes) | \"swap\"}",
+  "shortcut": "",
+  "module": "references"
+ },
+ {
+  "id": "references.nextFootnote",
+  "label": "Next Footnote",
+  "location": "References › Footnotes",
+  "params": "{}",
+  "shortcut": "",
+  "module": "references"
+ },
+ {
+  "id": "references.notes",
+  "label": "Show Notes",
+  "location": "References › Footnotes",
+  "params": "{}",
+  "shortcut": "",
+  "module": "references"
+ },
+ {
+  "id": "references.caption",
+  "label": "Insert Caption",
+  "location": "References › Captions",
+  "params": "{\"label\"?: \"Figure|Table|Equation|any label\", \"text\"?: string, \"position\"?: \"below|above\", \"excludeLabel\"?: bool, \"format\"?: \"ARABIC|alphabetic|ALPHABETIC|roman|ROMAN\", \"chapter\"?: heading level 1-9, \"separator\"?: \"-|.|:|—|–\"}",
+  "shortcut": "",
+  "module": "references"
+ },
+ {
+  "id": "references.updateFields",
+  "label": "Update Field",
+  "location": "References",
+  "params": "{\"all\"?: bool (the body and every header, footer, note and text box, wherever the caret is; default: the story the caret is in)}",
+  "shortcut": "F9",
+  "module": "references"
+ },
+ {
+  "id": "review.newComment",
+  "label": "New Comment",
+  "location": "Review › Comments",
+  "params": "{\"text\": string}",
+  "shortcut": "",
+  "module": "review"
+ },
+ {
+  "id": "review.reply",
+  "label": "Reply",
+  "location": "Review › Comments",
+  "params": "{\"id\": n, \"text\": string}",
+  "shortcut": "",
+  "module": "review"
+ },
+ {
+  "id": "review.editComment",
+  "label": "Edit Comment",
+  "location": "Review › Comments",
+  "params": "{\"id\": n, \"text\": string}",
+  "shortcut": "",
+  "module": "review"
+ },
+ {
+  "id": "review.deleteComment",
+  "label": "Delete",
+  "location": "Review › Comments",
+  "params": "{\"id\"?: n, \"all\"?: bool}",
+  "shortcut": "",
+  "module": "review"
+ },
+ {
+  "id": "review.resolveComment",
+  "label": "Resolve",
+  "location": "Review › Comments",
+  "params": "{}",
+  "shortcut": "",
+  "module": "review"
+ },
+ {
+  "id": "review.nextComment",
+  "label": "Next",
+  "location": "Review › Comments",
+  "params": "{}",
+  "shortcut": "",
+  "module": "review"
+ },
+ {
+  "id": "review.previousComment",
+  "label": "Previous",
+  "location": "Review › Comments",
+  "params": "{}",
+  "shortcut": "",
+  "module": "review"
+ },
+ {
+  "id": "review.comments",
+  "label": "Show Comments",
+  "location": "Review › Comments",
+  "params": "{}",
+  "shortcut": "",
+  "module": "review"
+ },
+ {
+  "id": "review.trackChanges",
+  "label": "Track Changes",
+  "location": "Review › Tracking",
+  "params": "{\"value\"?: bool (omit to toggle)}",
+  "shortcut": "Mod+Shift+E",
+  "module": "review"
+ },
+ {
+  "id": "review.acceptAll",
+  "label": "Accept All Changes",
+  "location": "Review › Changes",
+  "params": "{}",
+  "shortcut": "",
+  "module": "review"
+ },
+ {
+  "id": "review.rejectAll",
+  "label": "Reject All Changes",
+  "location": "Review › Changes",
+  "params": "{}",
+  "shortcut": "",
+  "module": "review"
+ },
+ {
+  "id": "review.accept",
+  "label": "Accept",
+  "location": "Review › Changes",
+  "params": "{}",
+  "shortcut": "",
+  "module": "review"
+ },
+ {
+  "id": "review.reject",
+  "label": "Reject",
+  "location": "Review › Changes",
+  "params": "{}",
+  "shortcut": "",
+  "module": "review"
+ },
+ {
+  "id": "review.nextChange",
+  "label": "Next Change",
+  "location": "Review › Changes",
+  "params": "{}",
+  "shortcut": "",
+  "module": "review"
+ },
+ {
+  "id": "review.previousChange",
+  "label": "Previous Change",
+  "location": "Review › Changes",
+  "params": "{}",
+  "shortcut": "",
+  "module": "review"
+ },
+ {
+  "id": "review.markup",
+  "label": "Display for Review",
+  "location": "Review › Tracking",
+  "params": "{}",
+  "shortcut": "",
+  "module": "review"
+ },
+ {
+  "id": "review.trackingOptions",
+  "label": "Track Changes Options",
+  "location": "Review › Tracking",
+  "params": "{\"comments\"?: bool, \"ink\"?: bool, \"insertionsDeletions\"?: bool, \"formatting\"?: bool, \"balloons\"?: \"revisions|inline|commentsAndFormatting\", \"commentDisplay\"?: \"margin|selected\", \"insertMark\"?: \"underline|doubleUnderline|bold|italic|strikethrough|colorOnly|none\", \"insertColor\"?: \"byAuthor\" | \"RRGGBB\", \"deleteMark\"?: \"strikethrough|doubleStrikethrough|hidden|caret|hash|underline|doubleUnderline|bold|italic|colorOnly|none\", \"deleteColor\"?: \"byAuthor\" | \"RRGGBB\", \"changedLines\"?: \"outside|left|right|none\", \"changedLinesColor\"?: \"auto\" | \"RRGGBB\", \"trackFormatting\"?: bool, \"moveFromMark\"?: (as deleteMark; none = plain text, no colour), \"moveFromColor\"?: \"byAuthor\" | \"RRGGBB\", \"moveToMark\"?: (as insertMark; none = plain text, no colour), \"moveToColor\"?: \"byAuthor\" | \"RRGGBB\", \"trackMoves\"?: bool (the document's setting; off = a cut and paste is a deletion and an insertion, not a move)} → the options (omit all to read them)",
+  "shortcut": "",
+  "module": "review"
+ },
+ {
+  "id": "review.wordCount",
+  "label": "Word Count",
+  "location": "Review › Proofing",
+  "params": "{\"includeTextBoxes\"?: bool}",
+  "shortcut": "",
+  "module": "review"
+ },
+ {
+  "id": "review.changes",
+  "label": "Reviewing Pane",
+  "location": "Review › Tracking",
+  "params": "{}",
+  "shortcut": "",
+  "module": "review"
+ },
+ {
+  "id": "review.spelling",
+  "label": "Spelling & Grammar",
+  "location": "Review › Proofing",
+  "params": "{}",
+  "shortcut": "",
+  "module": "review"
+ },
+ {
+  "id": "review.issues",
+  "label": "Proofing Issues",
+  "location": "Review › Proofing",
+  "params": "{}",
+  "shortcut": "",
+  "module": "review"
+ },
+ {
+  "id": "review.suggestions",
+  "label": "Spelling Suggestions",
+  "location": "Review › Proofing",
+  "params": "{\"pos\"?: Pos}",
+  "shortcut": "",
+  "module": "review"
+ },
+ {
+  "id": "review.addToDictionary",
+  "label": "Add to Dictionary",
+  "location": "Review › Proofing",
+  "params": "{\"word\"?: string}",
+  "shortcut": "",
+  "module": "review"
+ },
+ {
+  "id": "review.ignoreAll",
+  "label": "Ignore All",
+  "location": "Review › Proofing",
+  "params": "{}",
+  "shortcut": "",
+  "module": "review"
+ },
+ {
+  "id": "review.applySuggestion",
+  "label": "Change",
+  "location": "Review › Proofing",
+  "params": "{\"text\": string}",
+  "shortcut": "",
+  "module": "review"
+ },
+ {
+  "id": "review.proofing",
+  "label": "Check Spelling as You Type",
+  "location": "File › Options › Proofing",
+  "params": "{}",
+  "shortcut": "",
+  "module": "review"
+ },
+ {
+  "id": "review.thesaurus",
+  "label": "Thesaurus",
+  "location": "Review › Proofing",
+  "params": "{}",
+  "shortcut": "Shift+F7",
+  "module": "review"
+ },
+ {
+  "id": "insert.smartArt",
+  "label": "SmartArt",
+  "location": "Insert › Illustrations",
+  "params": "{\"layout\"?: \"basicList|process|cycle|hierarchy|pyramid|radial|matrix|venn\", \"items\"?: [string | {\"text\": string, \"level\"?: 0-7}], \"colors\"?: \"accent1…accent6|colorful\", \"width\"?: pt, \"height\"?: pt} (no items: sample items for the layout)",
+  "shortcut": "",
+  "module": "smart_art"
+ },
+ {
+  "id": "smartArt.items",
+  "label": "Edit Items",
+  "location": "SmartArt Design › Create Graphic",
+  "params": "{\"items\": [string | {\"text\": string, \"level\"?: 0-7}]} (replaces the outline)",
+  "shortcut": "",
+  "module": "smart_art"
+ },
+ {
+  "id": "smartArt.textPane",
+  "label": "Text Pane",
+  "location": "SmartArt Design › Create Graphic",
+  "params": "{\"value\"?: bool} (no value: show or hide the Text Pane)",
+  "shortcut": "",
+  "module": "smart_art"
+ },
+ {
+  "id": "smartArt.addShape",
+  "label": "Add Shape",
+  "location": "SmartArt Design › Create Graphic",
+  "params": "{\"after\"?: item index (default: the last), \"text\"?: string, \"below\"?: bool (a sub-item instead of the next item)}",
+  "shortcut": "",
+  "module": "smart_art"
+ },
+ {
+  "id": "smartArt.promote",
+  "label": "Promote",
+  "location": "SmartArt Design › Create Graphic",
+  "params": "{\"index\"?: item index (default: the last)} (the item and the items under it move up a level)",
+  "shortcut": "",
+  "module": "smart_art"
+ },
+ {
+  "id": "smartArt.demote",
+  "label": "Demote",
+  "location": "SmartArt Design › Create Graphic",
+  "params": "{\"index\"?: item index (default: the last)} (the item and the items under it move down a level)",
+  "shortcut": "",
+  "module": "smart_art"
+ },
+ {
+  "id": "smartArt.layout",
+  "label": "Change Layout",
+  "location": "SmartArt Design › Layouts",
+  "params": "{\"layout\": \"basicList|process|cycle|hierarchy|pyramid|radial|matrix|venn\"}",
+  "shortcut": "",
+  "module": "smart_art"
+ },
+ {
+  "id": "smartArt.colors",
+  "label": "Change Colors",
+  "location": "SmartArt Design › SmartArt Styles",
+  "params": "{\"variant\": \"accent1|accent2|accent3|accent4|accent5|accent6|colorful\"}",
+  "shortcut": "",
+  "module": "smart_art"
+ },
+ {
+  "id": "smartArt.reset",
+  "label": "Reset Graphic",
+  "location": "SmartArt Design › Reset",
+  "params": "{} (back to the default colours; the items and layout stay)",
+  "shortcut": "",
+  "module": "smart_art"
+ },
+ {
+  "id": "review.readAloud",
+  "label": "Read Aloud",
+  "location": "Review › Speech",
+  "params": "{\"skipCitations\"?: bool}",
+  "shortcut": "Mod+Alt+Space",
+  "module": "speech"
+ },
+ {
+  "id": "readAloud.playPause",
+  "label": "Play/Pause",
+  "location": "Review › Speech",
+  "params": "{}",
+  "shortcut": "",
+  "module": "speech"
+ },
+ {
+  "id": "readAloud.next",
+  "label": "Next Sentence",
+  "location": "Review › Speech",
+  "params": "{}",
+  "shortcut": "",
+  "module": "speech"
+ },
+ {
+  "id": "readAloud.previous",
+  "label": "Previous Sentence",
+  "location": "Review › Speech",
+  "params": "{}",
+  "shortcut": "",
+  "module": "speech"
+ },
+ {
+  "id": "readAloud.stop",
+  "label": "Stop Reading",
+  "location": "Review › Speech",
+  "params": "{}",
+  "shortcut": "",
+  "module": "speech"
+ },
+ {
+  "id": "readAloud.speed",
+  "label": "Reading Speed",
+  "location": "Review › Speech",
+  "params": "{\"value\": number (0.5…3, 1 = normal)}",
+  "shortcut": "",
+  "module": "speech"
+ },
+ {
+  "id": "readAloud.skipCitations",
+  "label": "Skip Citations and Bibliography",
+  "location": "Review › Speech",
+  "params": "{\"value\"?: bool}",
+  "shortcut": "",
+  "module": "speech"
+ },
+ {
+  "id": "readAloud.status",
+  "label": "Read Aloud Status",
+  "location": "Review › Speech",
+  "params": "{}",
+  "shortcut": "",
+  "module": "speech"
+ },
+ {
+  "id": "caret.pastCitation",
+  "label": "Move Past Citation",
+  "location": "Zotero › Citations",
+  "params": "{}",
+  "shortcut": "",
+  "module": "speech"
+ },
+ {
+  "id": "table.insertRowAbove",
+  "label": "Insert Above",
+  "location": "Table Layout › Rows & Columns",
+  "params": "{}",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.insertRowBelow",
+  "label": "Insert Below",
+  "location": "Table Layout › Rows & Columns",
+  "params": "{}",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.insertColumnLeft",
+  "label": "Insert Left",
+  "location": "Table Layout › Rows & Columns",
+  "params": "{}",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.insertColumnRight",
+  "label": "Insert Right",
+  "location": "Table Layout › Rows & Columns",
+  "params": "{}",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.deleteRow",
+  "label": "Delete Rows",
+  "location": "Table Layout › Rows & Columns › Delete",
+  "params": "{}",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.deleteColumn",
+  "label": "Delete Columns",
+  "location": "Table Layout › Rows & Columns › Delete",
+  "params": "{}",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.deleteTable",
+  "label": "Delete Table",
+  "location": "Table Layout › Rows & Columns › Delete",
+  "params": "{}",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.deleteCells",
+  "label": "Delete Cells",
+  "location": "Table Layout › Rows & Columns › Delete",
+  "params": "{}",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.merge",
+  "label": "Merge Cells",
+  "location": "Table Layout › Merge",
+  "params": "{}",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.split",
+  "label": "Split Cells",
+  "location": "Table Layout › Merge",
+  "params": "{\"columns\"?: n (2), \"rows\"?: n (1), \"mergeFirst\"?: bool (true: several selected cells are merged first)}",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.splitTable",
+  "label": "Split Table",
+  "location": "Table Layout › Merge",
+  "params": "{}",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.style",
+  "label": "Table Styles",
+  "location": "Table Design › Table Styles",
+  "params": "{\"style\": string}",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.look",
+  "label": "Table Style Options",
+  "location": "Table Design › Table Style Options",
+  "params": "{\"headerRow\"?: bool, \"totalRow\"?: bool, \"bandedRows\"?: bool, \"firstColumn\"?: bool, \"lastColumn\"?: bool, \"bandedColumns\"?: bool}",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.shading",
+  "label": "Shading",
+  "location": "Table Design › Table Styles",
+  "params": "{\"color\": \"RRGGBB\" | null}",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.borders",
+  "label": "Borders",
+  "location": "Table Design › Borders",
+  "params": "{\"kind\": \"all|outside|inside|none|top|bottom|left|right\", \"width\"?: pt, \"color\"?: \"RRGGBB\"}",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.cellAlign",
+  "label": "Alignment",
+  "location": "Table Layout › Alignment",
+  "params": "{\"value\": \"topLeft|topCenter|…|bottomRight\"}",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.textDirection",
+  "label": "Text Direction",
+  "location": "Table Layout › Alignment",
+  "params": "{\"value\"?: \"horizontal|down|up\"} (default: the next direction after the caret cell's, like Word's button)",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.autofit",
+  "label": "AutoFit",
+  "location": "Table Layout › Cell Size",
+  "params": "{\"mode\": \"contents|window|fixed\"}",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.distributeColumns",
+  "label": "Distribute Columns",
+  "location": "Table Layout › Cell Size",
+  "params": "{}",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.distributeRows",
+  "label": "Distribute Rows",
+  "location": "Table Layout › Cell Size",
+  "params": "{}",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.columnWidth",
+  "label": "Table Column Width",
+  "location": "Table Layout › Cell Size",
+  "params": "{\"width\": pt} (every column the selection covers, the caret cell's without one; the table's preferred width is cleared so the columns get exactly this)",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.rowHeight",
+  "label": "Table Row Height",
+  "location": "Table Layout › Cell Size",
+  "params": "{\"height\": pt, \"rule\"?: \"atLeast|exact\"} (every row the selection covers, the caret's without one)",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.repeatHeader",
+  "label": "Repeat Header Rows",
+  "location": "Table Layout › Data",
+  "params": "{}",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.altText",
+  "label": "Alt Text",
+  "location": "Table Layout › Table › Properties",
+  "params": "{\"text\"?: string, \"title\"?: string} (empty clears)",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.sort",
+  "label": "Sort",
+  "location": "Table Layout › Data",
+  "params": "{\"column\"?: n, \"descending\"?: bool, \"header\"?: bool}",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.toText",
+  "label": "Convert to Text",
+  "location": "Table Layout › Data",
+  "params": "{\"separator\"?: \"tab|comma|paragraph\"}",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.formula",
+  "label": "Formula",
+  "location": "Table Layout › Data",
+  "params": "{\"formula\"?: \"=SUM(ABOVE)\"}",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.selectTable",
+  "label": "Select Table",
+  "location": "Table Layout › Table › Select",
+  "params": "{}",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.selectRow",
+  "label": "Select Row",
+  "location": "Table Layout › Table › Select",
+  "params": "{}",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.selectColumn",
+  "label": "Select Column",
+  "location": "Table Layout › Table › Select",
+  "params": "{}",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.selectCell",
+  "label": "Select Cell",
+  "location": "Table Layout › Table › Select",
+  "params": "{}",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.rtl",
+  "label": "Right-to-Left Table",
+  "location": "Table Layout › Table",
+  "params": "{\"value\"?: bool} (true: the first column stands at the right; without a value it toggles)",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.properties",
+  "label": "Properties",
+  "location": "Table Layout › Table",
+  "params": "{\"align\"?: \"left|center|right\", \"rtl\"?: bool, \"width\"?: pt|null, \"widthPct\"?: percent, \"indent\"?: pt, \"rowHeight\"?: pt|null, \"rowHeightRule\"?: \"atLeast|exact\", \"allowBreak\"?: bool, \"headerRow\"?: bool, \"columnWidth\"?: pt, \"cellWidth\"?: pt|null, \"valign\"?: \"top|center|bottom\"} (row, column and cell settings apply to the caret's; without settings it returns the current ones)",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.fromText",
+  "label": "Convert Text to Table",
+  "location": "Insert › Tables",
+  "params": "{\"separator\"?: \"tab|comma|paragraph|other\", \"char\"?: string (with other), \"columns\"?: n, \"autofit\"?: \"initial|fixed|contents|window\", \"width\"?: pt (initial column width, 0 = Auto, at most 1584)}",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.quick",
+  "label": "Quick Tables",
+  "location": "Insert › Tables",
+  "params": "{\"kind\"?: \"calendar|tabular|matrix\"}",
+  "shortcut": "",
+  "module": "table"
+ },
+ {
+  "id": "table.draw",
+  "label": "Draw Table",
+  "location": "Insert › Tables",
+  "params": "{\"page\": n, \"x0\": pt, \"y0\": pt, \"x1\": pt, \"y1\": pt, \"story\"?: StoryRef} (a pen stroke in page points, 0-based page: a rectangle at least 12 pt each way outside any table inserts a one-cell table of that size at the paragraph under its start; a straight vertical or horizontal line inside a table splits the cells it crosses there. In the app the button turns the pen on.)",
+  "shortcut": "",
+  "module": "table_draw"
+ },
+ {
+  "id": "table.eraser",
+  "label": "Eraser",
+  "location": "Table Layout › Draw",
+  "params": "{\"page\": n, \"x\": pt, \"y\": pt} (removes the border between two cells within 4 pt of the point: cells that make one rectangle merge, including cells merged down the same rows; otherwise the border is hidden along the whole edge. In the app the button turns the eraser on.)",
+  "shortcut": "",
+  "module": "table_draw"
+ },
+ {
+  "id": "table.selectAt",
+  "label": "Select Table Cells by Clicking",
+  "location": "Table Layout › Table › Select",
+  "params": "{\"page\": n, \"x\": pt, \"y\": pt, \"toX\"?: pt, \"toY\"?: pt, \"reach\"?: pt} (a click in page points, 0-based page, on a selection area of a table in the caret's story: just above a column selects the column, left of a row the row, along a cell's left edge inside it the cell, the move handle past the top-left corner the table; with toX/toY (a drag) every column, row or cell from there to that point. `reach` (default 3) is the column borders' resize reach, which the cell areas keep clear of.)",
+  "shortcut": "",
+  "module": "table_mouse"
+ },
+ {
+  "id": "table.insertAt",
+  "label": "Insert Row or Column by Clicking",
+  "location": "Table Layout › Rows & Columns",
+  "params": "{\"page\": n, \"x\": pt, \"y\": pt, \"reach\"?: pt} (a click on a table's insert button: left of a row border adds a row there, above a column border a column; the new row or column is selected, as in Word)",
+  "shortcut": "",
+  "module": "table_mouse"
+ },
+ {
+  "id": "table.moveDrag",
+  "label": "Move Table by Dragging",
+  "location": "Table Layout › Table",
+  "params": "{\"page\": n, \"x\": pt, \"y\": pt, \"toX\": pt, \"toY\": pt, \"reach\"?: pt} (a drag from the move handle past a table's top-left corner: the table floats where it's dropped, the text wrapping around it; tables in the main text only)",
+  "shortcut": "",
+  "module": "table_mouse"
+ },
+ {
+  "id": "table.fitColumn",
+  "label": "AutoFit Column by Double-Clicking",
+  "location": "Table Layout › Cell Size",
+  "params": "{\"page\": n, \"x\": pt, \"y\": pt, \"reach\"?: pt} (a double-click on a column border: the column left of it fits its contents and the columns right of it keep their widths, moving with the border, so the table narrows or widens (up to the right margin), as in Word)",
+  "shortcut": "",
+  "module": "table_mouse"
+ },
+ {
+  "id": "table.resizeDrag",
+  "label": "Resize Table by Dragging",
+  "location": "Table Layout › Cell Size",
+  "params": "{\"page\": n, \"x\": pt, \"y\": pt, \"toX\": pt, \"toY\": pt, \"shift\"?: bool, \"ctrl\"?: bool, \"reach\"?: pt} (a mouse drag in page points, 0-based page, starting on a table border or the resize handle: a column border moves (the column to its right gives or takes the difference, so the table keeps its width; with ctrl the columns right of it share it in proportion; with shift, or on the table's right edge, only the column left of it changes); the table's left edge moves a left-aligned table's indent, the first column making up the difference (a centred or right-aligned table keeps its alignment: only the first column changes); with cells of the table selected, a border of theirs moves only in their rows; a row's bottom border sets that row's height; the handle just outside the bottom-right corner scales every column and the rows on that page. `reach` (default 3) is how near the start has to be.)",
+  "shortcut": "",
+  "module": "table_resize"
+ },
+ {
+  "id": "table.newStyle",
+  "label": "New Table Style",
+  "location": "Table Design › Table Styles",
+  "params": "{}",
+  "shortcut": "",
+  "module": "table_style"
+ },
+ {
+  "id": "table.modifyStyle",
+  "label": "Modify Table Style",
+  "location": "Table Design › Table Styles",
+  "params": "{}",
+  "shortcut": "",
+  "module": "table_style"
+ },
+ {
+  "id": "table.deleteStyle",
+  "label": "Delete Table Style",
+  "location": "Table Design › Table Styles",
+  "params": "{\"style\"?: string (default: the current table's)}",
+  "shortcut": "",
+  "module": "table_style"
+ },
+ {
+  "id": "tools.templates",
+  "label": "Templates and Add-ins",
+  "location": "View › Templates",
+  "params": "{} → {\"template\": path|null, \"linkStyles\": bool} (from the ribbon, the app shows the dialog)",
+  "shortcut": "",
+  "module": "templates"
+ },
+ {
+  "id": "styles.organizer",
+  "label": "Organizer",
+  "location": "View › Templates › Organizer",
+  "params": "{\"path\"?: string, \"data\"?: base64} → {\"document\": [style], \"file\"?: {\"path\", \"styles\": [style]}}",
+  "shortcut": "",
+  "module": "templates"
+ },
+ {
+  "id": "styles.copyFrom",
+  "label": "Copy Styles",
+  "location": "View › Templates › Organizer",
+  "params": "{\"path\": string, \"data\"?: base64, \"styles\": [name or id]} → {\"added\", \"replaced\", \"skipped\"}",
+  "shortcut": "",
+  "module": "templates"
+ },
+ {
+  "id": "styles.rename",
+  "label": "Rename Style",
+  "location": "View › Templates › Organizer",
+  "params": "{\"style\": string (name or id; custom styles only), \"name\": string}",
+  "shortcut": "",
+  "module": "templates"
+ },
+ {
+  "id": "text.insert",
+  "label": "Type Text",
+  "location": "Editing",
+  "params": "{\"text\": string}",
+  "shortcut": "",
+  "module": "text"
+ },
+ {
+  "id": "text.newParagraph",
+  "label": "New Paragraph",
+  "location": "Editing",
+  "params": "{}",
+  "shortcut": "Enter",
+  "module": "text"
+ },
+ {
+  "id": "text.lineBreak",
+  "label": "Line Break",
+  "location": "Editing",
+  "params": "{}",
+  "shortcut": "Shift+Enter",
+  "module": "text"
+ },
+ {
+  "id": "text.pageBreak",
+  "label": "Page Break",
+  "location": "Insert › Pages",
+  "params": "{}",
+  "shortcut": "Mod+Enter",
+  "module": "text"
+ },
+ {
+  "id": "text.columnBreak",
+  "label": "Column Break",
+  "location": "Layout › Breaks",
+  "params": "{}",
+  "shortcut": "Mod+Shift+Enter",
+  "module": "text"
+ },
+ {
+  "id": "text.tab",
+  "label": "Tab",
+  "location": "Editing",
+  "params": "{}",
+  "shortcut": "Tab",
+  "module": "text"
+ },
+ {
+  "id": "text.backTab",
+  "label": "Shift+Tab",
+  "location": "Editing",
+  "params": "{}",
+  "shortcut": "Shift+Tab",
+  "module": "text"
+ },
+ {
+  "id": "text.backspace",
+  "label": "Backspace",
+  "location": "Editing",
+  "params": "{}",
+  "shortcut": "Backspace",
+  "module": "text"
+ },
+ {
+  "id": "text.delete",
+  "label": "Delete",
+  "location": "Editing",
+  "params": "{}",
+  "shortcut": "Delete",
+  "module": "text"
+ },
+ {
+  "id": "text.deleteWordBack",
+  "label": "Delete Previous Word",
+  "location": "Editing",
+  "params": "{}",
+  "shortcut": "Mod+Backspace / Alt+Backspace",
+  "module": "text"
+ },
+ {
+  "id": "text.deleteWordForward",
+  "label": "Delete Next Word",
+  "location": "Editing",
+  "params": "{}",
+  "shortcut": "Mod+Delete / Alt+Delete",
+  "module": "text"
+ },
+ {
+  "id": "text.nbsp",
+  "label": "Nonbreaking Space",
+  "location": "Insert › Symbols",
+  "params": "{}",
+  "shortcut": "Mod+Shift+Space",
+  "module": "text"
+ },
+ {
+  "id": "text.nbHyphen",
+  "label": "Nonbreaking Hyphen",
+  "location": "Insert › Symbols",
+  "params": "{}",
+  "shortcut": "Mod+Shift+-",
+  "module": "text"
+ },
+ {
+  "id": "text.optionalHyphen",
+  "label": "Optional Hyphen",
+  "location": "Insert › Symbols",
+  "params": "{}",
+  "shortcut": "Mod+-",
+  "module": "text"
+ },
+ {
+  "id": "text.toggleUnicode",
+  "label": "Toggle Unicode Character",
+  "location": "Editing",
+  "params": "{}",
+  "shortcut": "",
+  "module": "text"
+ },
+ {
+  "id": "text.typeCode",
+  "label": "Type Character Code",
+  "location": "Editing",
+  "params": "{\"code\": string (decimal digits as typed on the keypad, e.g. \"0233\"), \"ansi\"?: 874 | 1250–1258 (the leading-0 code page, default 1252), \"oem\"?: 437 | 737 | 850 | 852 | 857 | 866 (default from the locale)}",
+  "shortcut": "",
+  "module": "text"
+ },
+ {
+  "id": "text.emDash",
+  "label": "Em Dash",
+  "location": "Insert › Symbols",
+  "params": "{}",
+  "shortcut": "Mod+Alt+-",
+  "module": "text"
+ },
+ {
+  "id": "text.copyright",
+  "label": "Copyright Sign",
+  "location": "Insert › Symbols",
+  "params": "{}",
+  "shortcut": "",
+  "module": "text"
+ },
+ {
+  "id": "text.registered",
+  "label": "Registered Sign",
+  "location": "Insert › Symbols",
+  "params": "{}",
+  "shortcut": "",
+  "module": "text"
+ },
+ {
+  "id": "text.trademark",
+  "label": "Trademark Sign",
+  "location": "Insert › Symbols",
+  "params": "{}",
+  "shortcut": "",
+  "module": "text"
+ },
+ {
+  "id": "text.ellipsis",
+  "label": "Ellipsis",
+  "location": "Insert › Symbols",
+  "params": "{}",
+  "shortcut": "",
+  "module": "text"
+ },
+ {
+  "id": "edit.repeat",
+  "label": "Repeat",
+  "location": "Quick Access Toolbar",
+  "params": "{}",
+  "shortcut": "F4",
+  "module": "tools"
+ },
+ {
+  "id": "tools.recordMacro",
+  "label": "Record Macro",
+  "location": "View › Macros",
+  "params": "{\"name\"?: string} (call again to stop)",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "tools.macros",
+  "label": "Macros",
+  "location": "View › Macros",
+  "params": "{\"run\"?: name, \"define\"?: {\"name\": string, \"steps\": [{\"command\", \"params\"}]}, \"delete\"?: name}",
+  "shortcut": "Alt+F8",
+  "module": "tools"
+ },
+ {
+  "id": "tools.autocorrect",
+  "label": "AutoCorrect Options",
+  "location": "File › Options › Proofing",
+  "params": "{\"enabled\"?: bool (all of AutoCorrect), \"replaceText\"|\"twoInitialCaps\"|\"capSentences\"|\"capCells\"|\"capDays\"|\"capsLock\"|\"smartQuotes\"|\"fractions\"|\"ordinals\"|\"dashes\"|\"links\"|\"bullets\"|\"numbering\"|\"borderLines\"?: bool, \"autoAddFirstLetter\"|\"autoAddInitialCaps\"?: bool (Automatically add words to the exception lists when an automatic capital is undone; default true), \"add\"?: {\"from\": string, \"to\": string} (adds or replaces an entry), \"delete\"?: string (an entry's \"from\", built in or added), \"addException\"?: string, \"deleteException\"?: string, \"addInitialCapsException\"?: string (keeps TWo INitial CApitals, like \"IDs\"), \"deleteInitialCapsException\"?: string} → options, entries and exceptions",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "tools.customizeKeyboard",
+  "label": "Customize Keyboard",
+  "location": "File › Options",
+  "params": "{\"command\"?: id (its keys), \"key\"?: \"Mod+Shift+K\" (the command it runs), \"assign\"?: {\"command\": id, \"key\": string}, \"remove\"?: {\"command\": id, \"key\": string}, \"reset\"?: true (built-in keys only)} → {custom: {assigned: {key: id}, removed: [key]}, …}; no params opens the dialog",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "tools.customizeRibbon",
+  "label": "Customize Ribbon",
+  "location": "File › Options",
+  "params": "{\"hide\"?: tab, \"show\"?: tab, \"newTab\"?: {\"name\"?, \"after\"?: tab}, \"newGroup\"?: {\"tab\", \"name\"?}, \"add\"?: {\"tab\", \"group\", \"command\", \"after\"?: id}, \"remove\"?: {\"tab\", \"group\"?, \"command\"?}, \"rename\"?: {\"tab\", \"group\"?, \"to\"}, \"move\"?: {\"tab\", \"group\"?, \"command\"?, \"by\": int}, \"qatAdd\"?: id, \"qatRemove\"?: id, \"qatMove\"?: {\"command\", \"by\": int}, \"reset\"?: true | \"ribbon\" | \"qat\", \"layout\"?: object} → {tabs: [{name, custom?, hidden?, groups?: [{name, commands}]}], qat: [id]}; only custom tabs and groups can be renamed or removed (built-in tabs can be hidden and moved); no params opens the dialog",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "tools.search",
+  "label": "Search",
+  "location": "Title Bar",
+  "params": "{\"query\"?: string} → {matches: [{id, label, location, shortcut}]} (every word of the query in the label, location or id; at most 50); no query opens the Search box",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "review.compare",
+  "label": "Compare",
+  "location": "Review › Compare",
+  "params": "{\"path\"?: string (revised document), \"text\"?: string (revised text), \"original\"?: string (original document; default: this one), \"author\"?: string (label changes with), \"caseChanges\"?: bool, \"whiteSpace\"?: bool, \"formatting\"?: bool (default true: differences count), \"level\"?: \"word|character\", \"showIn\"?: \"original|revised|new\" (revised/new: an untitled document), \"moves\"|\"comments\"|\"tables\"|\"headersFooters\"|\"footnotes\"|\"textBoxes\"|\"fields\"?: bool (accepted; not honoured yet except tables, always compared)}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "review.combine",
+  "label": "Combine",
+  "location": "Review › Compare",
+  "params": "{\"path\"?: string (revised document), \"text\"?: string (revised text), \"original\"?: string (original document; default: this one), \"author\"?: string (label changes with), \"caseChanges\"?: bool, \"whiteSpace\"?: bool, \"formatting\"?: bool (default true: differences count), \"level\"?: \"word|character\", \"showIn\"?: \"original|revised|new\" (revised/new: an untitled document), \"moves\"|\"comments\"|\"tables\"|\"headersFooters\"|\"footnotes\"|\"textBoxes\"|\"fields\"?: bool (accepted; not honoured yet except tables, always compared)}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "file.accessibility",
+  "label": "Check Accessibility",
+  "location": "Review › Accessibility",
+  "params": "{}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "file.inspect",
+  "label": "Inspect Document",
+  "location": "File › Info",
+  "params": "{\"remove\"?: [\"comments\", \"revisions\", \"properties\", \"hidden\", \"headers\"]} → {found: {comments, revisions, properties, hiddenText, hiddenCount, hidden: [{story: \"body|header|footer|footnote|endnote|comment|textBox\", part?, text}] (at most 1000), truncated, unsupported: [{story, object: \"table|opaque\", ..}] (hidden text not inspected: table styles, verbatim objects), headers}, removed, residual: [..] (hidden text a removal couldn't reach), removedNotes: [{kind, part, text}] (notes whose hidden reference was removed)}; whole hidden paragraphs go with their marks",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "file.protect",
+  "label": "Protect Document",
+  "location": "File › Info",
+  "params": "{\"mode\": \"none|readOnly|comments|trackedChanges\"}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "file.versions",
+  "label": "Version History",
+  "location": "File › Info",
+  "params": "{\"save\"?: label, \"restore\"?: index}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "file.recover",
+  "label": "Recover Unsaved Documents",
+  "location": "File › Info",
+  "params": "{\"restore\"?: recoveryId, \"discard\"?: recoveryId, \"refresh\"?: true}; desktop only; returns {enabled,busy,documents,error}; restore loads asynchronously without a file path",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "file.newFromTemplate",
+  "label": "New from Template",
+  "location": "File › New",
+  "params": "{\"path\": string}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "file.saveTemplate",
+  "label": "Save as Template",
+  "location": "File › Save As",
+  "params": "{\"path\": string}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "file.autosave",
+  "label": "AutoSave",
+  "location": "Quick Access Toolbar",
+  "params": "{}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "file.compatibility",
+  "label": "Check Compatibility",
+  "location": "File › Info",
+  "params": "{}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "file.share",
+  "label": "Share",
+  "location": "File",
+  "params": "{}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "insert.quickParts",
+  "label": "Quick Parts",
+  "location": "Insert › Text",
+  "params": "{\"save\"?: name (from the selection), \"in\"?: \"document\" (save into the document's own building blocks, kept in its file; else this session's), \"insert\"?: name, \"delete\"?: name} → {\"parts\": names (this session's, then the document's Quick Parts), \"document\": the document's Quick Parts}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "insert.autoText",
+  "label": "AutoText",
+  "location": "Insert › Text › Quick Parts",
+  "params": "{\"save\"?: name, \"in\"?: \"document\", \"insert\"?: name, \"delete\"?: name} → {\"parts\": names, \"document\": the document's AutoText}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "insert.docProperty",
+  "label": "Document Property",
+  "location": "Insert › Text › Quick Parts",
+  "params": "{\"name\": \"Title|Author|Subject|Keywords|Comments|Category\"}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "insert.signatureLine",
+  "label": "Signature Line",
+  "location": "Insert › Text",
+  "params": "{\"signer\"?: string, \"title\"?: string}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "insert.object",
+  "label": "Object",
+  "location": "Insert › Text",
+  "params": "{\"path\": string}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "insert.spreadsheet",
+  "label": "Spreadsheet Table",
+  "location": "Insert › Tables",
+  "params": "{\"csv\"?: string}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "layout.linkToPrevious",
+  "label": "Link to Previous",
+  "location": "Header & Footer › Navigation",
+  "params": "{\"footer\"?: bool}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "hf.next",
+  "label": "Next Section",
+  "location": "Header & Footer › Navigation",
+  "params": "{}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "hf.previous",
+  "label": "Previous Section",
+  "location": "Header & Footer › Navigation",
+  "params": "{}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "hf.position",
+  "label": "Header/Footer Position",
+  "location": "Header & Footer › Position",
+  "params": "{\"header\"?: pt, \"footer\"?: pt}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "table.cellMargins",
+  "label": "Cell Margins",
+  "location": "Table Layout › Alignment",
+  "params": "{\"top\"?, \"left\"?, \"bottom\"?, \"right\"? (pt)}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "table.borderPainter",
+  "label": "Border Painter",
+  "location": "Table Design › Borders",
+  "params": "{}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "para.setNumberingValue",
+  "label": "Set Numbering Value",
+  "location": "Home › Paragraph › Numbering",
+  "params": "{\"value\": n}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "para.defineBullet",
+  "label": "Define New Bullet",
+  "location": "Home › Paragraph › Bullets",
+  "params": "{\"char\": string}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "para.defineNumber",
+  "label": "Define New Number Format",
+  "location": "Home › Paragraph › Numbering",
+  "params": "{\"format\": \"decimal|upperRoman|lowerLetter…\", \"text\"?: \"%1.\", \"start\"?: n}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "review.language",
+  "label": "Language",
+  "location": "Review › Language",
+  "params": "{\"lang\"?: \"en-US|en-GB|pl-PL|fr-FR|…\" (BCP 47; default en-US), \"noProof\"?: bool, \"detect\"?: bool (detect language automatically, a preference), \"default\"?: bool (also the document's default language)}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "review.showMarkup",
+  "label": "Show Markup",
+  "location": "Review › Tracking",
+  "params": "{}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "review.editor",
+  "label": "Editor",
+  "location": "Home › Editor",
+  "params": "{}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "select.similar",
+  "label": "Select Text with Similar Formatting",
+  "location": "Home › Editing › Select",
+  "params": "{}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "select.extend",
+  "label": "Extend Selection",
+  "location": "Editing › Selection",
+  "params": "{}",
+  "shortcut": "F8",
+  "module": "tools"
+ },
+ {
+  "id": "design.effects",
+  "label": "Effects",
+  "location": "Design › Document Formatting",
+  "params": "{}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "view.immersive",
+  "label": "Immersive Reader",
+  "location": "View › Immersive",
+  "params": "{}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "view.vertical",
+  "label": "Vertical",
+  "location": "View › Page Movement",
+  "params": "{}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "view.sideToSide",
+  "label": "Side to Side",
+  "location": "View › Page Movement",
+  "params": "{}",
+  "shortcut": "",
+  "module": "tools"
+ },
+ {
+  "id": "view.marks",
+  "label": "Show/Hide ¶",
+  "location": "Home › Paragraph",
+  "params": "{}",
+  "shortcut": "Mod+Shift+8 / Mod+8",
+  "module": "view"
+ },
+ {
+  "id": "view.printLayout",
+  "label": "Print Layout",
+  "location": "View › Views",
+  "params": "{}",
+  "shortcut": "Mod+Alt+P",
+  "module": "view"
+ },
+ {
+  "id": "view.webLayout",
+  "label": "Web Layout",
+  "location": "View › Views",
+  "params": "{}",
+  "shortcut": "",
+  "module": "view"
+ },
+ {
+  "id": "view.draft",
+  "label": "Draft",
+  "location": "View › Views",
+  "params": "{}",
+  "shortcut": "Mod+Alt+N",
+  "module": "view"
+ },
+ {
+  "id": "view.outline",
+  "label": "Outline",
+  "location": "View › Views",
+  "params": "{}",
+  "shortcut": "Mod+Alt+O",
+  "module": "view"
+ },
+ {
+  "id": "view.readMode",
+  "label": "Read Mode",
+  "location": "View › Views",
+  "params": "{}",
+  "shortcut": "",
+  "module": "view"
+ },
+ {
+  "id": "view.readColumnWidth",
+  "label": "Reading Column Width",
+  "location": "Reading › Layout",
+  "params": "{\"value\": \"auto\" | \"narrow\" | \"medium\" | \"wide\" | \"page\"}",
+  "shortcut": "",
+  "module": "view"
+ },
+ {
+  "id": "view.readTextSize",
+  "label": "Reading Text Size",
+  "location": "Reading › Layout",
+  "params": "{\"value\": percent (75–150)}",
+  "shortcut": "",
+  "module": "view"
+ },
+ {
+  "id": "view.readLineSpacing",
+  "label": "Reading Line Spacing",
+  "location": "Reading › Layout",
+  "params": "{\"value\": \"document\" | 1.0 | 1.25 | 1.5 | 2.0}",
+  "shortcut": "",
+  "module": "view"
+ },
+ {
+  "id": "view.hideWhiteSpace",
+  "label": "Hide White Space",
+  "location": "View › Show",
+  "params": "{\"value\"?: bool}",
+  "shortcut": "",
+  "module": "view"
+ },
+ {
+  "id": "view.focus",
+  "label": "Focus",
+  "location": "View › Immersive",
+  "params": "{}",
+  "shortcut": "",
+  "module": "view"
+ },
+ {
+  "id": "view.ruler",
+  "label": "Ruler",
+  "location": "View › Show",
+  "params": "{}",
+  "shortcut": "",
+  "module": "view"
+ },
+ {
+  "id": "view.gridlines",
+  "label": "Gridlines",
+  "location": "View › Show",
+  "params": "{\"value\"?: bool}",
+  "shortcut": "",
+  "module": "view"
+ },
+ {
+  "id": "table.viewGridlines",
+  "label": "View Gridlines",
+  "location": "Table Layout › Table",
+  "params": "{\"value\"?: bool}",
+  "shortcut": "",
+  "module": "view"
+ },
+ {
+  "id": "view.navigationPane",
+  "label": "Navigation Pane",
+  "location": "View › Show",
+  "params": "{}",
+  "shortcut": "",
+  "module": "view"
+ },
+ {
+  "id": "view.zoom",
+  "label": "Zoom",
+  "location": "View › Zoom",
+  "params": "{\"value\": percent (10-500) | \"pageWidth\" | \"onePage\" | \"multiplePages\"}",
+  "shortcut": "",
+  "module": "view"
+ },
+ {
+  "id": "view.zoom100",
+  "label": "100%",
+  "location": "View › Zoom",
+  "params": "{}",
+  "shortcut": "",
+  "module": "view"
+ },
+ {
+  "id": "view.zoomIn",
+  "label": "Zoom In",
+  "location": "View › Zoom",
+  "params": "{}",
+  "shortcut": "",
+  "module": "view"
+ },
+ {
+  "id": "view.zoomOut",
+  "label": "Zoom Out",
+  "location": "View › Zoom",
+  "params": "{}",
+  "shortcut": "",
+  "module": "view"
+ },
+ {
+  "id": "view.onePage",
+  "label": "One Page",
+  "location": "View › Zoom",
+  "params": "{}",
+  "shortcut": "",
+  "module": "view"
+ },
+ {
+  "id": "view.multiplePages",
+  "label": "Multiple Pages",
+  "location": "View › Zoom",
+  "params": "{}",
+  "shortcut": "",
+  "module": "view"
+ },
+ {
+  "id": "view.pageWidth",
+  "label": "Page Width",
+  "location": "View › Zoom",
+  "params": "{}",
+  "shortcut": "",
+  "module": "view"
+ },
+ {
+  "id": "view.darkMode",
+  "label": "Switch Modes",
+  "location": "View › Dark Mode",
+  "params": "{}",
+  "shortcut": "",
+  "module": "view"
+ },
+ {
+  "id": "view.interfaceTheme",
+  "label": "Interface Theme",
+  "location": "View › Dark Mode",
+  "params": "{\"value\"?: \"light\" | \"dark\" | \"system\"; without it, toggles light and dark}",
+  "shortcut": "",
+  "module": "view"
+ },
+ {
+  "id": "view.stylesPane",
+  "label": "Styles Pane",
+  "location": "Home › Styles",
+  "params": "{}",
+  "shortcut": "",
+  "module": "view"
+ },
+ {
+  "id": "view.commentsPane",
+  "label": "Comments Pane",
+  "location": "Review › Comments",
+  "params": "{}",
+  "shortcut": "",
+  "module": "view"
+ },
+ {
+  "id": "view.accessibilityPane",
+  "label": "Accessibility Pane",
+  "location": "Review › Accessibility",
+  "params": "{\"value\"?: bool}",
+  "shortcut": "",
+  "module": "view"
+ },
+ {
+  "id": "view.altTextPane",
+  "label": "Alt Text Pane",
+  "location": "Review › Accessibility",
+  "params": "{\"value\"?: bool}",
+  "shortcut": "",
+  "module": "view"
+ },
+ {
+  "id": "view.newWindow",
+  "label": "New Window",
+  "location": "View › Window",
+  "params": "{}",
+  "shortcut": "",
+  "module": "view"
+ },
+ {
+  "id": "view.split",
+  "label": "Split",
+  "location": "View › Window",
+  "params": "{}",
+  "shortcut": "Mod+Alt+S",
+  "module": "view"
+ },
+ {
+  "id": "view.fullScreen",
+  "label": "Full Screen",
+  "location": "View › Window",
+  "params": "{\"value\"?: bool}",
+  "shortcut": "",
+  "module": "view"
+ },
+ {
+  "id": "view.state",
+  "label": "View State",
+  "location": "View",
+  "params": "{}",
+  "shortcut": "",
+  "module": "view"
+ },
+ {
+  "id": "view.numeral",
+  "label": "Numerals",
+  "location": "File › Options › Advanced",
+  "params": "{\"value\"?: \"arabic|hindi|context|system\"}",
+  "shortcut": "",
+  "module": "view"
+ },
+ {
+  "id": "insert.wordArt",
+  "label": "WordArt",
+  "location": "Insert › Text",
+  "params": "{\"text\"?: string, \"style\"?: WordArt style id (see format.textEffects), \"transform\"?: \"textArchUp\"|\"textArchDown\"|\"textCircle\"|\"textWave1\"|… (a DrawingML preset text warp)}",
+  "shortcut": "",
+  "module": "wordart"
+ },
+ {
+  "id": "format.textEffects",
+  "label": "Text Effects",
+  "location": "Home › Font",
+  "params": "{\"style\"?: \"solid\"|\"outlined\"|\"hollow\"|\"gradient\"|\"shadowed\"|\"glowing\"|\"reflected\"|\"sunset\", \"clear\"?: bool, \"fill\"?: \"RRGGBB\"|\"none\" (hollow)|{\"color\": \"RRGGBB\", \"transparency\"?: %}|{\"gradient\": [\"RRGGBB\", …], \"angle\"?: deg}|null (the run's colour), \"outline\"?: \"RRGGBB\"|\"none\"|{\"color\"?: \"RRGGBB\"|null, \"width\"?: pt, \"transparency\"?: %}|null, \"shadow\"?: preset|{\"color\"?, \"transparency\"?, \"blur\"?, \"distance\"?, \"angle\"?}|null, \"glow\"?: pt|{\"color\"?, \"size\"?, \"transparency\"?}|null, \"reflection\"?: bool|\"none\"|{\"transparency\"?: %, \"size\"?: %, \"distance\"?: pt}|null}  (an omitted key is left as it is; with a shape selected or the caret in a text box, the box's whole text)",
+  "shortcut": "",
+  "module": "wordart"
+ },
+ {
+  "id": "wordArt.style",
+  "label": "WordArt Styles",
+  "location": "Shape Format › WordArt Styles",
+  "params": "{\"style\": \"solid\"|\"outlined\"|\"hollow\"|\"gradient\"|\"shadowed\"|\"glowing\"|\"reflected\"|\"sunset\"}",
+  "shortcut": "",
+  "module": "wordart"
+ },
+ {
+  "id": "wordArt.textFill",
+  "label": "Text Fill",
+  "location": "Shape Format › WordArt Styles",
+  "params": "{\"fill\": \"RRGGBB\"|\"none\"|{\"gradient\": [\"RRGGBB\", …], \"angle\"?: deg}|null}",
+  "shortcut": "",
+  "module": "wordart"
+ },
+ {
+  "id": "wordArt.textOutline",
+  "label": "Text Outline",
+  "location": "Shape Format › WordArt Styles",
+  "params": "{\"color\"?: \"RRGGBB\"|null, \"width\"?: pt} or {\"outline\": \"none\"|null}",
+  "shortcut": "",
+  "module": "wordart"
+ },
+ {
+  "id": "wordArt.transform",
+  "label": "Transform",
+  "location": "Shape Format › WordArt Styles",
+  "params": "{\"preset\": \"textArchUp\"|\"textArchDown\"|\"textCircle\"|\"textWave1\"|\"textSlantUp\"|\"textSlantDown\"|\"textInflate\"|\"textDeflate\"|\"textChevron\"|\"textChevronInverted\"|\"textTriangle\"|\"textTriangleInverted\"|… (any DrawingML preset text warp)|\"none\", \"adj\"?: n (the preset's adjust value)}",
+  "shortcut": "",
+  "module": "wordart"
+ }
+]

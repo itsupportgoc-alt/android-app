@@ -67,10 +67,12 @@ import androidx.core.content.FileProvider
 import com.wordcraft.documentcore.PdfImport
 import com.wordcraft.documentcore.PdfImportException
 import com.wordcraft.documentcore.SENTINEL
+import com.wordcraft.editor.AppActionKind
+import com.wordcraft.editor.AppHost
+import com.wordcraft.editor.CommandSearch
 import com.wordcraft.editor.EditorController
 import com.wordcraft.editor.EditorScreen
 import com.wordcraft.editor.FindBar
-import com.wordcraft.editor.FormatBar
 import com.wordcraft.editor.Ribbon
 import com.wordcraft.editor.RibbonDialogs
 import com.wordcraft.editor.ViewState
@@ -79,6 +81,7 @@ import com.wordcraft.editor.pageCountFor
 import com.wordcraft.storage.Recents
 import com.wordcraft.ui.WordCraftTheme
 import kotlinx.coroutines.launch
+import org.json.JSONObject
 import java.io.File
 import java.util.Base64
 
@@ -90,6 +93,12 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         recents = Recents(this)
         EditorController.requestSave = { saveFlow.value?.invoke() }
+        // The ribbon's platform services (open, save, print, share, pickers).
+        AppHost.handler = { kind -> appActionFlow.value?.invoke(kind) }
+        AppHost.urlHandler = { url -> openUrl(url, this) }
+        AppHost.appVersion = runCatching {
+            packageManager.getPackageInfo(packageName, 0).versionName ?: "1.0"
+        }.getOrDefault("1.0")
 
         setContent {
             WordCraftTheme(darkTheme = false) {
@@ -106,6 +115,9 @@ class MainActivity : ComponentActivity() {
 
 /** Save flow installed by [MainActivity] so Ctrl+S / Save can trigger the SAF write. */
 val saveFlow = androidx.compose.runtime.mutableStateOf<(() -> Unit)?>(null)
+
+/** The ribbon's platform actions, installed by the app screen. */
+val appActionFlow = androidx.compose.runtime.mutableStateOf<((AppActionKind) -> Unit)?>(null)
 
 private const val DOCX_MIME = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
 
@@ -161,6 +173,34 @@ private fun AppScreen(recents: Recents, activity: MainActivity) {
             scope.launch { snackbar.showSnackbar(it) }
         }
     }
+    // The ribbon's own pickers: a file to insert, a recipient list, a document to compare with.
+    val textFileLauncher = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
+        if (uri == null) return@rememberLauncherForActivityResult
+        val path = copyToCache(uri, activity, "text")
+        if (path == null) {
+            scope.launch { snackbar.showSnackbar("Could not read that file") }
+        } else {
+            EditorController.run("insert.textFromFile", JSONObject().put("path", path))
+        }
+    }
+    val csvLauncher = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
+        if (uri == null) return@rememberLauncherForActivityResult
+        val path = copyToCache(uri, activity, "recipients")
+        if (path == null) {
+            scope.launch { snackbar.showSnackbar("Could not read that file") }
+        } else {
+            EditorController.run("mailings.recipients", JSONObject().put("path", path))
+        }
+    }
+    val compareLauncher = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
+        if (uri == null) return@rememberLauncherForActivityResult
+        val path = copyToCache(uri, activity, "compare")
+        if (path == null) {
+            scope.launch { snackbar.showSnackbar("Could not read that file") }
+        } else {
+            EditorController.run("review.compare", JSONObject().put("path", path))
+        }
+    }
 
     val doSave: () -> Unit = {
         val target = MainActivity.currentUri
@@ -184,6 +224,37 @@ private fun AppScreen(recents: Recents, activity: MainActivity) {
             scope.launch { snackbar.showSnackbar(e.message ?: "Save failed") }
         }
     }
+
+    // The ribbon's platform actions (File backstage, Insert › Pictures, Mailings, Review, …).
+    val doAction: (AppActionKind) -> Unit = { kind ->
+        when (kind) {
+            AppActionKind.NEW ->
+                if (EditorController.state.dirty) showNewConfirm = true
+                else {
+                    MainActivity.currentUri = null
+                    EditorController.newDocument()
+                }
+
+            AppActionKind.OPEN -> openLauncher.launch(OPEN_MIMES)
+            AppActionKind.SAVE -> doSave()
+            AppActionKind.SAVE_AS -> saveAsLauncher.launch(defaultSaveName())
+            AppActionKind.SAVE_AS_PDF -> {
+                val base = EditorController.fileName.substringBeforeLast('.').ifBlank { "document" }
+                pdfSaveLauncher.launch("$base.pdf")
+            }
+
+            AppActionKind.OPEN_PDF -> pdfOpenLauncher.launch(arrayOf("application/pdf"))
+            AppActionKind.SHARE -> doShare()
+            AppActionKind.PRINT -> printDocument(activity) { scope.launch { snackbar.showSnackbar(it) } }
+            AppActionKind.RECENTS -> showRecents = true
+            AppActionKind.PICK_IMAGE -> imageLauncher.launch(arrayOf("image/*"))
+            AppActionKind.PICK_TEXT_FILE -> textFileLauncher.launch(arrayOf("text/*", "application/octet-stream"))
+            AppActionKind.PICK_CSV -> csvLauncher.launch(arrayOf("text/csv", "text/comma-separated-values", "text/plain"))
+            AppActionKind.PICK_DOCUMENT -> compareLauncher.launch(OPEN_MIMES)
+            AppActionKind.OPEN_URL -> Unit
+        }
+    }
+    androidx.compose.runtime.SideEffect { appActionFlow.value = doAction }
 
     // ---- messages ----
     LaunchedEffect(EditorController.lastError) {
@@ -326,14 +397,6 @@ private fun AppScreen(recents: Recents, activity: MainActivity) {
                 FindBar()
             }
             EditorScreen(modifier = Modifier.weight(1f).fillMaxWidth())
-            // The Home/View ribbons already cover the mobile toolbar; only show the compact
-            // FormatBar on other (placeholder) tabs so those tabs still stay fully usable.
-            if (ViewState.activeTab !in setOf("Home", "View")) {
-                FormatBar(
-                    onPickImage = { imageLauncher.launch(arrayOf("image/*")) },
-                    onInsertLink = { linkDialog = true },
-                )
-            }
             // Word status bar: page/words left, view toggles + zoom slider right.
             StatusBar(
                 wordCount = EditorController.state.wordCount,
@@ -530,6 +593,41 @@ private fun nameFor(uri: Uri, activity: MainActivity): String {
     return uri.lastPathSegment ?: "document.docx"
 }
 
+/**
+ * Copy the picked file into the app's cache and return its path.
+ *
+ * The engine's commands take a *path* (a text file, a recipient list, a document to compare
+ * with); the SAF URI cannot be read by the native engine, so the bytes are staged first.
+ */
+private fun copyToCache(uri: Uri, activity: MainActivity, prefix: String): String? {
+    return try {
+        val bytes = activity.contentResolver.openInputStream(uri)?.use { it.readBytes() }
+            ?: return null
+        val dir = File(activity.cacheDir, "picked").apply { mkdirs() }
+        val name = "${prefix}_${System.currentTimeMillis()}.bin"
+        val out = File(dir, name)
+        out.writeBytes(bytes)
+        out.absolutePath
+    } catch (e: Exception) {
+        null
+    }
+}
+
+/** Print the current document through the Android print service. */
+private fun printDocument(activity: MainActivity, onError: (String) -> Unit) {    try {
+        val bytes = PdfExport.export(EditorController.state)
+        val printManager = activity.getSystemService(android.content.Context.PRINT_SERVICE) as android.print.PrintManager
+        val job = printManager.print(
+            EditorController.fileName.substringBeforeLast('.').ifBlank { "document" },
+            DocumentPrintAdapter(bytes),
+            android.print.PrintAttributes.Builder().build(),
+        )
+        if (job == null) onError("No print service available")
+    } catch (e: Exception) {
+        onError(e.message ?: "Could not print the document")
+    }
+}
+
 private fun defaultSaveName(): String {
     val base = EditorController.fileName.substringBeforeLast('.')
     return if (base.isBlank()) "document.docx" else "$base.docx"
@@ -554,8 +652,19 @@ private fun insertImage(uri: Uri, activity: MainActivity, onError: (String) -> U
     }
 }
 
-private fun shareDocument(bytes: ByteArray, name: String, activity: MainActivity, done: (String?) -> Unit) {
+/** Open a web page (the Help tab's "Help Topics" and "Project Page"). */
+private fun openUrl(url: String, activity: MainActivity) {
     try {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+        activity.startActivity(intent)
+    } catch (e: Exception) {
+        EditorController.showStatus(url)
+    }
+}
+
+private fun shareDocument(bytes: ByteArray, name: String, activity: MainActivity, done: (String?) -> Unit) {    try {
         val dir = File(activity.cacheDir, "share").apply { mkdirs() }
         val outName = if (name.contains('.')) name else "$name.docx"
         val f = File(dir, outName)
@@ -575,7 +684,6 @@ private fun shareDocument(bytes: ByteArray, name: String, activity: MainActivity
 }
 
 // ---------------------------------------------------------------- dialogs
-
 @Composable
 private fun RecentsDialog(recents: Recents, onDismiss: () -> Unit, onPick: (com.wordcraft.storage.RecentDoc) -> Unit) {
     val docs = remember { recents.list() }

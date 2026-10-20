@@ -189,4 +189,10 @@ fun RibbonDialogs() {
     WindowDialogSurface()
     MacrosDialogSurface()
     PropertiesDialogSurface()
+    // The generated ribbon's dialogs: the options a command takes, the engine's answer and the
+    // command search.
+    CommandParamDialog()
+    ResultDialog()
+    CommandSearchDialog()
+    AboutDialogSurface()
 }

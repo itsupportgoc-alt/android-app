@@ -152,6 +152,20 @@ object EditorController {
         false
     }
 
+    /**
+     * Run a command and return what the engine answered (the `ok` value), so the ribbon can
+     * show it. Returns null when the command failed — the error is then in [lastError].
+     */
+    fun runForResult(id: String, params: JSONObject? = null): Any? = try {
+        val json = engine.run(id, params)
+        refresh()
+        if (json.has("ok")) json.get("ok") else json
+    } catch (e: WordCraftException) {
+        lastError = e.error
+        refresh()
+        null
+    }
+
     // ------------------------------------------------------------------ editing actions
 
     fun undo() = run("edit.undo")

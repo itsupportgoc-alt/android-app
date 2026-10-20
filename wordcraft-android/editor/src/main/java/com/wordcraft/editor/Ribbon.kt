@@ -51,9 +51,10 @@ import androidx.compose.ui.unit.sp
  *
  * This file renders the **View** tab exactly as the reference image shows it: eight captioned
  * groups in order — Views, Immersive, Page Movement, Show, Zoom, Window, Macros, Properties —
- * every control present with its icon, label and state. Other tabs fall back to their own
- * content composables; when a tab has no content yet the strip still switches highlight and the
- * body shows a neutral placeholder (see [TabContent]).
+ * every control present with its icon, label and state. The other tabs have their own content:
+ * **Home** is the copy of the reference, **File** is Word's backstage, **Help** holds the
+ * command search, and the remaining tabs (Insert, Draw, Design, Layout, References, Mailings,
+ * Review) are generated from the engine's own command registry (see [CommandTabGroups]).
  */
 @Composable
 fun Ribbon(modifier: Modifier = Modifier) {
@@ -146,25 +147,9 @@ private fun TabContent(tab: String) {
     when (tab) {
         "Home" -> HomeTabGroups()
         "View" -> ViewTabGroups()
-        else -> PlaceholderTab(tab)
-    }
-}
-
-/** Neutral, clearly-labelled body for tabs other than View (View is the reference copy). */
-@Composable
-private fun PlaceholderTab(tab: String) {
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(92.dp)
-            .padding(horizontal = 16.dp),
-        contentAlignment = Alignment.CenterStart,
-    ) {
-        Text(
-            text = "$tab tab — not part of the View reference; switch back to View for the full ribbon.",
-            fontSize = 12.sp,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-        )
+        "File" -> FileTabGroups()
+        "Help" -> HelpTabGroups()
+        else -> CommandTabGroups(tab)
     }
 }
 
