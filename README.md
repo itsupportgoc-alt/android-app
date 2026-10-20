@@ -124,16 +124,20 @@ build you can also use Android Studio → Run.
 - Type with the soft keyboard or a hardware keyboard; Enter starts a new paragraph,
   Backspace merges / leaves lists exactly like desktop WordCraft (all through the engine's
   own commands).
-- Toolbar: **B I U S · Align · + · ⋮** — "+" inserts (table, link, image, page break, lists),
-  "⋮" opens the full sheet (styles, font, size, colours, highlight, indents, word count).
-- **Find/replace** via the toolbar search or Ctrl+F; undo/redo via toolbar sheet or Ctrl+Z/Y.
+- Toolbar: the **Home ribbon** in the top header holds every tool — Clipboard (paste/cut/copy),
+  Font (name, size, grow/shrink, clear formatting, bold/italic/underline/strikethrough, font
+  colour, highlighter), Paragraph (bullets, numbering, indent, alignment), Styles (Normal,
+  Heading 1, Title, Heading 2, Subtitle) and Editing (Find, Replace, Select All). The
+  **View** ribbon adds the view/zoom/window controls; other tabs fall back to a compact bar.
+- **Find/replace** via the Editing group or Ctrl+F; undo/redo via the header buttons or Ctrl+Z/Y.
 - File menu: New, Open… (system picker), Save / Save as…, Share, Recent documents.
 
 ## Download the APKs
 
 Ready-made builds are attached to the GitHub releases:
 
-- **Debug (install directly):** [WordCraft-v0.1.0-debug.apk](https://github.com/itsupportgoc-alt/android-app/releases/download/v0.1.0/WordCraft-v0.1.0-debug.apk)
+- **Release (install directly, signed):** [wordcraft-android-v0.1.2-release.apk](https://github.com/itsupportgoc-alt/android-app/releases/download/v0.1.2/wordcraft-android-v0.1.2-release.apk)
+- **Debug:** [wordcraft-android-v0.1.2-debug.apk](https://github.com/itsupportgoc-alt/android-app/releases/download/v0.1.2/wordcraft-android-v0.1.2-debug.apk)
 - All releases: https://github.com/itsupportgoc-alt/android-app/releases
 
 Or, after a local build, grab them from:
