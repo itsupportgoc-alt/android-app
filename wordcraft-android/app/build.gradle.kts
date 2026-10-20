@@ -25,8 +25,8 @@ android {
         applicationId = "com.wordcraft.android"
         minSdk = 29
         targetSdk = 35
-        versionCode = 1
-        versionName = "0.6.1"
+        versionCode = 2
+        versionName = "0.1.2"
         ndk {
             abiFilters += "arm64-v8a"
         }

@@ -144,6 +144,7 @@ private val ViewTabs = listOf(
 @Composable
 private fun TabContent(tab: String) {
     when (tab) {
+        "Home" -> HomeTabGroups()
         "View" -> ViewTabGroups()
         else -> PlaceholderTab(tab)
     }

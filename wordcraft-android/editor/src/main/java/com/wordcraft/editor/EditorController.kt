@@ -9,6 +9,7 @@ import com.wordcraft.documentcore.ParaVm
 import com.wordcraft.documentcore.WordCraftEngine
 import com.wordcraft.documentcore.WordCraftException
 import com.wordcraft.documentcore.jsonStr
+import com.wordcraft.documentcore.selectRangeOp
 import org.json.JSONObject
 
 /** One rendered top-level run: consecutive paragraphs sharing a style/alignment/list signature. */
@@ -195,6 +196,29 @@ object EditorController {
 
     fun insertPageBreak() = run("text.pageBreak")
     fun selectAll() = run("select.all")
+
+    /**
+     * Paste plain text from the platform clipboard: replace any selection, then insert the
+     * text (newlines become paragraph breaks — same plan the text fields use).
+     */
+    fun pastePlainText(text: String) {
+        val ops = ArrayList<EngineOp>()
+        val (a, b) = state.selection.ordered()
+        if (a != b) ops.add(selectRangeOp(a, b)) // make sure the engine selection matches
+        if (a != b) ops.add(EngineOp("text.backspace", "{}"))
+        for ((i, part) in text.split('\n').withIndex()) {
+            if (i > 0) ops.add(EngineOp("text.newParagraph", "{}"))
+            if (part.isNotEmpty()) ops.add(EngineOp("text.insert", """{"text":${jsonStr(part)}}"""))
+        }
+        dispatch(ops)
+    }
+
+    /** Delete the current selection (clipboard copy is done by the UI before calling this). */
+    fun cutSelection() {
+        val (a, b) = state.selection.ordered()
+        if (a == b) return
+        dispatch(listOf(selectRangeOp(a, b), EngineOp("text.backspace", "{}")))
+    }
 
     // ------------------------------------------------------------------ find / replace
 
