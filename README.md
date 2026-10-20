@@ -30,6 +30,7 @@ Open / Edit / Save  .docx
 | `storage/` | Recent documents (SharedPreferences) |
 | `ui/` | Theme (light/dark) and shared colors |
 | `rust-core/` | `wordcraft-ffi` crate: path-depends on the upstream `wordcraft/` crates |
+| `rust-core/tools/` | The generator that turns the engine's command registry into the Kotlin ribbon catalog |
 | `../wordcraft/` | The pristine upstream WordCraft checkout (never modified) |
 
 ## System installation
@@ -40,7 +41,7 @@ Install the following on your development machine before building:
 
 | Tool | Version | Notes |
 |---|---|---|
-| **JDK** | 17 | `JAVA_HOME` must point to it |
+| **JDK** | 17 | `JAVA_HOME` must point to it — the release build's lint step does not run on newer JDKs (on JDK 27 it fails with `IllegalArgumentException: 27`) |
 | **Android SDK** | platform 35 + build-tools 35.0.0 | `ANDROID_HOME` must point to it |
 | **Android NDK** | 26.3.11579264 | `ndk.dir` matches `ANDROID_HOME` |
 | **Gradle** | 8.10.2 | (via `gradle/wrapper`, no manual install needed) |
@@ -138,13 +139,37 @@ build you can also use Android Studio → Run.
 - Type with the soft keyboard or a hardware keyboard; Enter starts a new paragraph,
   Backspace merges / leaves lists exactly like desktop WordCraft (all through the engine's
   own commands).
-- Toolbar: the **Home ribbon** in the top header holds every tool — Clipboard (paste/cut/copy),
-  Font (name, size, grow/shrink, clear formatting, bold/italic/underline/strikethrough, font
-  colour, highlighter), Paragraph (bullets, numbering, indent, alignment), Styles (Normal,
-  Heading 1, Title, Heading 2, Subtitle) and Editing (Find, Replace, Select All). The
-  **View** ribbon adds the view/zoom/window controls; other tabs fall back to a compact bar.
+- Toolbar: a full Word ribbon with the tabs **File · Home · Insert · Draw · Design · Layout ·
+  References · Mailings · Review · View · Help**. The **Home** ribbon holds the everyday
+  tools — Clipboard (paste/cut/copy), Font (name, size, grow/shrink, clear formatting,
+  bold/italic/underline/strikethrough, font colour, highlighter), Paragraph (bullets,
+  numbering, indent, alignment), Styles (Normal, Heading 1, Title, Heading 2, Subtitle) and
+  Editing (Find, Replace, Select All). The **View** ribbon adds the view/zoom/window
+  controls, and **Insert, Draw, Design, Layout, References, Mailings and Review** are
+  generated from the engine's own command registry, so every button in them runs a real
+  engine command with the parameters that command expects.
 - **Find/replace** via the Editing group or Ctrl+F; undo/redo via the header buttons or Ctrl+Z/Y.
 - File menu: New, Open… (system picker), Save / Save as…, Share, Recent documents.
+
+### How the ribbon is built
+
+The upstream engine already declares the ribbon layout in its own command registry —
+every `CommandSpec::new(id, label, location)` carries the tab and the group it belongs to
+(`"Insert › Illustrations"`). The Android catalog is **generated** from that registry, so a
+ribbon button is never a decoration: it runs the engine command and opens the options
+dialog built from that command's documented parameter contract.
+
+```bash
+# regenerate the catalog from the engine sources and the shipped .so
+python3 rust-core/tools/build_ribbon_catalog.py \
+    <engine-cmd-src-dir> app/src/main/jniLibs/arm64-v8a/libwordcraft_core.so \
+    wordcraft-android/editor/src/main/java/com/wordcraft/editor/RibbonCatalogData.kt
+```
+
+Only ids that are present in the shipped `libwordcraft_core.so` are emitted, so every
+button is backed by a command the app can really run. `RibbonCatalogTest` asserts that
+every tab of the strip resolves to groups, that no command is bound twice and that every
+group has the large button Word draws for it.
 
 ## Download the APKs
 
@@ -154,10 +179,10 @@ the **latest** release:
 - **Release (install directly, signed):** [WordCraft-release.apk](https://github.com/itsupportgoc-alt/android-app/releases/latest/download/WordCraft-release.apk)
 - **Debug:** [WordCraft-debug.apk](https://github.com/itsupportgoc-alt/android-app/releases/latest/download/WordCraft-debug.apk)
 
-Pinned builds (current release **v0.1.2**):
+Pinned builds (current release **v0.1.3**):
 
-- [wordcraft-android-v0.1.2-release.apk](https://github.com/itsupportgoc-alt/android-app/releases/download/v0.1.2/wordcraft-android-v0.1.2-release.apk)
-- [wordcraft-android-v0.1.2-debug.apk](https://github.com/itsupportgoc-alt/android-app/releases/download/v0.1.2/wordcraft-android-v0.1.2-debug.apk)
+- [wordcraft-android-v0.1.3-release.apk](https://github.com/itsupportgoc-alt/android-app/releases/download/v0.1.3/wordcraft-android-v0.1.3-release.apk)
+- [wordcraft-android-v0.1.3-debug.apk](https://github.com/itsupportgoc-alt/android-app/releases/download/v0.1.3/wordcraft-android-v0.1.3-debug.apk)
 
 All releases: https://github.com/itsupportgoc-alt/android-app/releases
 
@@ -171,11 +196,12 @@ Or, after a local build, grab them from:
 ## Known limitations
 
 - Editing happens in reflow mode (like Word mobile's reflow view), not paginated print layout;
-  pagination/PDF export code is compiled in but not yet surfaced in the UI.
+  the **File** tab exports the document to PDF and sends it to the Android print service.
 - Cross-paragraph drag selection and paragraph-level spacing *inside* one style run are
   approximated; paragraphs split into separate fields at every style/alignment/list change.
-- Read Aloud, printing, track-changes review UI, mail merge and MCP are desktop-only and
-  not exposed on Android.
+- Read Aloud, mail merge and track changes are exposed as ribbon buttons that run the
+  engine's commands, but there is no dedicated player, recipient-list editor or review pane
+  yet; MCP is desktop-only.
 - Password-protected documents prompt an error (decryption is in the engine; no password UI yet).
 
 ## Contributing
