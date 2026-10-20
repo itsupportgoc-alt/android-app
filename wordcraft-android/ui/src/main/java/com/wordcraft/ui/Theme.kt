@@ -73,9 +73,9 @@ private val AppTypography = Typography(
     ),
 )
 
-/** The WordCraft Android theme: light/dark following the system, neutral surfaces. */
+/** The DevWord Android theme: light/dark following the system, neutral surfaces. */
 @Composable
-fun WordCraftTheme(
+fun DevWordTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit,
 ) {

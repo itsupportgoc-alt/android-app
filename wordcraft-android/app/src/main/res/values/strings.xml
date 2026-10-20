@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The app label shown under the launcher icon and in the task switcher. -->
+    <string name="app_name">DevWord</string>
+</resources>

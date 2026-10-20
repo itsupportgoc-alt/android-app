@@ -110,8 +110,8 @@ object WindowDialog {
         show()
     }
     fun resetWindow() { ViewState.resetWindowLayout(); message = "Window layout reset"; show() }
-    fun newWindow() { message = "A second window would duplicate this document session; WordCraft runs one session per app, so this opens a new split of the same document instead."; ViewState.toggleSplit(); show() }
-    fun switchWindows() { message = "Only one document window exists in WordCraft on Android; use Split to show it twice."; show() }
+    fun newWindow() { message = "A second window would duplicate this document session; DevWord runs one session per app, so this opens a new split of the same document instead."; ViewState.toggleSplit(); show() }
+    fun switchWindows() { message = "Only one document window exists in DevWord on Android; use Split to show it twice."; show() }
 }
 
 @Composable
@@ -140,7 +140,7 @@ fun MacrosDialogSurface() {
         onDismissRequest = { MacrosDialog.dismiss() },
         title = { Text("Macros") },
         text = {
-            Text("WordCraft for Android has no macro runtime. The desktop engine's VBA layer is not compiled into this build, so there are no macros to run or record.")
+            Text("DevWord for Android has no macro runtime. The desktop engine's VBA layer is not compiled into this build, so there are no macros to run or record.")
         },
         confirmButton = { TextButton(onClick = { MacrosDialog.dismiss() }) { Text("OK") } },
     )

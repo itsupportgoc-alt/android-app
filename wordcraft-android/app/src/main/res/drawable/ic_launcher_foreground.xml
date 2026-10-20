@@ -1,15 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  DevWord launcher icon — foreground layer.
+
+  A white monoline "DW" monogram (the app's initials) drawn as stroked polylines, centred on
+  the adaptive-icon canvas and kept inside the 66dp round-mask safe circle, so the glyph is
+  never clipped by the launcher's mask. The pink gradient behind it comes from
+  @drawable/ic_launcher_bg.
+-->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
 
-    <!-- Bold white "JL" glyph, stroked polyline centered in the adaptive-icon safe zone -->
+    <!-- "D": straight stem with a rounded bowl. -->
     <path
-        android:pathData="M25,39 L40,73 L68,73 M40,39 L68,73"
+        android:pathData="M31,69 L31,39 L38,39 Q47,39 47,54 Q47,69 38,69 L31,69"
         android:strokeColor="#FFFFFF"
-        android:strokeWidth="7.5"
+        android:strokeWidth="6.5"
+        android:strokeLineJoin="round"
+        android:strokeLineCap="round" />
+
+    <!-- "W": two valleys with a raised middle vertex. -->
+    <path
+        android:pathData="M59,39 L62.5,69 L67.5,50 L72.5,69 L76,39"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="6.5"
         android:strokeLineJoin="round"
         android:strokeLineCap="round" />
 </vector>

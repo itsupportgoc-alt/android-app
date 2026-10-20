@@ -1,9 +1,9 @@
-# WordCraft for Android
+# DevWord for Android
 
-A native Android word processor built on the **real WordCraft document engine** — the Rust
-core of [storytold/wordcraft](https://github.com/storytold/wordcraft) (document model, DOCX
-reader/writer, command registry, undo/redo), compiled to `libwordcraft_core.so` and driven
-from a Jetpack Compose UI over a thin JNI bridge.
+**DevWord** is a native Android word processor built on the **real WordCraft document
+engine** — the Rust core of [storytold/wordcraft](https://github.com/storytold/wordcraft)
+(document model, DOCX reader/writer, command registry, undo/redo), compiled to
+`libwordcraft_core.so` and driven from a Jetpack Compose UI over a thin JNI bridge.
 
 **Not a WebView.** The editor, toolbar, file picker, clipboard and keyboard are all native
 Android; the document truth lives in the unmodified upstream Rust crates.
@@ -11,7 +11,7 @@ Android; the document truth lives in the unmodified upstream Rust crates.
 ```
 Android phone
    ↓
-WordCraft-Android-*.apk  (Kotlin + Jetpack Compose, minSdk 29 / Android 10, arm64-v8a)
+DevWord-*.apk             (Kotlin + Jetpack Compose, minSdk 29 / Android 10, arm64-v8a)
    ↓
 libwordcraft_core.so     (JNI bridge, rust-core/)
    ↓
@@ -19,6 +19,19 @@ wordcraft-engine · wordcraft-docx · wordcraft-doc  (unmodified upstream crates
    ↓
 Open / Edit / Save  .docx
 ```
+
+## App name and icon
+
+| What | Where | Value |
+|---|---|---|
+| Launcher label | `app/src/main/res/values/strings.xml` | `DevWord` |
+| Launcher icon | `app/src/main/res/drawable/ic_launcher_{bg,foreground}.xml` | pink gradient background + white **DW** monogram |
+| App theme | `app/src/main/res/values/themes.xml` | `Theme.DevWord` |
+| Package / namespace | `app/build.gradle.kts` | `com.wordcraft.android` (unchanged) |
+
+The app was called **WordCraft** before v0.1.4; only the user-visible name, the launcher
+icon and the theme name changed. The package id stays `com.wordcraft.android` so an
+existing install is upgraded in place instead of appearing as a second app.
 
 ## Layout
 
@@ -110,16 +123,20 @@ The Gradle wrapper runs Gradle 8.10.2 — no manual Gradle install is needed.
 ### Publishing a release
 
 Each release must carry both the versioned assets and the stable aliases, because the
-README download links point at `releases/latest/download/WordCraft-release.apk` and
-`releases/latest/download/WordCraft-debug.apk` — GitHub resolves those to the newest
-non-prerelease release, so the aliases have to be re-uploaded every time:
+README download links point at `releases/latest/download/DevWord-release.apk` and
+`releases/latest/download/DevWord-debug.apk` — GitHub resolves those to the newest
+non-prerelease release, so the aliases have to be re-uploaded every time. The old
+`WordCraft-*.apk` aliases are kept as well, so links bookmarked before the rename still
+resolve to the current build:
 
 | Asset name | Source |
 |---|---|
-| `wordcraft-android-v<version>-release.apk` | `app/build/outputs/apk/release/app-release.apk` |
-| `wordcraft-android-v<version>-debug.apk` | `app/build/outputs/apk/debug/app-debug.apk` |
-| `WordCraft-release.apk` | same file as the versioned release asset |
-| `WordCraft-debug.apk` | same file as the versioned debug asset |
+| `devword-android-v<version>-release.apk` | `app/build/outputs/apk/release/app-release.apk` |
+| `devword-android-v<version>-debug.apk` | `app/build/outputs/apk/debug/app-debug.apk` |
+| `DevWord-release.apk` | same file as the versioned release asset |
+| `DevWord-debug.apk` | same file as the versioned debug asset |
+| `WordCraft-release.apk` | legacy alias, same bytes as `DevWord-release.apk` |
+| `WordCraft-debug.apk` | legacy alias, same bytes as `DevWord-debug.apk` |
 
 ## Install
 
@@ -176,13 +193,13 @@ group has the large button Word draws for it.
 Ready-made builds are attached to the GitHub releases. The first two links always point at
 the **latest** release:
 
-- **Release (install directly, signed):** [WordCraft-release.apk](https://github.com/itsupportgoc-alt/android-app/releases/latest/download/WordCraft-release.apk)
-- **Debug:** [WordCraft-debug.apk](https://github.com/itsupportgoc-alt/android-app/releases/latest/download/WordCraft-debug.apk)
+- **Release (install directly, signed):** [DevWord-release.apk](https://github.com/itsupportgoc-alt/android-app/releases/latest/download/DevWord-release.apk)
+- **Debug:** [DevWord-debug.apk](https://github.com/itsupportgoc-alt/android-app/releases/latest/download/DevWord-debug.apk)
 
-Pinned builds (current release **v0.1.3**):
+Pinned builds (current release **v0.1.4**):
 
-- [wordcraft-android-v0.1.3-release.apk](https://github.com/itsupportgoc-alt/android-app/releases/download/v0.1.3/wordcraft-android-v0.1.3-release.apk)
-- [wordcraft-android-v0.1.3-debug.apk](https://github.com/itsupportgoc-alt/android-app/releases/download/v0.1.3/wordcraft-android-v0.1.3-debug.apk)
+- [devword-android-v0.1.4-release.apk](https://github.com/itsupportgoc-alt/android-app/releases/download/v0.1.4/devword-android-v0.1.4-release.apk)
+- [devword-android-v0.1.4-debug.apk](https://github.com/itsupportgoc-alt/android-app/releases/download/v0.1.4/devword-android-v0.1.4-debug.apk)
 
 All releases: https://github.com/itsupportgoc-alt/android-app/releases
 

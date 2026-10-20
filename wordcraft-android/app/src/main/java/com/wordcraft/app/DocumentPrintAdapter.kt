@@ -28,7 +28,7 @@ class DocumentPrintAdapter(private val bytes: ByteArray) : PrintDocumentAdapter(
             callback.onLayoutCancelled()
             return
         }
-        val info = PrintDocumentInfo.Builder("WordCraft document")
+        val info = PrintDocumentInfo.Builder("DevWord document")
             .setContentType(PrintDocumentInfo.CONTENT_TYPE_DOCUMENT)
             .build()
         callback.onLayoutFinished(info, true)

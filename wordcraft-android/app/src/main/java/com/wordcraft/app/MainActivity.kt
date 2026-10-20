@@ -79,7 +79,7 @@ import com.wordcraft.editor.ViewState
 import com.wordcraft.editor.StatusBar
 import com.wordcraft.editor.pageCountFor
 import com.wordcraft.storage.Recents
-import com.wordcraft.ui.WordCraftTheme
+import com.wordcraft.ui.DevWordTheme
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 import java.io.File
@@ -101,7 +101,7 @@ class MainActivity : ComponentActivity() {
         }.getOrDefault("1.0")
 
         setContent {
-            WordCraftTheme(darkTheme = false) {
+            DevWordTheme(darkTheme = false) {
                 AppScreen(recents = recents, activity = this)
             }
         }

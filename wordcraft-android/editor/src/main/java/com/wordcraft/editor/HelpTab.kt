@@ -111,7 +111,7 @@ fun HelpTabGroups() {
         HelpGroup(
             "About",
             listOf(
-                HelpItem("About WordCraft", "about") { AboutDialog.show() },
+                HelpItem("About DevWord", "about") { AboutDialog.show() },
                 HelpItem("Project Page", "help") { AppHost.openUrl(APP_URL) },
             ),
         )
@@ -298,10 +298,10 @@ fun AboutDialogSurface() {
     val state = EditorController.state
     AlertDialog(
         onDismissRequest = { AboutDialog.dismiss() },
-        title = { Text("About WordCraft") },
+        title = { Text("About DevWord") },
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                Text("WordCraft for Android", fontWeight = FontWeight.SemiBold)
+                Text("DevWord for Android", fontWeight = FontWeight.SemiBold)
                 Text("Version ${AppHost.appVersion}", fontSize = 12.sp)
                 Text("Engine: WordCraft document engine (Rust)", fontSize = 12.sp)
                 Text("Words: ${state.wordCount}", fontSize = 12.sp)
