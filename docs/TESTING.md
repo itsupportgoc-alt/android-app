@@ -1,7 +1,11 @@
-# WordCraft Android — Test Results
+# DevWord Android — Test Results
 
 > Last run: 2026-10-13 · Toolchain: Rust 1.99.0 (windows-gnu host + `aarch64-linux-android`
 > target, NDK 26.3.11579264), JDK 17, Gradle 8.10.2, AGP 8.7.3, Kotlin 2.0.21
+>
+> The app was renamed from **WordCraft** to **DevWord** in v0.1.4 (label, theme and launcher
+> icon — the package id is still `com.wordcraft.android`). The counts and APK sizes below are
+> the 2026-10-13 snapshot; the current build has 116 Kotlin tests and a 75.6 MB release APK.
 
 ## 1. Rust engine tests (`wordcraft-android/rust-core`) — **10/10 pass**
 
@@ -55,7 +59,7 @@ Highlights of what the round-trip suite proves through the **same byte API the a
 | `./gradlew assembleRelease` | ✅ `app/build/outputs/apk/release/` (74.8 MB) |
 | Release signing | ✅ `apksigner verify` — `CN=WordCraft Android Local Build` (local keystore `release.keystore`) |
 | `.so` inside both APKs | ✅ `lib/arm64-v8a/libwordcraft_core.so`, 7 JNI symbols exported |
-| `aapt dump badging` | ✅ `com.wordcraft.android`, `minSdk 29`, `targetSdk 35`, label `WordCraft` |
+| `aapt dump badging` | ✅ `com.wordcraft.android`, `minSdk 29`, `targetSdk 35`, label `DevWord` (was `WordCraft` before v0.1.4) |
 
 ## 4. JNI boundary verification (static — no device available)
 
