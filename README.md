@@ -134,11 +134,18 @@ build you can also use Android Studio → Run.
 
 ## Download the APKs
 
-Ready-made builds are attached to the GitHub releases:
+Ready-made builds are attached to the GitHub releases. The first two links always point at
+the **latest** release:
 
-- **Release (install directly, signed):** [wordcraft-android-v0.1.2-release.apk](https://github.com/itsupportgoc-alt/android-app/releases/download/v0.1.2/wordcraft-android-v0.1.2-release.apk)
-- **Debug:** [wordcraft-android-v0.1.2-debug.apk](https://github.com/itsupportgoc-alt/android-app/releases/download/v0.1.2/wordcraft-android-v0.1.2-debug.apk)
-- All releases: https://github.com/itsupportgoc-alt/android-app/releases
+- **Release (install directly, signed):** [WordCraft-release.apk](https://github.com/itsupportgoc-alt/android-app/releases/latest/download/WordCraft-release.apk)
+- **Debug:** [WordCraft-debug.apk](https://github.com/itsupportgoc-alt/android-app/releases/latest/download/WordCraft-debug.apk)
+
+Pinned builds (current release **v0.1.2**):
+
+- [wordcraft-android-v0.1.2-release.apk](https://github.com/itsupportgoc-alt/android-app/releases/download/v0.1.2/wordcraft-android-v0.1.2-release.apk)
+- [wordcraft-android-v0.1.2-debug.apk](https://github.com/itsupportgoc-alt/android-app/releases/download/v0.1.2/wordcraft-android-v0.1.2-debug.apk)
+
+All releases: https://github.com/itsupportgoc-alt/android-app/releases
 
 Or, after a local build, grab them from:
 
