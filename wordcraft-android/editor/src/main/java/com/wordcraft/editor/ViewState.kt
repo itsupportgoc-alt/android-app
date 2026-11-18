@@ -37,6 +37,36 @@ object ViewState {
         if (tab in tabs) activeTab = tab
     }
 
+    // ---------------------------------------------------------------- bottom ribbon pane
+
+    /**
+     * Word mobile keeps the ribbon in a pane that slides up from the bottom tab strip. The pane
+     * starts closed, as on a phone.
+     */
+    var ribbonOpen: Boolean by mutableStateOf(false)
+        private set
+
+    /** Open [tab] in the bottom pane (tab strip, or one of the tabs behind ⋯). */
+    fun openTab(tab: String) {
+        if (tab !in tabs) return
+        activeTab = tab
+        ribbonOpen = true
+    }
+
+    /** Tap on a tab strip item: open it, or close the pane when that tab is already open. */
+    fun toggleTab(tab: String) {
+        if (tab !in tabs) return
+        if (ribbonOpen && activeTab == tab) {
+            ribbonOpen = false
+        } else {
+            activeTab = tab
+            ribbonOpen = true
+        }
+    }
+
+    /** Collapse the pane (its chevron). */
+    fun closeRibbon() { ribbonOpen = false }
+
     // ---------------------------------------------------------------- Views group
 
     /** Word's five document views (Views group). The reference shows Print Layout selected. */
@@ -184,6 +214,7 @@ object ViewState {
 
     fun reset() {
         activeTab = "View"
+        ribbonOpen = false
         view = DocView.PRINT_LAYOUT
         focusMode = false
         immersiveReader = false

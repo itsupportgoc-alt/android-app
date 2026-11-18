@@ -67,7 +67,7 @@ fun Ribbon(modifier: Modifier = Modifier) {
             active = ViewState.activeTab,
             onSelect = { ViewState.selectTab(it) },
         )
-        TabContent(ViewState.activeTab)
+        RibbonTabContent(ViewState.activeTab)
     }
 }
 
@@ -143,7 +143,7 @@ private val ViewTabs = listOf(
 // ------------------------------------------------------------------ tab bodies
 
 @Composable
-private fun TabContent(tab: String) {
+fun RibbonTabContent(tab: String) {
     when (tab) {
         "Home" -> HomeTabGroups()
         "View" -> ViewTabGroups()

@@ -1,5 +1,8 @@
 package com.wordcraft.app
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.net.Uri
@@ -10,35 +13,22 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.Redo
-import androidx.compose.material.icons.automirrored.filled.Undo
 import androidx.compose.material.icons.filled.FileOpen
-import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Save
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
@@ -46,38 +36,27 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.core.content.FileProvider
 import com.wordcraft.documentcore.PdfImport
 import com.wordcraft.documentcore.PdfImportException
-import com.wordcraft.documentcore.SENTINEL
 import com.wordcraft.editor.AppActionKind
 import com.wordcraft.editor.AppHost
-import com.wordcraft.editor.CommandSearch
 import com.wordcraft.editor.EditorController
 import com.wordcraft.editor.EditorScreen
 import com.wordcraft.editor.FindBar
-import com.wordcraft.editor.Ribbon
+import com.wordcraft.editor.FormatBar
 import com.wordcraft.editor.RibbonDialogs
 import com.wordcraft.editor.ViewState
-import com.wordcraft.editor.StatusBar
-import com.wordcraft.editor.pageCountFor
+import com.wordcraft.editor.WordRibbonPane
+import com.wordcraft.editor.WordTabBar
+import com.wordcraft.editor.WordTopBar
 import com.wordcraft.storage.Recents
 import com.wordcraft.ui.DevWordTheme
 import kotlinx.coroutines.launch
@@ -306,14 +285,30 @@ private fun AppScreen(recents: Recents, activity: MainActivity) {
     Scaffold(
         snackbarHost = { SnackbarHost(snackbar) },
         containerColor = MaterialTheme.colorScheme.background,
+        bottomBar = {
+            // Word mobile: the ribbon pane slides up above the bottom tab strip.
+            Column {
+                WordRibbonPane()
+                WordTabBar()
+            }
+        },
         topBar = {
-            // Word-style header: a white window bar with AutoSave · save/undo/redo · the centred
-            // "file — Not saved" title · search · Share, followed by the ribbon (File/Home/…).
-            WindowBar(
-                title = EditorController.fileName + if (EditorController.state.dirty) " — Not saved" else " — Saved",
-                onSave = doSave,
-                onShare = doShare,
-                onOpenMenu = { menuOpen = true },
+            // Word mobile chrome: the white app bar, then the always-visible format strip.
+            WordTopBar(
+                title = EditorController.fileName,
+                dirty = EditorController.state.dirty,
+                wordCount = EditorController.state.wordCount,
+                canUndo = EditorController.state.canUndo,
+                canRedo = EditorController.state.canRedo,
+                onUndo = { EditorController.undo() },
+                onRedo = { EditorController.redo() },
+                onSearch = { EditorController.showFind(true) },
+                onMore = { menuOpen = true },
+            )
+            FormatBar(
+                onPickImage = { imageLauncher.launch(arrayOf("image/*")) },
+                onInsertLink = { linkDialog = true },
+                onMore = { ViewState.toggleTab(ViewState.activeTab) },
             )
             Box {
                 DropdownMenu(expanded = menuOpen, onDismissRequest = { menuOpen = false }) {
@@ -391,137 +386,11 @@ private fun AppScreen(recents: Recents, activity: MainActivity) {
                 .fillMaxSize()
                 .padding(padding),
         ) {
-            // Word ribbon: tab strip + the selected tab's groups (Home/View are the full copies).
-            Ribbon(modifier = Modifier.fillMaxWidth())
             if (EditorController.findVisible) {
                 FindBar()
             }
             EditorScreen(modifier = Modifier.weight(1f).fillMaxWidth())
-            // Word status bar: page/words left, view toggles + zoom slider right.
-            StatusBar(
-                wordCount = EditorController.state.wordCount,
-                pageCount = pageCountFor(EditorController.state.wordCount),
-            )
         }
-    }
-}
-
-// ---------------------------------------------------------------- window bar
-
-/**
- * The reference header: a white window bar with an AutoSave pill, save/undo/redo/more cluster,
- * the centred "title — Not saved" caption, a "Search commands and help" field and a blue Share
- * button — all in the top bar, above the ribbon tabs.
- */
-@Composable
-private fun WindowBar(
-    title: String,
-    onSave: () -> Unit,
-    onShare: () -> Unit,
-    onOpenMenu: () -> Unit,
-) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.surface),
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 10.dp, vertical = 6.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            // AutoSave pill.
-            Row(
-                modifier = Modifier
-                    .clip(RoundedCornerShape(12.dp))
-                    .border(0.5.dp, MaterialTheme.colorScheme.outline, RoundedCornerShape(12.dp))
-                    .clickable { EditorController.showStatus("AutoSave: use Save (disc) or the ⋮ menu") }
-                    .padding(horizontal = 8.dp, vertical = 4.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(4.dp),
-            ) {
-                Text("AutoSave", fontSize = 11.sp, color = MaterialTheme.colorScheme.onSurface)
-                Box(
-                    modifier = Modifier
-                        .size(10.dp)
-                        .clip(CircleShape)
-                        .background(MaterialTheme.colorScheme.primary),
-                )
-            }
-            Spacer(Modifier.width(8.dp))
-            IconButton(onClick = onSave, modifier = Modifier.size(32.dp)) {
-                Icon(Icons.Filled.Save, contentDescription = "Save", modifier = Modifier.size(18.dp))
-            }
-            IconButton(
-                onClick = { EditorController.undo() },
-                modifier = Modifier.size(32.dp),
-                enabled = EditorController.state.canUndo,
-            ) {
-                Icon(Icons.AutoMirrored.Filled.Undo, contentDescription = "Undo", modifier = Modifier.size(18.dp))
-            }
-            IconButton(
-                onClick = { EditorController.redo() },
-                modifier = Modifier.size(32.dp),
-                enabled = EditorController.state.canRedo,
-            ) {
-                Icon(Icons.AutoMirrored.Filled.Redo, contentDescription = "Redo", modifier = Modifier.size(18.dp))
-            }
-            IconButton(onClick = onOpenMenu, modifier = Modifier.size(32.dp)) {
-                Icon(Icons.Filled.MoreVert, contentDescription = "More", modifier = Modifier.size(18.dp))
-            }
-
-            // Centred title ("file — Not saved"), Word window style.
-            Text(
-                text = title,
-                fontSize = 14.sp,
-                fontWeight = FontWeight.SemiBold,
-                textAlign = TextAlign.Center,
-                maxLines = 1,
-                modifier = Modifier.weight(1f),
-            )
-
-            // Search "commands and help" field (decorative input, like the reference).
-            OutlinedTextField(
-                value = TextFieldValue(""),
-                onValueChange = {},
-                singleLine = true,
-                placeholder = { Text("Search commands and help", fontSize = 12.sp) },
-                textStyle = androidx.compose.ui.text.TextStyle(fontSize = 12.sp),
-                shape = RoundedCornerShape(18.dp),
-                colors = androidx.compose.material3.OutlinedTextFieldDefaults.colors(
-                    unfocusedContainerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
-                    focusedContainerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
-                    unfocusedBorderColor = androidx.compose.ui.graphics.Color.Transparent,
-                    focusedBorderColor = MaterialTheme.colorScheme.primary,
-                ),
-                modifier = Modifier
-                    .padding(start = 6.dp)
-                    .width(170.dp)
-                    .height(46.dp),
-            )
-            Spacer(Modifier.width(10.dp))
-
-            // Blue Share button.
-            Row(
-                modifier = Modifier
-                    .clip(RoundedCornerShape(14.dp))
-                    .background(MaterialTheme.colorScheme.primary)
-                    .clickable(onClick = onShare)
-                    .padding(horizontal = 14.dp, vertical = 7.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(6.dp),
-            ) {
-                Icon(
-                    Icons.Filled.Share,
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.onPrimary,
-                    modifier = Modifier.size(14.dp),
-                )
-                Text("Share", color = MaterialTheme.colorScheme.onPrimary, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
-            }
-        }
-        HorizontalDivider(thickness = 0.5.dp, color = MaterialTheme.colorScheme.outline.copy(alpha = 0.4f))
     }
 }
 

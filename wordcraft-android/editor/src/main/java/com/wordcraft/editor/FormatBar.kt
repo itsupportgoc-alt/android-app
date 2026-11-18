@@ -105,14 +105,16 @@ val Styles: List<Pair<String, String>> = listOf(
 )
 
 /**
- * The compact mobile toolbar: `B I U S · Align · + · ⋮`.
- * The "+" menu inserts; "⋮" opens the full formatting sheet.
+ * The compact mobile toolbar: `B I U S · Align · + · Search · ⋮`.
+ * The "+" menu inserts. "⋮" opens the full formatting sheet, unless the host installs [onMore]
+ * (the Word mobile shell uses it to expand the bottom ribbon pane instead).
  */
 @Composable
 fun FormatBar(
     onPickImage: () -> Unit,
     onInsertLink: () -> Unit,
     modifier: Modifier = Modifier,
+    onMore: (() -> Unit)? = null,
 ) {
     val state = EditorController.state
     val f = state.format
@@ -186,7 +188,7 @@ fun FormatBar(
             IconButton(onClick = { EditorController.showFind(true) }) {
                 Icon(Icons.Filled.Search, contentDescription = "Find", tint = MaterialTheme.colorScheme.onSurface)
             }
-            IconButton(onClick = { sheet = true }) {
+            IconButton(onClick = { if (onMore != null) onMore() else sheet = true }) {
                 Icon(Icons.Filled.MoreVert, contentDescription = "More", tint = MaterialTheme.colorScheme.onSurface)
             }
         }

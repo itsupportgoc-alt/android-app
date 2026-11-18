@@ -156,17 +156,24 @@ build you can also use Android Studio → Run.
 - Type with the soft keyboard or a hardware keyboard; Enter starts a new paragraph,
   Backspace merges / leaves lists exactly like desktop WordCraft (all through the engine's
   own commands).
-- Toolbar: a full Word ribbon with the tabs **File · Home · Insert · Draw · Design · Layout ·
-  References · Mailings · Review · View · Help**. The **Home** ribbon holds the everyday
-  tools — Clipboard (paste/cut/copy), Font (name, size, grow/shrink, clear formatting,
+- The chrome is Microsoft Word for Android's phone layout. The white **app bar** holds Word's
+  blue **W** tile, the document name with its *Saved to this device / Not saved · N words*
+  caption, then undo, redo, search (opens Find) and the ⋮ menu. Beneath it sits the
+  always-visible **format strip**: bold, italic, underline, strikethrough, alignment, insert,
+  bullets, find and ⋮.
+- The **ribbon lives at the bottom**, as it does in Word on a phone: the tab strip
+  **Home · Insert · Draw · Layout · Review · View** with **⋯** for Design, References, Mailings,
+  File and Help. Tapping a tab slides its ribbon groups up above the strip; tapping that tab
+  again (or the pane's chevron) collapses it. The **Home** ribbon holds the everyday tools —
+  Clipboard (paste/cut/copy), Font (name, size, grow/shrink, clear formatting,
   bold/italic/underline/strikethrough, font colour, highlighter), Paragraph (bullets,
   numbering, indent, alignment), Styles (Normal, Heading 1, Title, Heading 2, Subtitle) and
-  Editing (Find, Replace, Select All). The **View** ribbon adds the view/zoom/window
-  controls, and **Insert, Draw, Design, Layout, References, Mailings and Review** are
-  generated from the engine's own command registry, so every button in them runs a real
-  engine command with the parameters that command expects.
+  Editing (Find, Replace, Select All). The **View** ribbon adds the view/zoom/window controls,
+  and every other tab is generated from the engine's own command registry, so each button runs
+  a real engine command with the parameters that command expects.
 - **Find/replace** via the Editing group or Ctrl+F; undo/redo via the header buttons or Ctrl+Z/Y.
-- File menu: New, Open… (system picker), Save / Save as…, Share, Recent documents.
+- **File** (behind ⋯) is Word's backstage: New, Open… (system picker), Save / Save as…, Save as
+  PDF, Open PDF…, Share, Print and Recent documents.
 
 ### How the ribbon is built
 

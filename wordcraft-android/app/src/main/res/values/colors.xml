@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="word_chrome">#FF69B4</color>
-    <color name="word_canvas">#E1E1E1</color>
+    <!-- Word's chrome blue (status bar) over Word mobile's warm grey canvas. -->
+    <color name="word_chrome">#FF2B579A</color>
+    <color name="word_canvas">#FFF3F2F1</color>
     <color name="pink_accent">#EC407A</color>
 </resources>
