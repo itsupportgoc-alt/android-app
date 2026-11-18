@@ -203,10 +203,13 @@ the **latest** release:
 - **Release (install directly, signed):** [DevWord-release.apk](https://github.com/itsupportgoc-alt/android-app/releases/latest/download/DevWord-release.apk)
 - **Debug:** [DevWord-debug.apk](https://github.com/itsupportgoc-alt/android-app/releases/latest/download/DevWord-debug.apk)
 
-Pinned builds (current release **v0.1.4**):
+Pinned builds (current release **v0.1.5**):
 
-- [devword-android-v0.1.4-release.apk](https://github.com/itsupportgoc-alt/android-app/releases/download/v0.1.4/devword-android-v0.1.4-release.apk)
-- [devword-android-v0.1.4-debug.apk](https://github.com/itsupportgoc-alt/android-app/releases/download/v0.1.4/devword-android-v0.1.4-debug.apk)
+- [devword-android-v0.1.5-release.apk](https://github.com/itsupportgoc-alt/android-app/releases/download/v0.1.5/devword-android-v0.1.5-release.apk)
+- [devword-android-v0.1.5-debug.apk](https://github.com/itsupportgoc-alt/android-app/releases/download/v0.1.5/devword-android-v0.1.5-debug.apk)
+
+The repository is private, so the links and the releases page ask you to sign in with a
+GitHub account that has access before the download starts.
 
 All releases: https://github.com/itsupportgoc-alt/android-app/releases
 
