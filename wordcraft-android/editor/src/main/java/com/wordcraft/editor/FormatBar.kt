@@ -33,7 +33,6 @@ import androidx.compose.material.icons.filled.FormatListNumbered
 import androidx.compose.material.icons.filled.FormatStrikethrough
 import androidx.compose.material.icons.filled.FormatUnderlined
 import androidx.compose.material.icons.filled.Image
-import androidx.compose.material.icons.filled.InsertLink
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.DropdownMenu
@@ -44,9 +43,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -107,7 +104,7 @@ val Styles: List<Pair<String, String>> = listOf(
 /**
  * The compact mobile toolbar: `B I U S · Align · + · Search · ⋮`.
  * The "+" menu inserts. "⋮" opens the full formatting sheet, unless the host installs [onMore]
- * (the Word mobile shell uses it to expand the bottom ribbon pane instead).
+ * (the Word mobile shell uses it to open the bottom ribbon pane on Home instead).
  */
 @Composable
 fun FormatBar(

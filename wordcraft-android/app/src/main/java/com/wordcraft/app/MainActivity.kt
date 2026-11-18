@@ -308,7 +308,8 @@ private fun AppScreen(recents: Recents, activity: MainActivity) {
             FormatBar(
                 onPickImage = { imageLauncher.launch(arrayOf("image/*")) },
                 onInsertLink = { linkDialog = true },
-                onMore = { ViewState.toggleTab(ViewState.activeTab) },
+                // Word's ⋮ opens the ribbon on Home (and closes it again if already there).
+                onMore = { ViewState.toggleTab("Home") },
             )
             Box {
                 DropdownMenu(expanded = menuOpen, onDismissRequest = { menuOpen = false }) {

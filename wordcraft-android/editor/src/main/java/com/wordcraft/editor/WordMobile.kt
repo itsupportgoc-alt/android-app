@@ -194,6 +194,7 @@ fun WordTabBar(modifier: Modifier = Modifier) {
                     tab = WordMobileTab("__more", "More", Icons.Filled.MoreHoriz),
                     selected = moreOpen,
                     onClick = { moreOpen = true },
+                    modifier = Modifier.fillMaxWidth(),
                 )
                 DropdownMenu(expanded = moreOpen, onDismissRequest = { moreOpen = false }) {
                     MoreTabs.forEach { id ->

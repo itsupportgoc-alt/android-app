@@ -25,9 +25,14 @@ Open / Edit / Save  .docx
 | What | Where | Value |
 |---|---|---|
 | Launcher label | `app/src/main/res/values/strings.xml` | `DevWord` |
-| Launcher icon | `app/src/main/res/drawable/ic_launcher_{bg,foreground}.xml` | pink gradient background + white **DW** monogram |
+| Launcher icon | `app/src/main/res/drawable/ic_launcher_{bg,foreground,monochrome}.xml` | blue gradient plate + white page with a magenta folded corner and a highlighted line |
 | App theme | `app/src/main/res/values/themes.xml` | `Theme.DevWord` |
 | Package / namespace | `app/build.gradle.kts` | `com.wordcraft.android` (unchanged) |
+
+The mark is a document page rather than a letter monogram: a white sheet with its top-right
+corner folded down in the app's magenta accent, a Word-blue title line and a magenta highlighter
+swipe behind the middle body line. `ic_launcher_monochrome.xml` is the Android 13+ themed-icon
+layer, drawn as an outline so the system tint does not flatten the page into a blank blob.
 
 The app was called **WordCraft** before v0.1.4; only the user-visible name, the launcher
 icon and the theme name changed. The package id stays `com.wordcraft.android` so an

@@ -2,9 +2,10 @@
 <!--
   DevWord launcher icon — background layer.
 
-  A pink diagonal gradient (light pink -> deep pink) fills the whole 108dp adaptive-icon
-  canvas, so the icon reads as pink under every launcher mask (circle, squircle, rounded
-  square). The white "DW" monogram lives in the foreground layer.
+  A deep blue diagonal gradient (Word's chrome blue down to a near-navy corner) with a soft
+  light band across the lower right, so the plate has depth and reads as a designed tile rather
+  than a flat fill under every launcher mask (circle, squircle, rounded square). The white page
+  with its magenta fold lives in the foreground layer.
 -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aapt="http://schemas.android.com/aapt"
@@ -22,12 +23,20 @@
                 android:endX="108"
                 android:endY="108">
                 <item
-                    android:color="#FF7FB3"
+                    android:color="#FF3170C9"
                     android:offset="0" />
                 <item
-                    android:color="#E91E63"
+                    android:color="#FF1B4C93"
+                    android:offset="0.55" />
+                <item
+                    android:color="#FF102C58"
                     android:offset="1" />
             </gradient>
         </aapt:attr>
     </path>
+
+    <!-- Depth: a translucent light band running through the lower right. -->
+    <path
+        android:pathData="M54,108 L108,54 L108,108 Z"
+        android:fillColor="#12FFFFFF" />
 </vector>

@@ -2,10 +2,12 @@
 <!--
   DevWord launcher icon — foreground layer.
 
-  A white monoline "DW" monogram (the app's initials) drawn as stroked polylines, centred on
-  the adaptive-icon canvas and kept inside the 66dp round-mask safe circle, so the glyph is
-  never clipped by the launcher's mask. The pink gradient behind it comes from
-  @drawable/ic_launcher_bg.
+  The mark is a white document page with its top-right corner folded down in the app's magenta
+  accent, a Word-blue title line, two grey body lines and a magenta highlighter swipe behind the
+  middle one — a word processor you can read as such at 48dp, and not a copy of Word's "W" tile.
+
+  Everything sits inside the 66dp round-mask safe circle (the page spans y 26…81, x 32…74, so
+  its furthest corner is ~34dp from the canvas centre), so no launcher mask clips the artwork.
 -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
@@ -13,19 +15,39 @@
     android:viewportWidth="108"
     android:viewportHeight="108">
 
-    <!-- "D": straight stem with a rounded bowl. -->
+    <!-- The page: rounded sheet with the top-right corner cut away for the fold. -->
     <path
-        android:pathData="M31,69 L31,39 L38,39 Q47,39 47,54 Q47,69 38,69 L31,69"
-        android:strokeColor="#FFFFFF"
-        android:strokeWidth="6.5"
-        android:strokeLineJoin="round"
+        android:pathData="M38,26 H62 L74,38 V75 A6,6 0 0 1 68,81 H38 A6,6 0 0 1 32,75 V32 A6,6 0 0 1 38,26 Z"
+        android:fillColor="#FFFFFFFF" />
+
+    <!-- The folded corner, in the app's magenta accent. -->
+    <path
+        android:pathData="M62,26 L74,38 H62 Z"
+        android:fillColor="#FFEC407A" />
+
+    <!-- Title line, in Word blue. -->
+    <path
+        android:pathData="M41,46 H64"
+        android:strokeColor="#FF2B579A"
+        android:strokeWidth="5"
         android:strokeLineCap="round" />
 
-    <!-- "W": two valleys with a raised middle vertex. -->
+    <!-- Highlighter swipe behind the middle body line. -->
     <path
-        android:pathData="M59,39 L62.5,69 L67.5,50 L72.5,69 L76,39"
-        android:strokeColor="#FFFFFF"
-        android:strokeWidth="6.5"
-        android:strokeLineJoin="round"
+        android:pathData="M41,57 H64"
+        android:strokeColor="#38EC407A"
+        android:strokeWidth="11"
+        android:strokeLineCap="round" />
+
+    <!-- Body lines. -->
+    <path
+        android:pathData="M41,57 H64"
+        android:strokeColor="#FF8C99AD"
+        android:strokeWidth="4"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M41,68 H56"
+        android:strokeColor="#FF8C99AD"
+        android:strokeWidth="4"
         android:strokeLineCap="round" />
 </vector>

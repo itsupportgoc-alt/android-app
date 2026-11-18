@@ -47,103 +47,18 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 /**
- * The Word ribbon: the tab strip (`File · Home · … · Help`) plus the selected tab's content.
+ * The tab content of Word's ribbon, rendered inside the bottom pane of [WordRibbonPane].
  *
- * This file renders the **View** tab exactly as the reference image shows it: eight captioned
- * groups in order — Views, Immersive, Page Movement, Show, Zoom, Window, Macros, Properties —
- * every control present with its icon, label and state. The other tabs have their own content:
- * **Home** is the copy of the reference, **File** is Word's backstage, **Help** holds the
- * command search, and the remaining tabs (Insert, Draw, Design, Layout, References, Mailings,
- * Review) are generated from the engine's own command registry (see [CommandTabGroups]).
+ * [RibbonTabContent] picks the content for one tab: **Home**, **View**, **File** and **Help**
+ * have hand-built copies of Word's groups, and the remaining tabs (Insert, Draw, Design, Layout,
+ * References, Mailings, Review) are generated from the engine's own command registry (see
+ * [CommandTabGroups]). Nothing here renders the tab strip itself — the strip is Word mobile's
+ * bottom bar ([WordTabBar]).
  */
-@Composable
-fun Ribbon(modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.surface),
-    ) {
-        RibbonTabStrip(
-            active = ViewState.activeTab,
-            onSelect = { ViewState.selectTab(it) },
-        )
-        RibbonTabContent(ViewState.activeTab)
-    }
-}
-
-// ------------------------------------------------------------------ tab strip
-
-@Composable
-private fun RibbonTabStrip(active: String, onSelect: (String) -> Unit) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .horizontalScroll(rememberScrollState())
-            .background(MaterialTheme.colorScheme.surface)
-            .padding(horizontal = 4.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        // File is the blue Word button, not a plain tab.
-        Box(
-            modifier = Modifier
-                .padding(end = 4.dp)
-                .clip(RoundedCornerShape(4.dp))
-                .background(MaterialTheme.colorScheme.primary)
-                .clickable { onSelect("File") }
-                .padding(horizontal = 14.dp, vertical = 8.dp),
-        ) {
-            Text(
-                text = "File",
-                color = MaterialTheme.colorScheme.onPrimary,
-                fontSize = 13.sp,
-                fontWeight = FontWeight.Medium,
-            )
-        }
-        ViewTabs.forEach { tab ->
-            val isActive = tab == active
-            Column(
-                modifier = Modifier
-                    .clip(RoundedCornerShape(4.dp))
-                    .clickable { onSelect(tab) }
-                    .padding(horizontal = 12.dp, vertical = 8.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-            ) {
-                Text(
-                    text = tab,
-                    fontSize = 13.sp,
-                    color = if (isActive) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface,
-                    fontWeight = if (isActive) FontWeight.SemiBold else FontWeight.Normal,
-                )
-                // Active tab gets Word's underline bar.
-                Spacer(Modifier.height(3.dp))
-                Box(
-                    modifier = Modifier
-                        .width(if (isActive) 28.dp else 0.dp)
-                        .height(2.dp)
-                        .background(
-                            if (isActive) MaterialTheme.colorScheme.primary
-                            else androidx.compose.ui.graphics.Color.Transparent,
-                        ),
-                )
-            }
-        }
-    }
-    androidx.compose.material3.HorizontalDivider(
-        thickness = 0.5.dp,
-        color = MaterialTheme.colorScheme.outline.copy(alpha = 0.4f),
-    )
-}
-
-/** Tabs after File, in reference order. */
-private val ViewTabs = listOf(
-    "Home", "Insert", "Draw", "Design", "Layout",
-    "References", "Mailings", "Review", "View", "Help",
-)
-
 // ------------------------------------------------------------------ tab bodies
 
 @Composable
-fun RibbonTabContent(tab: String) {
+internal fun RibbonTabContent(tab: String) {
     when (tab) {
         "Home" -> HomeTabGroups()
         "View" -> ViewTabGroups()
