@@ -13,27 +13,16 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.FileOpen
-import androidx.compose.material.icons.filled.Save
-import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -42,7 +31,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.core.content.FileProvider
 import com.wordcraft.documentcore.PdfImport
 import com.wordcraft.documentcore.PdfImportException
@@ -51,11 +40,11 @@ import com.wordcraft.editor.AppHost
 import com.wordcraft.editor.EditorController
 import com.wordcraft.editor.EditorScreen
 import com.wordcraft.editor.FindBar
-import com.wordcraft.editor.FormatBar
 import com.wordcraft.editor.RibbonDialogs
 import com.wordcraft.editor.ViewState
 import com.wordcraft.editor.WordRibbonPane
-import com.wordcraft.editor.WordTabBar
+import com.wordcraft.editor.WordRibbonTabs
+import com.wordcraft.editor.WordStatusBar
 import com.wordcraft.editor.WordTopBar
 import com.wordcraft.storage.Recents
 import com.wordcraft.ui.DevWordTheme
@@ -115,10 +104,14 @@ private val OPEN_MIMES = arrayOf(
 private fun AppScreen(recents: Recents, activity: MainActivity) {
     val snackbar = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
-    var menuOpen by remember { mutableStateOf(false) }
+    // Word's ribbon is expanded where there is room for it and collapsed to the tab strip on a
+    // short viewport (a phone in landscape), so the page keeps its room either way.
+    val configuration = LocalConfiguration.current
+    LaunchedEffect(configuration.screenHeightDp) {
+        ViewState.applyDefaultForViewport(configuration.screenHeightDp < 520)
+    }
     var showRecents by remember { mutableStateOf(false) }
     var showNewConfirm by remember { mutableStateOf(false) }
-    var linkDialog by remember { mutableStateOf(false) }
 
     // ---- file pickers ----
     val openLauncher = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
@@ -249,10 +242,6 @@ private fun AppScreen(recents: Recents, activity: MainActivity) {
         }
     }
 
-    // ---- links ----
-    if (linkDialog) {
-        LinkDialog(onDismiss = { linkDialog = false })
-    }
     if (showNewConfirm) {
         AlertDialog(
             onDismissRequest = { showNewConfirm = false },
@@ -285,99 +274,30 @@ private fun AppScreen(recents: Recents, activity: MainActivity) {
     Scaffold(
         snackbarHost = { SnackbarHost(snackbar) },
         containerColor = MaterialTheme.colorScheme.background,
-        bottomBar = {
-            // Word mobile: the ribbon pane slides up above the bottom tab strip.
+        // Word for the PC's chrome, top to bottom: title bar, ribbon tab strip, ribbon groups.
+        topBar = {
             Column {
+                WordTopBar(
+                    title = EditorController.fileName,
+                    dirty = EditorController.state.dirty,
+                    wordCount = EditorController.state.wordCount,
+                    canUndo = EditorController.state.canUndo,
+                    canRedo = EditorController.state.canRedo,
+                    onUndo = { EditorController.undo() },
+                    onRedo = { EditorController.redo() },
+                    onSave = { doSave() },
+                    onSearch = { EditorController.showFind(true) },
+                )
+                WordRibbonTabs()
                 WordRibbonPane()
-                WordTabBar()
             }
         },
-        topBar = {
-            // Word mobile chrome: the white app bar, then the always-visible format strip.
-            WordTopBar(
-                title = EditorController.fileName,
-                dirty = EditorController.state.dirty,
+        // Word's status bar along the bottom: word count, view buttons and the zoom controls.
+        bottomBar = {
+            WordStatusBar(
                 wordCount = EditorController.state.wordCount,
-                canUndo = EditorController.state.canUndo,
-                canRedo = EditorController.state.canRedo,
-                onUndo = { EditorController.undo() },
-                onRedo = { EditorController.redo() },
-                onSearch = { EditorController.showFind(true) },
-                onMore = { menuOpen = true },
+                dirty = EditorController.state.dirty,
             )
-            FormatBar(
-                onPickImage = { imageLauncher.launch(arrayOf("image/*")) },
-                onInsertLink = { linkDialog = true },
-                // Word's ⋮ opens the ribbon on Home (and closes it again if already there).
-                onMore = { ViewState.toggleTab("Home") },
-            )
-            Box {
-                DropdownMenu(expanded = menuOpen, onDismissRequest = { menuOpen = false }) {
-                    DropdownMenuItem(
-                        text = { Text("New") },
-                        leadingIcon = { Icon(Icons.Filled.FileOpen, contentDescription = null) },
-                        onClick = {
-                            menuOpen = false
-                            if (EditorController.state.dirty) showNewConfirm = true
-                            else {
-                                MainActivity.currentUri = null
-                                EditorController.newDocument()
-                            }
-                        },
-                    )
-                    DropdownMenuItem(
-                        text = { Text("Open…") },
-                        onClick = {
-                            menuOpen = false
-                            openLauncher.launch(OPEN_MIMES)
-                        },
-                    )
-                    DropdownMenuItem(
-                        text = { Text("Save") },
-                        onClick = {
-                            menuOpen = false
-                            doSave()
-                        },
-                    )
-                    DropdownMenuItem(
-                        text = { Text("Save as…") },
-                        onClick = {
-                            menuOpen = false
-                            saveAsLauncher.launch(defaultSaveName())
-                        },
-                    )
-                    DropdownMenuItem(
-                        text = { Text("Save as PDF") },
-                        onClick = {
-                            menuOpen = false
-                            val base = EditorController.fileName.substringBeforeLast('.')
-                                .ifBlank { "document" }
-                            pdfSaveLauncher.launch("$base.pdf")
-                        },
-                    )
-                    DropdownMenuItem(
-                        text = { Text("Open PDF…") },
-                        onClick = {
-                            menuOpen = false
-                            pdfOpenLauncher.launch(arrayOf("application/pdf"))
-                        },
-                    )
-                    DropdownMenuItem(
-                        text = { Text("Share") },
-                        onClick = {
-                            menuOpen = false
-                            doShare()
-                        },
-                    )
-                    DropdownMenuItem(
-                        text = { Text("Recent documents") },
-                        onClick = {
-                            menuOpen = false
-                            showRecents = true
-                        },
-                    )
-                }
-            }
         },
     ) { padding ->
         // Ribbon dialogs (Zoom / Window / Macros / Properties).
@@ -579,30 +499,3 @@ private fun RecentsDialog(recents: Recents, onDismiss: () -> Unit, onPick: (com.
     )
 }
 
-@Composable
-private fun LinkDialog(onDismiss: () -> Unit) {
-    var url by remember { mutableStateOf(TextFieldValue("")) }
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text("Insert link") },
-        text = {
-            androidx.compose.material3.OutlinedTextField(
-                value = url,
-                onValueChange = { url = it },
-                singleLine = true,
-                placeholder = { Text("https://example.com") },
-                modifier = Modifier.fillMaxWidth(),
-            )
-        },
-        confirmButton = {
-            TextButton(onClick = {
-                val u = url.text.trim()
-                if (u.isNotEmpty()) EditorController.insertLink(u, null)
-                onDismiss()
-            }) { Text("Insert") }
-        },
-        dismissButton = {
-            TextButton(onClick = onDismiss) { Text("Cancel") }
-        },
-    )
-}

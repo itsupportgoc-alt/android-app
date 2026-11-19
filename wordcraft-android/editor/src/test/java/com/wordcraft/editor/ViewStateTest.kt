@@ -29,7 +29,7 @@ class ViewStateTest {
 
     @Test
     fun `selecting a tab changes the active tab`() {
-        assertEquals("View", ViewState.activeTab) // reference default
+        assertEquals("Home", ViewState.activeTab) // Word opens on Home
         ViewState.selectTab("Home")
         assertEquals("Home", ViewState.activeTab)
         ViewState.selectTab("NoSuchTab") // ignored
@@ -76,17 +76,35 @@ class ViewStateTest {
 
     @Test
     fun `show toggles flip real visibility flags`() {
-        // Reference: Ruler on, Gridlines off, Navigation Pane on.
+        // Word for the PC: Ruler on, Gridlines off, Navigation Pane hidden until asked for.
         assertTrue(ViewState.showRuler)
         assertFalse(ViewState.showGridlines)
-        assertTrue(ViewState.showNavPane)
+        assertFalse(ViewState.showNavPane)
 
         ViewState.toggleRuler(); assertFalse(ViewState.showRuler)
         ViewState.toggleGridlines(); assertTrue(ViewState.showGridlines)
-        ViewState.toggleNavPane(); assertFalse(ViewState.showNavPane)
+        ViewState.toggleNavPane(); assertTrue(ViewState.showNavPane)
 
         ViewState.closeNavPane(); assertFalse(ViewState.showNavPane)
         ViewState.toggleNavCollapsed(); assertTrue(ViewState.navCollapsed)
+    }
+
+    // ---------------------------------------------------------------- ribbon sizing
+
+    @Test
+    fun `the ribbon starts expanded and collapses on a short viewport`() {
+        assertTrue(ViewState.ribbonOpen)
+
+        ViewState.applyDefaultForViewport(shortViewport = true) // phone in landscape
+        assertFalse(ViewState.ribbonOpen)
+
+        ViewState.applyDefaultForViewport(shortViewport = false) // phone portrait / tablet
+        assertTrue(ViewState.ribbonOpen)
+
+        ViewState.toggleTab("Insert")
+        assertTrue(ViewState.ribbonOpen) // opening a tab always expands the ribbon
+        ViewState.toggleTab("Insert")
+        assertFalse(ViewState.ribbonOpen) // tapping the open tab collapses it
     }
 
     // ---------------------------------------------------------------- Zoom group
@@ -215,7 +233,7 @@ class ViewStateTest {
 
         ViewState.reset()
 
-        assertEquals("View", ViewState.activeTab)
+        assertEquals("Home", ViewState.activeTab)
         assertEquals(ViewState.DocView.PRINT_LAYOUT, ViewState.view)
         assertTrue(ViewState.showRuler)
         assertEquals(1.0f, ViewState.zoom, 0.0001f)

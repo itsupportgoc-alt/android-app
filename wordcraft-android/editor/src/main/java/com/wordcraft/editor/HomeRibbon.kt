@@ -104,23 +104,23 @@ private fun GroupDivider() {
         modifier = Modifier
             .padding(horizontal = 6.dp)
             .width(1.dp)
-            .height(84.dp)
+            .height(RIBBON_GROUP_HEIGHT.dp)
             .background(MaterialTheme.colorScheme.outline.copy(alpha = 0.35f)),
     )
 }
 
-/** A captioned group: content on top, small caption beneath (Word ribbon style). */
+/** A captioned group: content on top, small caption pinned beneath (Word ribbon style). */
 @Composable
 private fun Group(caption: String, content: @Composable () -> Unit) {
     Column(
-        modifier = Modifier.padding(horizontal = 4.dp),
+        modifier = Modifier.height(RIBBON_GROUP_HEIGHT.dp).padding(horizontal = 4.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Row(
             verticalAlignment = Alignment.Top,
             horizontalArrangement = Arrangement.spacedBy(2.dp),
         ) { content() }
-        Spacer(Modifier.height(4.dp))
+        Spacer(Modifier.weight(1f))
         Text(
             text = caption,
             fontSize = 10.sp,
@@ -128,6 +128,7 @@ private fun Group(caption: String, content: @Composable () -> Unit) {
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             fontWeight = FontWeight.Medium,
         )
+        Spacer(Modifier.height(6.dp))
     }
 }
 

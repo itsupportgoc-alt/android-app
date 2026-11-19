@@ -3,7 +3,7 @@ package com.wordcraft.editor
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
@@ -14,12 +14,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 /**
- * Preview matrix for the Word-mobile chrome: the app bar, the format strip and the bottom tab
- * strip at four device classes, plus the ribbon pane content on its own.
+ * Preview matrix for the Word-for-PC chrome: the title bar, the ribbon tab strip, the ribbon
+ * body and the status bar at four device classes.
  *
  * Breakpoints (dp): phone 360 × 640, phone landscape 640 × 360, tablet 800 × 1280 and tablet
- * landscape 1280 × 800. The ribbon groups scroll horizontally, so a narrow preview never hides
- * a control — it only moves it off the first screenful, as on the device.
+ * landscape 1280 × 800. The tab strip scrolls horizontally, so a narrow preview never clips a
+ * tab — it only moves it off the first screenful, as on the device.
  */
 
 @Preview(name = "Chrome – phone", widthDp = 360, heightDp = 640, showBackground = true)
@@ -32,7 +32,7 @@ fun WordChromePhoneLandscapePreview() = WordChromePreviewScaffold(Modifier.width
 
 @Preview(name = "Chrome – tablet", widthDp = 800, heightDp = 1280, showBackground = true)
 @Composable
-fun WordChromeTabletPreview() = WordChromePreviewScaffold(Modifier.width(800.dp).height(1280.dp))
+fun WordChromeTabletPreview() = WordChromePreviewScaffold(Modifier.width(800.dp).height(800.dp))
 
 @Preview(name = "Chrome – tablet landscape", widthDp = 1280, heightDp = 800, showBackground = true)
 @Composable
@@ -50,18 +50,18 @@ private fun WordChromePreviewScaffold(modifier: Modifier) {
                 canRedo = false,
                 onUndo = {},
                 onRedo = {},
+                onSave = {},
                 onSearch = {},
-                onMore = {},
             )
-            FormatBar(onPickImage = {}, onInsertLink = {})
-            Box(Modifier.weight(1f).fillMaxSize().background(MaterialTheme.colorScheme.background))
-            WordTabBar()
+            WordRibbonTabs()
+            WordStatusBar(wordCount = 128, dirty = true)
+            Box(Modifier.weight(1f).fillMaxWidth().background(MaterialTheme.colorScheme.background))
         }
     }
 }
 
-/** The open pane's content, as it appears above the tab strip (Home is the default target). */
-@Preview(name = "Ribbon pane – Home", widthDp = 360, heightDp = 200, showBackground = true)
+/** The ribbon body on its own, as it appears under the tab strip (Home is the default tab). */
+@Preview(name = "Ribbon body – Home", widthDp = 800, heightDp = 200, showBackground = true)
 @Composable
 fun WordRibbonPaneContentPreview() {
     MaterialTheme {

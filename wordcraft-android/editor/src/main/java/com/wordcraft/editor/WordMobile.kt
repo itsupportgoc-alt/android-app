@@ -1,8 +1,5 @@
 package com.wordcraft.editor
 
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
-
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
@@ -10,6 +7,7 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -17,28 +15,18 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Redo
 import androidx.compose.material.icons.automirrored.filled.Undo
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Brush
-import androidx.compose.material.icons.filled.CropSquare
-import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.filled.MoreHoriz
-import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.KeyboardArrowUp
+import androidx.compose.material.icons.filled.Save
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Spellcheck
-import androidx.compose.material.icons.filled.Visibility
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -46,38 +34,38 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 /**
- * The phone chrome of Microsoft Word for Android, rebuilt natively:
+ * The chrome of Word for the PC, rebuilt natively and sized for phones and tablets:
  *
- *  - [WordTopBar] — the white app bar: Word's blue app tile, the document name with its
- *    "Saved to this device / Not saved" caption, then undo, redo, search and the ⋮ menu.
- *  - [WordTabBar] — the bottom tab strip (Home · Insert · Draw · Layout · Review · View · ⋯).
- *  - [WordRibbonPane] — the full ribbon groups that slide up above the tab strip.
+ *  - [WordTopBar] — the title bar: Word's blue **W** tile, the document name with its
+ *    "Saved to this device / Not saved" caption, then Save, undo, redo and search.
+ *  - [WordRibbonTabs] — the ribbon tab strip across the top
+ *    (**File · Home · Insert · Draw · Design · Layout · References · Mailings · Review · View ·
+ *    Help**) with Word's ribbon-collapse chevron at its right end.
+ *  - [WordRibbonPane] — the open tab's group set, directly under the strip.
  *
- * [ViewState.ribbonOpen] owns whether the pane is showing, so the chrome survives rotation like
- * the rest of the view state. Every control runs a real engine command — nothing is decorative.
+ * The strip scrolls sideways on a phone and fits without scrolling on a tablet; the pane is
+ * expanded on tall viewports and collapsed on short ones (Word's collapsed-ribbon state), so the
+ * page always keeps its room. Every control runs a real engine command — nothing is decorative.
  */
 
-/** Word's brand blue, used for the app tile, the selected tab and the dirty-document caption. */
+/** Word's brand blue, used for the app tile and the File tab. */
 private val WordBlue = Color(0xFF2B579A)
 
-// ------------------------------------------------------------------ top app bar
+// ------------------------------------------------------------------ title bar
 
 /**
- * The Word mobile app bar. [dirty] drives the caption colour ("Not saved" turns Word blue);
- * undo/redo are disabled through [canUndo] / [canRedo] exactly as the engine reports them.
+ * Word's title bar. [dirty] drives the caption ("Not saved" turns Word blue); undo/redo are
+ * disabled through [canUndo] / [canRedo] exactly as the engine reports them.
  */
 @Composable
 fun WordTopBar(
@@ -88,15 +76,16 @@ fun WordTopBar(
     canRedo: Boolean,
     onUndo: () -> Unit,
     onRedo: () -> Unit,
+    onSave: () -> Unit,
     onSearch: () -> Unit,
-    onMore: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(modifier.fillMaxWidth().background(MaterialTheme.colorScheme.surface)) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 12.dp, end = 2.dp, top = 4.dp, bottom = 4.dp),
+                .height(52.dp)
+                .padding(start = 12.dp, end = 2.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             // Word's blue app tile with the white W monogram.
@@ -128,179 +117,119 @@ fun WordTopBar(
                     fontSize = 11.sp,
                     color = if (dirty) WordBlue else MaterialTheme.colorScheme.onSurfaceVariant,
                     maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
                 )
+            }
+            // Word's Quick Access Toolbar: save, undo, redo.
+            IconButton(onClick = onSave) {
+                Icon(Icons.Filled.Save, "Save", Modifier.size(19.dp))
             }
             IconButton(onClick = onUndo, enabled = canUndo) {
-                Icon(Icons.AutoMirrored.Filled.Undo, "Undo", Modifier.size(20.dp))
+                Icon(Icons.AutoMirrored.Filled.Undo, "Undo", Modifier.size(19.dp))
             }
             IconButton(onClick = onRedo, enabled = canRedo) {
-                Icon(Icons.AutoMirrored.Filled.Redo, "Redo", Modifier.size(20.dp))
+                Icon(Icons.AutoMirrored.Filled.Redo, "Redo", Modifier.size(19.dp))
             }
             IconButton(onClick = onSearch) {
-                Icon(Icons.Filled.Search, "Search", Modifier.size(20.dp))
-            }
-            IconButton(onClick = onMore) {
-                Icon(Icons.Filled.MoreVert, "More", Modifier.size(20.dp))
+                Icon(Icons.Filled.Search, "Search", Modifier.size(19.dp))
             }
         }
     }
 }
 
-// ------------------------------------------------------------------ bottom tab strip
-
-/** One item of the bottom tab strip. */
-private class WordMobileTab(val id: String, val label: String, val icon: ImageVector)
-
-/** Word mobile's tab order: the everyday tabs, with the rest behind ⋯. */
-private val WordMobileTabs = listOf(
-    WordMobileTab("Home", "Home", Icons.Filled.Home),
-    WordMobileTab("Insert", "Insert", Icons.Filled.Add),
-    WordMobileTab("Draw", "Draw", Icons.Filled.Brush),
-    WordMobileTab("Layout", "Layout", Icons.Filled.CropSquare),
-    WordMobileTab("Review", "Review", Icons.Filled.Spellcheck),
-    WordMobileTab("View", "View", Icons.Filled.Visibility),
-)
-
-/** Tabs that do not fit on a phone strip; the ⋯ menu opens them in the same pane. */
-private val MoreTabs = listOf("Design", "References", "Mailings", "File", "Help")
+// ------------------------------------------------------------------ ribbon tab strip
 
 /**
- * The bottom tab strip. Tapping a tab opens its ribbon groups above the strip; tapping the tab
- * that is already open closes the pane again (Word mobile's behaviour). ⋯ lists the remaining
- * tabs, including the File backstage.
+ * Word's ribbon tab strip. Tapping a tab opens its groups under the strip; tapping the open tab
+ * again collapses the ribbon, exactly as double-clicking a tab does on the PC. The chevron at
+ * the right end collapses/restores the pane without changing the selected tab. On a narrow
+ * phone the strip scrolls sideways, so no tab is ever clipped.
  */
 @Composable
-fun WordTabBar(modifier: Modifier = Modifier) {
-    var moreOpen by remember { mutableStateOf(false) }
-    Column(modifier.fillMaxWidth().background(MaterialTheme.colorScheme.surface)) {
-        HorizontalDivider(
-            thickness = 0.5.dp,
-            color = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f),
-        )
+fun WordRibbonTabs(modifier: Modifier = Modifier) {
+    Column(modifier.fillMaxWidth().background(MaterialTheme.colorScheme.surfaceContainer)) {
         Row(
-            modifier = Modifier.fillMaxWidth().height(54.dp),
+            modifier = Modifier.fillMaxWidth().height(38.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            WordMobileTabs.forEach { tab ->
-                TabStripItem(
-                    tab = tab,
-                    selected = ViewState.ribbonOpen && ViewState.activeTab == tab.id,
-                    onClick = { ViewState.toggleTab(tab.id) },
-                    modifier = Modifier.weight(1f),
-                )
+            Row(
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxHeight()
+                    .horizontalScroll(rememberScrollState()),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                ViewState.tabs.forEach { tab -> RibbonTabItem(tab) }
             }
-            Box(Modifier.weight(1f)) {
-                TabStripItem(
-                    tab = WordMobileTab("__more", "More", Icons.Filled.MoreHoriz),
-                    selected = moreOpen,
-                    onClick = { moreOpen = true },
-                    modifier = Modifier.fillMaxWidth(),
+            IconButton(
+                onClick = {
+                    if (ViewState.ribbonOpen) ViewState.closeRibbon() else ViewState.openTab(ViewState.activeTab)
+                },
+                modifier = Modifier.size(38.dp),
+            ) {
+                Icon(
+                    imageVector = if (ViewState.ribbonOpen) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown,
+                    contentDescription = if (ViewState.ribbonOpen) "Collapse the ribbon" else "Pin the ribbon",
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.size(20.dp),
                 )
-                DropdownMenu(expanded = moreOpen, onDismissRequest = { moreOpen = false }) {
-                    MoreTabs.forEach { id ->
-                        DropdownMenuItem(
-                            text = { Text(id) },
-                            onClick = {
-                                moreOpen = false
-                                ViewState.openTab(id)
-                            },
-                        )
-                    }
-                }
             }
         }
     }
 }
 
+/** One tab of the strip: the open tab is white and merges into the pane below, as on the PC. */
 @Composable
-private fun TabStripItem(
-    tab: WordMobileTab,
-    selected: Boolean,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    val accent = MaterialTheme.colorScheme.primary
-    Column(
-        modifier = modifier
+private fun RibbonTabItem(tab: String) {
+    val selected = ViewState.ribbonOpen && ViewState.activeTab == tab
+    val color = when {
+        selected -> MaterialTheme.colorScheme.onSurface
+        tab == "File" -> WordBlue
+        else -> MaterialTheme.colorScheme.onSurfaceVariant
+    }
+    Box(
+        modifier = Modifier
             .fillMaxHeight()
-            .clickable(onClick = onClick),
-        horizontalAlignment = Alignment.CenterHorizontally,
+            .background(if (selected) MaterialTheme.colorScheme.surface else Color.Transparent)
+            .clickable { ViewState.toggleTab(tab) }
+            .padding(horizontal = 12.dp),
+        contentAlignment = Alignment.Center,
     ) {
-        // Word's selected-tab marker: a thin accent bar along the top edge.
-        Box(
-            Modifier
-                .fillMaxWidth()
-                .height(3.dp)
-                .background(if (selected) accent else Color.Transparent),
-        )
-        Spacer(Modifier.height(8.dp))
-        Icon(
-            imageVector = tab.icon,
-            contentDescription = tab.label,
-            tint = if (selected) accent else MaterialTheme.colorScheme.onSurfaceVariant,
-            modifier = Modifier.size(21.dp),
-        )
-        Spacer(Modifier.height(2.dp))
         Text(
-            text = tab.label,
-            fontSize = 9.5.sp,
+            text = tab,
+            fontSize = 12.sp,
             maxLines = 1,
-            color = if (selected) accent else MaterialTheme.colorScheme.onSurfaceVariant,
+            color = color,
             fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal,
         )
     }
 }
 
-// ------------------------------------------------------------------ ribbon pane
+// ------------------------------------------------------------------ ribbon body
 
 /**
- * The expandable ribbon above the tab strip: a small header naming the open tab (with the
- * collapse chevron) and that tab's full group set, generated from the engine's command registry.
+ * The open tab's groups, in the white band under the tab strip (Word's ribbon body). It slides
+ * open downwards from the strip and is dismissed by the strip's chevron or by tapping the open
+ * tab again.
  */
 @Composable
 fun WordRibbonPane(modifier: Modifier = Modifier) {
     AnimatedVisibility(
         visible = ViewState.ribbonOpen,
-        enter = expandVertically(expandFrom = Alignment.Bottom) + fadeIn(),
-        exit = shrinkVertically(shrinkTowards = Alignment.Bottom) + fadeOut(),
+        enter = expandVertically(expandFrom = Alignment.Top) + fadeIn(),
+        exit = shrinkVertically(shrinkTowards = Alignment.Top) + fadeOut(),
     ) {
         Surface(
             modifier = modifier.fillMaxWidth(),
             color = MaterialTheme.colorScheme.surface,
-            shadowElevation = 8.dp,
+            shadowElevation = 3.dp,
         ) {
             Column {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 14.dp, end = 4.dp, top = 2.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Text(
-                        text = ViewState.activeTab,
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight.SemiBold,
-                        color = MaterialTheme.colorScheme.primary,
-                    )
-                    Spacer(Modifier.weight(1f))
-                    IconButton(
-                        onClick = { ViewState.closeRibbon() },
-                        modifier = Modifier.size(32.dp),
-                    ) {
-                        Icon(
-                            Icons.Filled.KeyboardArrowDown,
-                            "Close ribbon",
-                            Modifier.size(20.dp),
-                        )
-                    }
-                }
-                Column(
-                    Modifier
-                        .heightIn(max = 190.dp)
-                        .verticalScroll(rememberScrollState()),
-                ) {
-                    RibbonTabContent(ViewState.activeTab)
-                }
+                RibbonTabContent(ViewState.activeTab)
+                HorizontalDivider(
+                    thickness = 0.5.dp,
+                    color = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f),
+                )
             }
         }
     }

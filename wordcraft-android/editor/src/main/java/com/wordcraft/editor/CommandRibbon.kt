@@ -178,7 +178,7 @@ private const val SMALL_PER_ROW = 2
  * sits on the same line. Tall enough for the widest group (three large buttons, a two-row
  * small grid and the "More" expander).
  */
-private val GROUP_HEIGHT = 140
+private val GROUP_HEIGHT = RIBBON_GROUP_HEIGHT
 
 /** A large ribbon button: icon above the label, as in Word. */
 @Composable

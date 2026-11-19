@@ -50,10 +50,11 @@ fun NavigationPane(
     onNavigate: (Int) -> Unit,
     onClose: () -> Unit,
     modifier: Modifier = Modifier,
+    width: androidx.compose.ui.unit.Dp = 260.dp,
 ) {
     Column(
         modifier = modifier
-            .width(260.dp)
+            .width(width)
             .fillMaxHeight()
             .background(MaterialTheme.colorScheme.surface),
     ) {

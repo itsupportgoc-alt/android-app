@@ -47,14 +47,20 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 /**
- * The tab content of Word's ribbon, rendered inside the bottom pane of [WordRibbonPane].
+ * The tab content of Word's ribbon, rendered inside the body of [WordRibbonPane].
  *
  * [RibbonTabContent] picks the content for one tab: **Home**, **View**, **File** and **Help**
  * have hand-built copies of Word's groups, and the remaining tabs (Insert, Draw, Design, Layout,
  * References, Mailings, Review) are generated from the engine's own command registry (see
- * [CommandTabGroups]). Nothing here renders the tab strip itself — the strip is Word mobile's
- * bottom bar ([WordTabBar]).
+ * [CommandTabGroups]). Nothing here renders the tab strip itself — that is [WordRibbonTabs].
  */
+
+/**
+ * Height of one ribbon group, shared by every tab so the ribbon keeps one height and every
+ * group's caption sits on the same line as on the PC.
+ */
+internal const val RIBBON_GROUP_HEIGHT = 144
+
 // ------------------------------------------------------------------ tab bodies
 
 @Composable
@@ -108,23 +114,23 @@ private fun GroupDivider() {
         modifier = Modifier
             .padding(horizontal = 6.dp)
             .width(1.dp)
-            .height(78.dp)
+            .height(RIBBON_GROUP_HEIGHT.dp)
             .background(MaterialTheme.colorScheme.outline.copy(alpha = 0.35f)),
     )
 }
 
-/** A captioned group: content on top, small-caps caption beneath. */
+/** A captioned group: content on top, small-caps caption pinned beneath it (Word's layout). */
 @Composable
 private fun Group(caption: String, content: @Composable () -> Unit) {
     Column(
-        modifier = Modifier.padding(horizontal = 4.dp),
+        modifier = Modifier.height(RIBBON_GROUP_HEIGHT.dp).padding(horizontal = 4.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Row(
             verticalAlignment = Alignment.Top,
             horizontalArrangement = Arrangement.spacedBy(2.dp),
         ) { content() }
-        Spacer(Modifier.height(4.dp))
+        Spacer(Modifier.weight(1f))
         Text(
             text = caption,
             fontSize = 10.sp,
@@ -132,6 +138,7 @@ private fun Group(caption: String, content: @Composable () -> Unit) {
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             fontWeight = FontWeight.Medium,
         )
+        Spacer(Modifier.height(6.dp))
     }
 }
 

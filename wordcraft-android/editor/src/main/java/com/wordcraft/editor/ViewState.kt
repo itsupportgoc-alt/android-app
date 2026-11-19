@@ -29,8 +29,8 @@ object ViewState {
         "References", "Mailings", "Review", "View", "Help",
     )
 
-    /** Currently selected ribbon tab. The reference image shows `View`. */
-    var activeTab: String by mutableStateOf("View")
+    /** Currently selected ribbon tab. Word opens on `Home`. */
+    var activeTab: String by mutableStateOf("Home")
         private set
 
     fun selectTab(tab: String) {
@@ -40,11 +40,25 @@ object ViewState {
     // ---------------------------------------------------------------- bottom ribbon pane
 
     /**
-     * Word mobile keeps the ribbon in a pane that slides up from the bottom tab strip. The pane
-     * starts closed, as on a phone.
+     * The ribbon body under the tab strip. Word for the PC shows it expanded; on a short
+     * viewport there is no room for it, so [applyDefaultForViewport] collapses it to the strip.
      */
-    var ribbonOpen: Boolean by mutableStateOf(false)
+    var ribbonOpen: Boolean by mutableStateOf(true)
         private set
+
+    /** The last viewport class [applyDefaultForViewport] was applied for (null = never). */
+    private var ribbonDefaultForShortViewport: Boolean? = null
+
+    /**
+     * Pick Word's default ribbon state for the current viewport: expanded where there is room
+     * for both the ribbon and the page, collapsed to the tab strip on a short screen (a phone
+     * in landscape). The user can still open or collapse it from the strip's chevron.
+     */
+    fun applyDefaultForViewport(shortViewport: Boolean) {
+        if (ribbonDefaultForShortViewport == shortViewport) return
+        ribbonDefaultForShortViewport = shortViewport
+        ribbonOpen = !shortViewport
+    }
 
     /** Open [tab] in the bottom pane (tab strip, or one of the tabs behind ⋯). */
     fun openTab(tab: String) {
@@ -111,7 +125,7 @@ object ViewState {
     var showGridlines: Boolean by mutableStateOf(false)
         private set
 
-    var showNavPane: Boolean by mutableStateOf(true)
+    var showNavPane: Boolean by mutableStateOf(false)
         private set
 
     fun toggleRuler() { showRuler = !showRuler }
@@ -213,15 +227,16 @@ object ViewState {
     fun toggleNavCollapsed() { navCollapsed = !navCollapsed }
 
     fun reset() {
-        activeTab = "View"
-        ribbonOpen = false
+        activeTab = "Home"
+        ribbonOpen = true
+        ribbonDefaultForShortViewport = null
         view = DocView.PRINT_LAYOUT
         focusMode = false
         immersiveReader = false
         pageMovement = PageMovement.VERTICAL
         showRuler = true
         showGridlines = false
-        showNavPane = true
+        showNavPane = false
         zoom = 1.0f
         splitView = false
         sideBySide = false
